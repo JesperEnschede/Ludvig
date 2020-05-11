@@ -11,6 +11,7 @@ Ludvig::Core::Application::Application()
     this->window = std::make_unique<Rendering::Window>(800,600,true);
     this->renderer = std::make_unique<Rendering::Renderer>(this->window.get());
     this->scene = std::make_unique<Scene::Scene>();
+    this->guiManager = std::make_unique<GUI::GUIManager>();
 }
 
 void Ludvig::Core::Application::start()
@@ -29,10 +30,7 @@ void Ludvig::Core::Application::runtime()
         this->renderer->render_scene(this->scene.get());
 
         this->renderer->create_gui_frame();
-
-        // for each gui window
-        // draw window
-
+        this->guiManager->draw_windows();
         this->renderer->draw_gui_frame();
 
         this->window->swap_buffers();
