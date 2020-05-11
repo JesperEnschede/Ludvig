@@ -11,6 +11,9 @@ namespace Ludvig
 {
     namespace Rendering
     {
+        /*
+         * Window class represents an window viewport.
+         */
         class Window
         {
         public:
