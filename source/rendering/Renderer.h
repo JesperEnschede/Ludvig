@@ -23,6 +23,7 @@ namespace Ludvig
 
         public:
             void render_scene(Core::Scene::Scene* scene);
+            void clear(int mask);
 
             void create_gui_frame();
             void draw_gui_frame();

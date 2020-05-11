@@ -21,6 +21,11 @@ Ludvig::Rendering::Renderer::Renderer()
     glDepthFunc(GL_LESS);
 }
 
+void Ludvig::Rendering::Renderer::clear(int mask)
+{
+    glClear(mask);
+}
+
 void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene)
 {
     // for each mesh in the scene.
@@ -40,3 +45,5 @@ void Ludvig::Rendering::Renderer::draw_gui_frame()
 {
 
 }
+
+
