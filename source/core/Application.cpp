@@ -6,9 +6,9 @@
 
 Ludvig::Core::Application::Application()
 {
-    this->scene = std::make_unique<Scene::Scene>();
     this->window = std::make_unique<Rendering::Window>(800,600,true);
     this->renderer = std::make_unique<Rendering::Renderer>();
+    this->scene = std::make_unique<Scene::Scene>();
 }
 
 void Ludvig::Core::Application::start()
@@ -25,12 +25,6 @@ void Ludvig::Core::Application::runtime()
         this->window->poll_events();
 
         this->renderer->render_scene(this->scene.get());
-
-        this->renderer->create_gui_frame();
-
-        // do imgui calls.
-
-        this->renderer->draw_gui_frame();
 
         this->window->swap_buffers();
     }
