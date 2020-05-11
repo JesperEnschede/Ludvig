@@ -6,16 +6,20 @@
 
 Ludvig::Core::Application::Application()
 {
-    // init scene.
-    // init window.
-    // init renderer.
+    this->window = std::make_unique<Rendering::Window>(800,600,true);
+}
+
+void Ludvig::Core::Application::start()
+{
+    runtime();
 }
 
 void Ludvig::Core::Application::runtime()
 {
-    // while
+    while (!this->window->is_closing())
+    {
+        this->window->poll_events();
 
-    // update renderer.
-
-    // end while
+        this->window->swap_buffers();
+    }
 }

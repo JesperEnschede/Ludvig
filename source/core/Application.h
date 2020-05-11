@@ -5,17 +5,26 @@
 #ifndef LUDVIG_APPLICATION_H
 #define LUDVIG_APPLICATION_H
 
+#include "../rendering/Window.h"
+
+#include "memory"
+
 namespace Ludvig
 {
     namespace Core
     {
-        class Application
+        class Application final
         {
         public:
             Application();
 
+            void start();
+
         private:
             void runtime();
+
+        private:
+            std::unique_ptr<Rendering::Window> window;
         };
     }
 }
