@@ -38,6 +38,8 @@ namespace Ludvig
             template <class T>
             void add_window();
 
+            void set_gui_style();
+
         private:
             std::vector<std::unique_ptr<GUIWindow>> windows;
         };
