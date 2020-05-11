@@ -4,8 +4,11 @@
 
 #include "Renderer.h"
 
+#include "imgui.h"
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_opengl3.h"
 
-Ludvig::Rendering::Renderer::Renderer()
+Ludvig::Rendering::Renderer::Renderer(Window* window)
 {
     if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress))
     {
@@ -14,6 +17,13 @@ Ludvig::Rendering::Renderer::Renderer()
 
         return;
     }
+
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+    ImGuiIO& io = ImGui::GetIO(); (void)io;
+
+    ImGui_ImplGlfw_InitForOpenGL(window->get_context(), true);
+    ImGui_ImplOpenGL3_Init("#version 130");
 }
 
 void Ludvig::Rendering::Renderer::clear(int mask)
@@ -36,23 +46,19 @@ void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene
 
         glDisableVertexAttribArray(0);
     }
-
-    // for each mesh in the scene.
-    // bind texture
-    // set shader.
-    // bind VBO,UBO etc.
-    // draw triangles
-    // cleanup
 }
 
 void Ludvig::Rendering::Renderer::create_gui_frame()
 {
-
+    ImGui_ImplOpenGL3_NewFrame();
+    ImGui_ImplGlfw_NewFrame();
+    ImGui::NewFrame();
 }
 
 void Ludvig::Rendering::Renderer::draw_gui_frame()
 {
-
+    ImGui::Render();
+    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 }
 
 

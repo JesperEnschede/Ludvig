@@ -4,10 +4,12 @@
 
 #include "Application.h"
 
+#include "imgui.h"
+
 Ludvig::Core::Application::Application()
 {
     this->window = std::make_unique<Rendering::Window>(800,600,true);
-    this->renderer = std::make_unique<Rendering::Renderer>();
+    this->renderer = std::make_unique<Rendering::Renderer>(this->window.get());
     this->scene = std::make_unique<Scene::Scene>();
 }
 
@@ -25,6 +27,13 @@ void Ludvig::Core::Application::runtime()
         this->window->poll_events();
 
         this->renderer->render_scene(this->scene.get());
+
+        this->renderer->create_gui_frame();
+
+        // for each gui window
+        // draw window
+
+        this->renderer->draw_gui_frame();
 
         this->window->swap_buffers();
     }

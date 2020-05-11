@@ -7,7 +7,7 @@
 
 #include "../core/scene/Scene.h"
 #include "glad/glad.h"
-#include "GLFW/glfw3.h"
+#include "Window.h"
 
 namespace Ludvig
 {
@@ -19,7 +19,7 @@ namespace Ludvig
             /*
              * Loads openGL.
              */
-            Renderer();
+            Renderer(Window* window);
 
         public:
             void render_scene(Core::Scene::Scene* scene);
