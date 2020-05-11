@@ -20,6 +20,12 @@ namespace Ludvig
             const char* windowName;
 
             ImGuiWindowFlags windowFlags;
+
+            int x = 5;
+            int y = 5;
+
+            int width = 10;
+            int height = 10;
         };
     }
 }
