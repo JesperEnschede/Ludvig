@@ -6,6 +6,8 @@
 #define LUDVIG_RENDERER_H
 
 #include "../core/scene/Scene.h"
+#include "glad/glad.h"
+#include "GLFW/glfw3.h"
 
 namespace Ludvig
 {
