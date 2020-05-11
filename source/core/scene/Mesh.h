@@ -23,8 +23,15 @@ namespace Ludvig
             public:
                 GLuint vao;
                 GLuint vbo;
+                GLuint ubo;
                 GLuint ebo;
                 unsigned int indices;
+
+            private:
+                void generate_vertex_array();
+                void generate_vertex_buffer();
+                void generate_uv_buffer();
+                void generate_element_buffer();
 
             private:
                 std::vector<GLfloat> vertices = std::vector<GLfloat>();
