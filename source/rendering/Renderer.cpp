@@ -14,11 +14,6 @@ Ludvig::Rendering::Renderer::Renderer()
 
         return;
     }
-
-    glEnable(GL_DEPTH_TEST);
-    glEnable(GL_TEXTURE_2D);
-    glDisable(GL_CULL_FACE);
-    glDepthFunc(GL_LESS);
 }
 
 void Ludvig::Rendering::Renderer::clear(int mask)
@@ -35,11 +30,11 @@ void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene
         glEnableVertexAttribArray(0);
 
         glBindBuffer(GL_ARRAY_BUFFER, mesh->vbo);
-        glVertexAttribPointer(1,2,GL_FLOAT, GL_FALSE,0,0);
-        
+        glVertexAttribPointer(0,2,GL_FLOAT, GL_FALSE,0,(void*)0);
+
         glDrawArrays(GL_TRIANGLES,0,mesh->indices);
 
-        glDisableVertexAttribArray(1);
+        glDisableVertexAttribArray(0);
     }
 
     // for each mesh in the scene.
