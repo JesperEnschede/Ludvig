@@ -22,4 +22,12 @@ Ludvig::GUI::Windows::GWProfiler::GWProfiler()
 void Ludvig::GUI::Windows::GWProfiler::on_gui()
 {
     ImGui::Text("%.3f ms/frame | %.3f FPS", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+
+    this->frame_times[5] = ImGui::GetIO().Framerate;
+    ImGui::PlotLines("frame: ", this->frame_times, IM_ARRAYSIZE(this->frame_times));
+    this->frame_times[4] = this->frame_times[5];
+    this->frame_times[3] = this->frame_times[4];
+    this->frame_times[2] = this->frame_times[3];
+    this->frame_times[1] = this->frame_times[2];
+    this->frame_times[0] = this->frame_times[1];
 }

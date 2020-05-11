@@ -19,6 +19,9 @@ namespace Ludvig
                 GWProfiler();
 
                 void on_gui() override;
+
+            private:
+                float frame_times[5];
             };
         }
     }
