@@ -5,6 +5,8 @@
 #ifndef LUDVIG_WINDOW_H
 #define LUDVIG_WINDOW_H
 
+#include "GLFW/glfw3.h"
+
 namespace Ludvig
 {
     namespace Rendering
@@ -13,6 +15,16 @@ namespace Ludvig
         {
         public:
             Window(int width, int height, bool fullscreen);
+
+            /*
+             * Poll window events.
+             */
+            void poll_events();
+
+            /*
+             * Swap window buffers.
+             */
+            void swap_buffers();
 
             /*
              * Returns the current window width.
@@ -34,6 +46,16 @@ namespace Ludvig
              */
             void set_vsync(int buffers);
 
+            /*
+             * Returns a pointer to the context window.
+             */
+            GLFWwindow* get_context() const;
+
+            /*
+             * Returns true if the window is closing.
+             */
+            bool is_closing() const;
+
         private:
             /*
              * Gets called whenever the window is resized.
@@ -41,6 +63,8 @@ namespace Ludvig
             void window_resize_callback(int w, int h);
 
         private:
+            GLFWwindow* window;
+
             int width = 800;
             int height = 600;
         };
