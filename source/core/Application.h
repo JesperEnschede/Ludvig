@@ -5,7 +5,9 @@
 #ifndef LUDVIG_APPLICATION_H
 #define LUDVIG_APPLICATION_H
 
+#include "../rendering/Renderer.h"
 #include "../rendering/Window.h"
+#include "scene/Scene.h"
 
 #include "memory"
 
@@ -37,6 +39,8 @@ namespace Ludvig
 
         private:
             std::unique_ptr<Rendering::Window> window;
+            std::unique_ptr<Rendering::Renderer> renderer;
+            std::unique_ptr<Scene::Scene> scene;
         };
     }
 }
