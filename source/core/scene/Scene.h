@@ -19,7 +19,7 @@ namespace Ludvig
             class Scene
             {
             public:
-                Scene() = default;
+                Scene();
 
                 bool load_mesh(const char* path);
 
