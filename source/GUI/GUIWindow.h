@@ -11,9 +11,16 @@ namespace Ludvig
 {
     namespace GUI
     {
+        /*
+         * A GUI window that can be attached to a GUIManager to be rendered to a window.
+         * A constructor can be made to initialize member variables.
+         */
         class GUIWindow
         {
         public:
+            /*
+             * Can be override to implement ImGui calls.
+             */
             virtual void on_gui() = 0;
 
         public:

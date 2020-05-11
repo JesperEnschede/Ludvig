@@ -16,11 +16,20 @@ namespace Ludvig
     {
         namespace Scene
         {
+            /*
+             * A scene is a collection of Meshes, it has a camera, and light sources.
+             */
             class Scene
             {
             public:
+                /*
+                 * Initialize the scene.
+                 */
                 Scene();
 
+                /*
+                 * Load a new mesh.
+                 */
                 bool load_mesh(const char* path);
 
             public:

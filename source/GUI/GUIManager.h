@@ -14,15 +14,27 @@ namespace Ludvig
 {
     namespace GUI
     {
+        /*
+         * The gui manager handles all the GUI windows.
+         */
         class GUIManager
         {
         public:
+            /*
+             * Initialize GUI windows.
+             */
             GUIManager();
 
         public:
+            /*
+             * Draws all the GUI windows.
+             */
             void draw_windows();
 
         private:
+            /*
+             * Add a new window of type T.
+             */
             template <class T>
             void add_window();
 

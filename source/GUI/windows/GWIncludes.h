@@ -5,6 +5,8 @@
 #ifndef LUDVIG_GWINCLUDES_H
 #define LUDVIG_GWINCLUDES_H
 
+// This header file includes all the GuiWindows.
+
 #include "GWMenuBar.h"
 #include "GWProfiler.h"
 
