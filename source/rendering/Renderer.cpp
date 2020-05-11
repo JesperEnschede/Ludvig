@@ -28,6 +28,20 @@ void Ludvig::Rendering::Renderer::clear(int mask)
 
 void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene)
 {
+    for (int i = 0; i < scene->meshes.size(); ++i)
+    {
+        Core::Scene::Mesh* mesh = scene->meshes[i].get();
+
+        glEnableVertexAttribArray(0);
+
+        glBindBuffer(GL_ARRAY_BUFFER, mesh->vbo);
+        glVertexAttribPointer(1,2,GL_FLOAT, GL_FALSE,0,0);
+        
+        glDrawArrays(GL_TRIANGLES,0,mesh->indices);
+
+        glDisableVertexAttribArray(1);
+    }
+
     // for each mesh in the scene.
     // bind texture
     // set shader.

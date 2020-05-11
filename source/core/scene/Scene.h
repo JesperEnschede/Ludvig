@@ -23,7 +23,7 @@ namespace Ludvig
 
                 bool load_mesh(const char* path);
 
-            private:
+            public:
                 std::vector<std::unique_ptr<Mesh>> meshes;
             };
         }
