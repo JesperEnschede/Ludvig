@@ -3,4 +3,22 @@ project(Ludvig)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Ludvig main.cpp)
+include_directories(external/gl)
+
+add_subdirectory(external/glfw)
+include_directories(glfw/include/)
+
+add_executable(
+        Ludvig main.cpp
+
+        source/core/Application.cpp
+        source/core/Application.h
+        source/rendering/Window.cpp
+        source/rendering/Window.h
+
+        source/GL/glad.c
+)
+
+target_link_libraries(Ludvig glfw ${GLFW_LIBRARIES} -lOpenGL32)
+
+find_package(OpenGL REQUIRED)
