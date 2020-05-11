@@ -10,18 +10,25 @@ Ludvig::Rendering::Window::Window(int width, int height, bool fullscreen)
 {
     if (glfwInit() != GLFW_TRUE)
     {
-        std::printf("Error: failed to initialize window!");
+        std::printf("Error: failed to initialize window! \n");
 
         return;
     }
 
     this->window = glfwCreateWindow(width,height,"Ludvig", nullptr,nullptr);
 
-    glfwMakeContextCurrent(this->window);
+    if (window == nullptr)
+    {
+        std::printf("Error: failed to create window! \n");
+
+        return;
+    }
 
     set_samples(2); // default samples.
 
-    set_vsync(0); // disabled vSync by default.
+    glfwMakeContextCurrent(this->window);
+
+    set_vSync(0); // disabled vSync by default.
 
     glfwSetInputMode(this->window, GLFW_STICKY_KEYS, GL_TRUE);
 
@@ -59,7 +66,7 @@ void Ludvig::Rendering::Window::set_samples(int amount)
     glfwWindowHint(GLFW_SAMPLES,amount);
 }
 
-void Ludvig::Rendering::Window::set_vsync(int buffers)
+void Ludvig::Rendering::Window::set_vSync(int buffers)
 {
     glfwSwapInterval(buffers);
 }

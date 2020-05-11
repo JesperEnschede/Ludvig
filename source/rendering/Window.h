@@ -47,7 +47,7 @@ namespace Ludvig
             /*
              * Set the amount of vSync buffers.
              */
-            void set_vsync(int buffers);
+            void set_vSync(int buffers);
 
             /*
              * Returns a pointer to the context window.
