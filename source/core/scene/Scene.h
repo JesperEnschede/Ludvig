@@ -5,6 +5,11 @@
 #ifndef LUDVIG_SCENE_H
 #define LUDVIG_SCENE_H
 
+#include "Mesh.h"
+
+#include "memory"
+#include "vector"
+
 namespace Ludvig
 {
     namespace Core
@@ -14,7 +19,12 @@ namespace Ludvig
             class Scene
             {
             public:
-                Scene();
+                Scene() = default;
+
+                bool load_mesh(const char* path);
+
+            private:
+                std::vector<std::unique_ptr<Mesh>> meshes;
             };
         }
     }
