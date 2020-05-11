@@ -18,6 +18,7 @@ namespace Ludvig
             class Mesh
             {
             public:
+                Mesh();
                 Mesh(std::vector<GLfloat> vertices, std::vector<GLfloat> uvs, std::vector<GLfloat> normals);
 
             public:

@@ -4,6 +4,35 @@
 
 #include "Mesh.h"
 
+Ludvig::Core::Scene::Mesh::Mesh()
+{
+    this->vertices =
+            {
+                    -1.0,  1.0,
+                    -1.0, -1.0,
+                    1.0, -1.0,
+                    -1.0, 1.0,
+                    1.0, -1.0,
+                    1.0, 1.0,
+            };
+
+    this->uvs =
+            {
+                    0.0, 1.0,
+                    0.0, 0.0,
+                    1.0, 0.0,
+                    0.0, 1.0,
+                    1.0, 0.0,
+                    1.0, 1.0,
+            };
+
+    this->indices = 6;
+
+    this->generate_vertex_array();
+    this->generate_vertex_buffer();
+    this->generate_uv_buffer();
+}
+
 Ludvig::Core::Scene::Mesh::Mesh(std::vector<GLfloat> vertices, std::vector<GLfloat> uvs, std::vector<GLfloat> normals)
 {
     this->vertices = vertices;
