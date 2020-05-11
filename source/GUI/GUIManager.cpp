@@ -16,6 +16,8 @@ void Ludvig::GUI::GUIManager::draw_windows()
     {
         GUIWindow* window = this->windows[i].get();
 
+        ImGui::SetNextWindowPos(ImVec2(window->x,window->y));
+        ImGui::SetNextWindowSize(ImVec2(window->width, window->height));
         ImGui::Begin(window->windowName, nullptr,window->windowFlags);
 
         window->on_gui();
