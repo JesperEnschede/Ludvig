@@ -12,7 +12,7 @@ Ludvig::GUI::Windows::GWMenuBar::GWMenuBar()
     this->y = 0;
 
     this->width = 1920;
-    this->height = 5;
+    this->height = 10;
 
     this->windowFlags |= ImGuiWindowFlags_NoTitleBar;
     this->windowFlags |= ImGuiWindowFlags_MenuBar;

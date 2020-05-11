@@ -5,9 +5,12 @@
 #include "GUIManager.h"
 #include "imgui.h"
 
+#include "windows/GWIncludes.h"
+
 Ludvig::GUI::GUIManager::GUIManager()
 {
-
+    this->add_window<Windows::GWMenuBar>();
+    this->add_window<Windows::GWProfiler>();
 }
 
 void Ludvig::GUI::GUIManager::draw_windows()
@@ -16,8 +19,12 @@ void Ludvig::GUI::GUIManager::draw_windows()
     {
         GUIWindow* window = this->windows[i].get();
 
-        ImGui::SetNextWindowPos(ImVec2(window->x,window->y));
-        ImGui::SetNextWindowSize(ImVec2(window->width, window->height));
+        if (window->isStatic)
+        {
+            ImGui::SetNextWindowPos(ImVec2(window->x,window->y));
+            ImGui::SetNextWindowSize(ImVec2(window->width, window->height));
+        }
+
         ImGui::Begin(window->windowName, nullptr,window->windowFlags);
 
         window->on_gui();

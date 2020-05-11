@@ -26,6 +26,8 @@ namespace Ludvig
 
             int width = 10;
             int height = 10;
+
+            bool isStatic = true;
         };
     }
 }

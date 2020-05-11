@@ -23,8 +23,18 @@ namespace Ludvig
             void draw_windows();
 
         private:
+            template <class T>
+            void add_window();
+
+        private:
             std::vector<std::unique_ptr<GUIWindow>> windows;
         };
+
+        template <class T>
+        inline void GUIManager::add_window()
+        {
+            this->windows.push_back(std::make_unique<T>());
+        }
     }
 }
 
