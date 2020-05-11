@@ -17,9 +17,11 @@ add_executable(
         source/rendering/Window.h
 
         source/GL/glad.c
-        
+
         source/core/scene/Scene.cpp
-        source/core/scene/Scene.h)
+        source/core/scene/Scene.h 
+        source/core/scene/Mesh.cpp
+        source/core/scene/Mesh.h)
 
 target_link_libraries(Ludvig glfw ${GLFW_LIBRARIES} -lOpenGL32)
 
