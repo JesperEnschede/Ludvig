@@ -6,8 +6,12 @@
 #define LUDVIG_RENDERER_H
 
 #include "../core/scene/Scene.h"
+#include "../core/scene/Shader.h"
+
 #include "glad/glad.h"
 #include "Window.h"
+
+#include "vector"
 
 namespace Ludvig
 {
@@ -27,6 +31,9 @@ namespace Ludvig
 
             void create_gui_frame();
             void draw_gui_frame();
+
+        private:
+            std::vector<std::unique_ptr<Core::Scene::Shader>> shaders;
         };
     }
 }

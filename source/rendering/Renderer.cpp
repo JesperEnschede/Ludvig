@@ -26,6 +26,8 @@ Ludvig::Rendering::Renderer::Renderer(Window* window)
     ImGui_ImplOpenGL3_Init("#version 130");
 
     glClearColor(0.0f,0.0f,0.1f,1);
+
+    this->shaders.push_back(std::make_unique<Core::Scene::Shader>("default_vertex.glsl","default_fragment.glsl"));
 }
 
 void Ludvig::Rendering::Renderer::clear(int mask)
@@ -35,9 +37,18 @@ void Ludvig::Rendering::Renderer::clear(int mask)
 
 void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene)
 {
+    scene->camera->calculate_view_projection_matrix();
+    glm::mat4 viewProjectionMatrix = scene->camera->get_view_projection_matrix();
+
     for (int i = 0; i < scene->meshes.size(); ++i)
     {
         Core::Scene::Mesh* mesh = scene->meshes[i].get();
+
+        glm::mat4 mvp = viewProjectionMatrix * mesh->transform->get_trs();
+
+        glUseProgram(shaders[0]->get_program());
+        
+        shaders[0]->set_mat4x4("MVP",mvp);
 
         glEnableVertexAttribArray(0);
 
