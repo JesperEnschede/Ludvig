@@ -8,6 +8,8 @@
 #include "glad/glad.h"
 #include "glm.hpp"
 
+#include "string"
+
 namespace Ludvig
 {
     namespace Core
@@ -23,7 +25,7 @@ namespace Ludvig
                 /*
                  * Read & compile the GLSL source.
                  */
-                Shader(const char* vertexPath, const char* fragmentPath);
+                Shader(std::string vertexPath, std::string fragmentPath);
 
                 /*
                  * Returns the shader program.
@@ -36,7 +38,7 @@ namespace Ludvig
                 /*
                  * Compile a GLSL shader.
                  */
-                static GLuint compile(const char* vertexCode, const char* fragmentCode);
+                static GLuint compile(std::string vertexCode, std::string fragmentCode);
 
             private:
                 GLuint program;

@@ -9,29 +9,15 @@
 #include "fstream"
 #include "sstream"
 
-const char* Ludvig::Data::read_file(const char *path)
+std::string Ludvig::Data::read_file(std::string path)
 {
-    std::string fileContent;
-    std::ifstream file;
+    std::ostringstream sstream;
 
-    file.exceptions(std::ifstream::failbit | std::ifstream::badbit);
+    std::ifstream fs(path);
 
-    try
-    {
-        file.open(path);
+    sstream << fs.rdbuf();
 
-        std::stringstream fileStream;
+    const std::string fileContent(sstream.str());
 
-        fileStream << file.rdbuf();
-
-        file.close();
-
-        fileContent = fileStream.str();
-    }
-    catch(std::ifstream::failure& e)
-    {
-        printf("Error: unable to open file %s \n", path);
-    }
-
-    return fileContent.c_str();
+    return fileContent;
 }

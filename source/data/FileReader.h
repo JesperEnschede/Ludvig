@@ -5,11 +5,13 @@
 #ifndef LUDVIG_FILEREADER_H
 #define LUDVIG_FILEREADER_H
 
+#include "string"
+
 namespace Ludvig
 {
     namespace Data
     {
-        const char* read_file(const char* path);
+        std::string read_file(std::string path);
     }
 }
 

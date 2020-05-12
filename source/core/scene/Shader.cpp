@@ -9,10 +9,10 @@
 #include "vector"
 #include "iostream"
 
-Ludvig::Core::Scene::Shader::Shader(const char *vertexPath, const char *fragmentPath)
+Ludvig::Core::Scene::Shader::Shader(std::string vertexPath, std::string fragmentPath)
 {
-    const char* vertexCode = Data::read_file(vertexPath);
-    const char* fragmentCode = Data::read_file(fragmentPath);
+    std::string vertexCode = Data::read_file(vertexPath);
+    std::string fragmentCode = Data::read_file(fragmentPath);
 
     this->program = compile(vertexCode,fragmentCode);
 }
@@ -22,8 +22,11 @@ GLuint Ludvig::Core::Scene::Shader::get_program() const
     return this->program;
 }
 
-GLuint Ludvig::Core::Scene::Shader::compile(const char *vertexCode, const char *fragmentCode)
+GLuint Ludvig::Core::Scene::Shader::compile(std::string _vertexCode, std::string _fragmentCode)
 {
+    const char* vertexCode = _vertexCode.c_str();
+    const char* fragmentCode = _fragmentCode.c_str();
+
     GLuint program;
 
     int success = 0;
