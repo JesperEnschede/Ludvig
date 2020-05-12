@@ -30,7 +30,7 @@ void Ludvig::Core::Application::runtime()
         this->renderer->render_scene(this->scene.get());
 
         this->renderer->create_gui_frame();
-        this->guiManager->draw_windows();
+        // this->guiManager->draw_windows();
         this->renderer->draw_gui_frame();
 
         this->window->swap_buffers();
