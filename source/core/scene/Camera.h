@@ -25,11 +25,18 @@ namespace Ludvig
 
                 glm::mat4 get_view_projection_matrix();
 
+                void calculate_view_projection_matrix();
+
             public:
                 std::unique_ptr<Transform> transform;
 
                 float nearClipping = 0.5f;
                 float farClipping = 100.0f;
+                float fieldOfView = 60.0f;
+
+            private:
+                glm::mat4 viewMatrix = glm::mat4(1.0f);
+                glm::mat4 projectionMatrix = glm::mat4(1.0f);
             };
         }
     }

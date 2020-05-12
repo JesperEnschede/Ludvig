@@ -6,13 +6,18 @@
 
 Ludvig::Core::Scene::Camera::Camera()
 {
+    this->transform = std::make_unique<Transform>();
 
+    transform->translate(0,0,-1);
 }
 
 glm::mat4 Ludvig::Core::Scene::Camera::get_view_projection_matrix()
 {
-    glm::mat4 view = this->transform->get_trs();
-    glm::mat4 projection = glm::perspective(glm::radians(60.0f),16.0f / 9.0f, nearClipping,farClipping);
+    return this->viewMatrix * this->projectionMatrix;
+}
 
-    return projection * view;
+void Ludvig::Core::Scene::Camera::calculate_view_projection_matrix()
+{
+    this->viewMatrix = this->transform->get_trs();
+    this->projectionMatrix = glm::perspective(glm::radians(this->fieldOfView),16.0f / 9.0f, this->nearClipping,this->farClipping);
 }
