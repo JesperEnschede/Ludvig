@@ -13,7 +13,7 @@ Ludvig::Core::Scene::Transform::Transform()
 
 glm::mat4 Ludvig::Core::Scene::Transform::get_trs()
 {
-    glm::mat4 trs;
+    glm::mat4 trs = glm::mat4(1.0f);
 
     trs = glm::scale(trs, this->scale);
     trs = glm::rotate(trs,glm::radians(-180.0f),this->rotation);
