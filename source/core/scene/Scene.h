@@ -6,6 +6,7 @@
 #define LUDVIG_SCENE_H
 
 #include "Mesh.h"
+#include "Camera.h"
 
 #include "memory"
 #include "vector"
@@ -34,6 +35,8 @@ namespace Ludvig
 
             public:
                 std::vector<std::unique_ptr<Mesh>> meshes;
+
+                std::unique_ptr<Camera> camera;
             };
         }
     }

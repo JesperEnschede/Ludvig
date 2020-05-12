@@ -6,6 +6,8 @@
 
 Ludvig::Core::Scene::Scene::Scene()
 {
+    this->camera = std::make_unique<Camera>();
+
     load_mesh(nullptr);
 }
 
