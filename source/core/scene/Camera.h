@@ -30,7 +30,7 @@ namespace Ludvig
             public:
                 std::unique_ptr<Transform> transform;
 
-                float nearClipping = 0.5f;
+                float nearClipping = 0.1f;
                 float farClipping = 100.0f;
                 float fieldOfView = 60.0f;
 
