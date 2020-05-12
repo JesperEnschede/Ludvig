@@ -6,7 +6,7 @@
 
 Ludvig::Core::Scene::Scene::Scene()
 {
-
+    load_mesh(nullptr);
 }
 
 bool Ludvig::Core::Scene::Scene::load_mesh(const char *path)
