@@ -44,7 +44,15 @@ Ludvig::Core::Scene::Mesh::Mesh()
                     1.0, 1.0,
             };
 
-    this->indices = vertices.size() * 3;
+    this->indices =
+            {
+                    0,  1,  2, 0,  2,  3,
+                    4,  5,  6, 4,  6,  7,
+                    8,  9,  10, 8,  10, 11,
+                    12, 13, 14, 12, 14, 15,
+                    16, 17, 18, 16, 18, 19,
+                    20, 21, 22, 20, 22, 23,
+            };
 
     this->generate_vertex_array();
     this->generate_vertex_buffer();
@@ -53,15 +61,17 @@ Ludvig::Core::Scene::Mesh::Mesh()
     this->transform = std::make_unique<Transform>();
 }
 
-Ludvig::Core::Scene::Mesh::Mesh(std::vector<GLfloat> vertices, std::vector<GLfloat> uvs, std::vector<GLfloat> normals)
+Ludvig::Core::Scene::Mesh::Mesh(std::vector<GLfloat> vertices, std::vector<GLfloat> uvs, std::vector<GLfloat> normals, std::vector<unsigned int> indices)
 {
     this->vertices = vertices;
     this->uvs = uvs;
     this->normals = normals;
+    this->indices = indices;
 
     this->generate_vertex_array();
     this->generate_vertex_buffer();
     this->generate_uv_buffer();
+    this->generate_element_buffer();
 }
 
 void Ludvig::Core::Scene::Mesh::generate_vertex_array()
@@ -86,5 +96,12 @@ void Ludvig::Core::Scene::Mesh::generate_uv_buffer()
 
 void Ludvig::Core::Scene::Mesh::generate_element_buffer()
 {
-    throw "generate_element_buffer is not implemented!";
+    glGenBuffers(1,&this->ebo);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,this->ebo);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned int), &indices[0], GL_STATIC_DRAW);
+}
+
+std::vector<unsigned int> Ludvig::Core::Scene::Mesh::get_mesh_indices()
+{
+    return this->indices;
 }

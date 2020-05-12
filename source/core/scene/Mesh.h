@@ -26,7 +26,9 @@ namespace Ludvig
             {
             public:
                 Mesh();
-                Mesh(std::vector<GLfloat> vertices, std::vector<GLfloat> uvs, std::vector<GLfloat> normals);
+                Mesh(std::vector<GLfloat> vertices, std::vector<GLfloat> uvs, std::vector<GLfloat> normals, std::vector<unsigned int> indices);
+
+                std::vector<unsigned int> get_mesh_indices();
 
             private:
                 /*
@@ -50,14 +52,11 @@ namespace Ludvig
                  */
                 void generate_element_buffer();
 
-
-
             public:
                 GLuint vao;
                 GLuint vbo;
                 GLuint ubo;
                 GLuint ebo;
-                unsigned int indices;
 
             public:
                 std::unique_ptr<Transform> transform;
@@ -66,6 +65,7 @@ namespace Ludvig
                 std::vector<GLfloat> vertices = std::vector<GLfloat>();
                 std::vector<GLfloat> uvs = std::vector<GLfloat>();
                 std::vector<GLfloat> normals = std::vector<GLfloat>();
+                std::vector<unsigned int> indices = std::vector<unsigned int>();
             };
         }
     }

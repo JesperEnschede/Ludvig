@@ -47,7 +47,7 @@ void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene
         glm::mat4 mvp = viewProjectionMatrix * mesh->transform->get_trs();
 
         glUseProgram(shaders[0]->get_program());
-        
+
         shaders[0]->set_mat4x4("MVP",mvp);
 
         glEnableVertexAttribArray(0);
@@ -55,7 +55,9 @@ void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene
         glBindBuffer(GL_ARRAY_BUFFER, mesh->vbo);
         glVertexAttribPointer(0,2,GL_FLOAT, GL_FALSE,0,(void*)0);
 
-        glDrawArrays(GL_TRIANGLES,0,mesh->indices);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->ebo);
+
+        glDrawElements(GL_TRIANGLES,mesh->get_mesh_indices().size(), GL_UNSIGNED_SHORT, (void*)0);
 
         glDisableVertexAttribArray(0);
     }
