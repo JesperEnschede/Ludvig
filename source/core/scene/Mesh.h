@@ -50,6 +50,8 @@ namespace Ludvig
                  */
                 void generate_element_buffer();
 
+
+
             public:
                 GLuint vao;
                 GLuint vbo;
@@ -57,10 +59,10 @@ namespace Ludvig
                 GLuint ebo;
                 unsigned int indices;
 
-            private:
+            public:
                 std::unique_ptr<Transform> transform;
-                std::unique_ptr<Shader> shader;
 
+            private:
                 std::vector<GLfloat> vertices = std::vector<GLfloat>();
                 std::vector<GLfloat> uvs = std::vector<GLfloat>();
                 std::vector<GLfloat> normals = std::vector<GLfloat>();
