@@ -31,6 +31,8 @@ Ludvig::Core::Scene::Mesh::Mesh()
     this->generate_vertex_array();
     this->generate_vertex_buffer();
     this->generate_uv_buffer();
+
+    this->shader = std::make_unique<Shader>("default_vertex.glsl", "default_fragment.glsl"); // for testing only we make shader inside of the mesh and not in the renderer.
 }
 
 Ludvig::Core::Scene::Mesh::Mesh(std::vector<GLfloat> vertices, std::vector<GLfloat> uvs, std::vector<GLfloat> normals)

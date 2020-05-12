@@ -7,7 +7,11 @@
 
 #include "glad/glad.h"
 
+#include "Shader.h"
+#include "Transform.h"
+
 #include "vector"
+#include "memory"
 
 namespace Ludvig
 {
@@ -23,13 +27,6 @@ namespace Ludvig
             public:
                 Mesh();
                 Mesh(std::vector<GLfloat> vertices, std::vector<GLfloat> uvs, std::vector<GLfloat> normals);
-
-            public:
-                GLuint vao;
-                GLuint vbo;
-                GLuint ubo;
-                GLuint ebo;
-                unsigned int indices;
 
             private:
                 /*
@@ -53,7 +50,17 @@ namespace Ludvig
                  */
                 void generate_element_buffer();
 
+            public:
+                GLuint vao;
+                GLuint vbo;
+                GLuint ubo;
+                GLuint ebo;
+                unsigned int indices;
+
             private:
+                std::unique_ptr<Transform> transform;
+                std::unique_ptr<Shader> shader;
+
                 std::vector<GLfloat> vertices = std::vector<GLfloat>();
                 std::vector<GLfloat> uvs = std::vector<GLfloat>();
                 std::vector<GLfloat> normals = std::vector<GLfloat>();
