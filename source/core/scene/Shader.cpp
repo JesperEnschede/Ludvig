@@ -11,7 +11,7 @@ Ludvig::Core::Scene::Shader::Shader(const char *vertexPath, const char *fragment
     const char* vertexCode = Data::read_file(vertexPath);
     const char* fragmentCode = Data::read_file(fragmentPath);
 
-    compile(vertexCode,fragmentCode);
+    this->program = compile(vertexCode,fragmentCode);
 }
 
 GLuint Ludvig::Core::Scene::Shader::get_program() const
