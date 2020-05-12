@@ -6,6 +6,9 @@
 
 #include "../../data/FileReader.h"
 
+#include "vector"
+#include "iostream"
+
 Ludvig::Core::Scene::Shader::Shader(const char *vertexPath, const char *fragmentPath)
 {
     const char* vertexCode = Data::read_file(vertexPath);
@@ -30,19 +33,54 @@ GLuint Ludvig::Core::Scene::Shader::compile(const char *vertexCode, const char *
     glShaderSource(vertexShader, 1,&vertexCode, nullptr);
     glCompileShader(vertexShader);
 
+    glGetShaderiv(vertexShader,GL_COMPILE_STATUS,&success);
+    glGetShaderiv(vertexShader,GL_INFO_LOG_LENGTH,&infoLogLength);
+
+    if (infoLogLength > 0)
+    {
+        std::vector<char> shaderError(infoLogLength + 1);
+        glGetShaderInfoLog(vertexShader,infoLogLength,nullptr,&shaderError[0]);
+        std::printf("vertex shader error : \n%s\n",&shaderError[0]);
+    }
+
+
     GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
     glShaderSource(fragmentShader, 1,&fragmentCode, nullptr);
     glCompileShader(fragmentShader);
 
+    glGetShaderiv(fragmentShader,GL_COMPILE_STATUS,&success);
+    glGetShaderiv(fragmentShader,GL_INFO_LOG_LENGTH,&infoLogLength);
+
+    if (infoLogLength > 0)
+    {
+        std::vector<char> shaderError(infoLogLength + 1);
+        glGetShaderInfoLog(fragmentShader,infoLogLength,nullptr,&shaderError[0]);
+        std::printf("fragment shader error: \n%s\n",&shaderError[0]);
+    }
+
     program = glCreateProgram();
     glAttachShader(program, vertexShader);
     glAttachShader(program, fragmentShader);
-
     glLinkProgram(program);
+
+    glGetShaderiv(program,GL_LINK_STATUS,&success);
+    glGetShaderiv(program,GL_INFO_LOG_LENGTH,&infoLogLength);
+
+    if (infoLogLength > 0)
+    {
+        std::vector<char> shaderError(infoLogLength + 1);
+        glGetShaderInfoLog(program,infoLogLength,nullptr,&shaderError[0]);
+        std::printf("shader program error: \n%s\n",&shaderError[0]);
+    }
 
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
 
-    return 0;
+    return program;
+}
+
+void Ludvig::Core::Scene::Shader::set_mat4x4(const char *uniform, glm::mat4 matrix)
+{
+    glUniformMatrix4fv(glGetUniformLocation(this->program, uniform),1,GL_FALSE, &matrix[0][0]);
 }
 

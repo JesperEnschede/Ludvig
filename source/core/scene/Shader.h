@@ -6,6 +6,7 @@
 #define LUDVIG_SHADER_H
 
 #include "glad/glad.h"
+#include "glm.hpp"
 
 namespace Ludvig
 {
@@ -28,6 +29,8 @@ namespace Ludvig
                  * Returns the shader program.
                  */
                 GLuint get_program() const;
+
+                void set_mat4x4(const char* uniform, glm::mat4 matrix);
 
             public:
                 /*
