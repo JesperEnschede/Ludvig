@@ -6,7 +6,7 @@ Ludvig
 
 ----
 
-Ludvig is an open-source graphics renderer made in C++. It alows for easy rendering of 3D models. 
+Ludvig is an open-source graphics renderer made in C++. It alows for easy rendering of 3D models. the most recent work sits in the [development branch](https://github.com/JesperEnschede/Ludvig/tree/develop)
 
 ----
 #### Credits
