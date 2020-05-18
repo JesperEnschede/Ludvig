@@ -7,6 +7,7 @@
 
 #include "Mesh.h"
 #include "Camera.h"
+#include "Light.h"
 
 #include "memory"
 #include "vector"
@@ -37,6 +38,8 @@ namespace Ludvig
                 std::vector<std::unique_ptr<Mesh>> meshes;
 
                 std::unique_ptr<Camera> camera;
+
+                std::unique_ptr<Light> light;
             };
         }
     }

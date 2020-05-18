@@ -9,6 +9,7 @@
 Ludvig::Core::Scene::Scene::Scene()
 {
     this->camera = std::make_unique<Camera>();
+    this->light = std::make_unique<Light>();
 
     load_mesh("monkey.obj");
 }
