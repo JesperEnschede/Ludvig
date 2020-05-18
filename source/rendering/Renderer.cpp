@@ -59,7 +59,9 @@ void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene
         this->shaders[0]->set_mat4x4("MVP",mvp);
         this->shaders[0]->set_mat4x4("M",mesh->transform->get_trs());
         this->shaders[0]->set_mat4x4("V",scene->camera->get_view_matrix());
-        
+
+        this->shaders[0]->set_vec3("lightPosition_worldSpace",scene->light->transform->get_position());
+
         // Vertex buffer
         glEnableVertexAttribArray(0);
 
