@@ -50,7 +50,7 @@ add_executable(
         external/dearimgui/imgui_impl_glfw.cpp
         external/dearimgui/imgui_impl_opengl3.cpp
         external/dearimgui/imgui_widgets.cpp
-)
+        source/core/scene/Light.cpp source/core/scene/Light.h)
 
 target_link_libraries(Ludvig glfw ${GLFW_LIBRARIES} -lOpenGL32)
 
