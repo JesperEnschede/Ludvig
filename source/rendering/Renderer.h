@@ -7,6 +7,7 @@
 
 #include "../core/scene/Scene.h"
 #include "../core/scene/Shader.h"
+#include "../core/scene/Texture.h"
 
 #include "glad/glad.h"
 #include "Window.h"
@@ -34,6 +35,7 @@ namespace Ludvig
 
         private:
             std::vector<std::unique_ptr<Core::Scene::Shader>> shaders;
+            std::vector<std::unique_ptr<Core::Scene::Texture>> textures;
         };
     }
 }

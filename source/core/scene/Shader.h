@@ -32,7 +32,15 @@ namespace Ludvig
                  */
                 GLuint get_program() const;
 
+                /*
+                 * Set a uniform matrix
+                 */
                 void set_mat4x4(const char* uniform, glm::mat4 matrix);
+
+                /*
+                 * Set a uniform texture
+                 */
+                void set_texture(const char* uniform, GLuint id);
 
             public:
                 /*

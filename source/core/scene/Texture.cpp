@@ -11,7 +11,7 @@
 
 Ludvig::Core::Scene::Texture::Texture(const char *path)
 {
-    glGenTextures(1,&this->id);
+    glGenTextures(0,&this->id);
     glBindTexture(GL_TEXTURE_2D, this->id);
 
     this->data = stbi_load(path, &this->width,&this->height, &this->channels, 0);
@@ -19,9 +19,10 @@ Ludvig::Core::Scene::Texture::Texture(const char *path)
 
     if (this->data)
     {
-        glTexImage2D(GL_TEXTURE_2D,0,GL_RGB, this->width, this->height, 0,GL_RGB, GL_UNSIGNED_BYTE,this->data);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+            glTexImage2D(GL_TEXTURE_2D,0,GL_RGB, this->width, this->height, 0,GL_RGB, GL_UNSIGNED_BYTE,this->data);
 
-        glGenerateMipmap(GL_TEXTURE_2D);
+            glGenerateMipmap(GL_TEXTURE_2D);
     }
     else
     {

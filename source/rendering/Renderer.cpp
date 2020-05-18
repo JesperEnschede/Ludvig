@@ -31,6 +31,7 @@ Ludvig::Rendering::Renderer::Renderer(Window* window)
     glEnable(GL_CULL_FACE);
 
     this->shaders.push_back(std::make_unique<Core::Scene::Shader>("default_vertex.glsl","default_fragment.glsl"));
+    this->textures.push_back(std::make_unique<Core::Scene::Texture>("monkey.jpg"));
 }
 
 void Ludvig::Rendering::Renderer::clear(int mask)
@@ -51,6 +52,10 @@ void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene
 
         glUseProgram(this->shaders[0]->get_program());
 
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, this->textures[0]->id);
+        this->shaders[0]->set_texture("textureSampler",this->textures[0]->id);
+
         this->shaders[0]->set_mat4x4("MVP",mvp);
 
         // Vertex buffer
@@ -65,7 +70,6 @@ void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene
         glBindBuffer(GL_ARRAY_BUFFER, mesh->ubo);
         glVertexAttribPointer(1,2,GL_FLOAT,GL_FALSE,0,(void*)0);
 
-        /*
         // Normal buffer
         glEnableVertexAttribArray(2);
 
@@ -73,7 +77,6 @@ void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene
         glVertexAttribPointer(2,3,GL_FLOAT,GL_FALSE,0,(void*)0);
 
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->ebo);
-        */
         // glDrawElements(GL_TRIANGLES,mesh->get_mesh_indices().size(), GL_UNSIGNED_INT, nullptr);
         glDrawArrays(GL_TRIANGLES,0,mesh->get_vertices_size()); // todo FIX INDICES!
 
