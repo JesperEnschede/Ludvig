@@ -25,6 +25,10 @@ namespace Ludvig
 
                 glm::mat4 get_view_projection_matrix();
 
+                glm::mat4 get_view_matrix();
+
+                glm::mat4 get_projection_matrix();
+
                 void calculate_view_projection_matrix();
 
             public:

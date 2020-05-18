@@ -19,3 +19,13 @@ void Ludvig::Core::Scene::Camera::calculate_view_projection_matrix()
     this->viewMatrix = this->transform->get_trs();
     this->projectionMatrix = glm::perspective(glm::radians(this->fieldOfView),16.0f / 9.0f, this->nearClipping,this->farClipping);
 }
+
+glm::mat4 Ludvig::Core::Scene::Camera::get_view_matrix()
+{
+    return this->viewMatrix;
+}
+
+glm::mat4 Ludvig::Core::Scene::Camera::get_projection_matrix()
+{
+    return this->projectionMatrix;
+}
