@@ -25,7 +25,10 @@ Ludvig::Rendering::Renderer::Renderer(Window* window)
     ImGui_ImplGlfw_InitForOpenGL(window->get_context(), true);
     ImGui_ImplOpenGL3_Init("#version 130");
 
-    glClearColor(0.0f,0.0f,0.1f,1);
+    glClearColor(0.0f,0.0f,0.2f,1);
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LESS);
+    glEnable(GL_CULL_FACE);
 
     this->shaders.push_back(std::make_unique<Core::Scene::Shader>("default_vertex.glsl","default_fragment.glsl"));
 }
@@ -46,20 +49,37 @@ void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene
 
         glm::mat4 mvp = viewProjectionMatrix * mesh->transform->get_trs();
 
-        glUseProgram(shaders[0]->get_program());
+        glUseProgram(this->shaders[0]->get_program());
 
-        shaders[0]->set_mat4x4("MVP",mvp);
+        this->shaders[0]->set_mat4x4("MVP",mvp);
 
+        // Vertex buffer
         glEnableVertexAttribArray(0);
 
         glBindBuffer(GL_ARRAY_BUFFER, mesh->vbo);
-        glVertexAttribPointer(0,2,GL_FLOAT, GL_FALSE,0,(void*)0);
+        glVertexAttribPointer(0,3,GL_FLOAT, GL_FALSE,0,(void*)0);
+
+        // UV buffer
+        glEnableVertexAttribArray(1);
+
+        glBindBuffer(GL_ARRAY_BUFFER, mesh->ubo);
+        glVertexAttribPointer(1,2,GL_FLOAT,GL_FALSE,0,(void*)0);
+
+        /*
+        // Normal buffer
+        glEnableVertexAttribArray(2);
+
+        glBindBuffer(GL_ARRAY_BUFFER, mesh->nbo);
+        glVertexAttribPointer(2,3,GL_FLOAT,GL_FALSE,0,(void*)0);
 
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->ebo);
-
-        glDrawElements(GL_TRIANGLES,mesh->get_mesh_indices().size(), GL_UNSIGNED_SHORT, (void*)0);
+        */
+        // glDrawElements(GL_TRIANGLES,mesh->get_mesh_indices().size(), GL_UNSIGNED_INT, nullptr);
+        glDrawArrays(GL_TRIANGLES,0,mesh->get_vertices_size()); // todo FIX INDICES!
 
         glDisableVertexAttribArray(0);
+        glDisableVertexAttribArray(1);
+        // glDisableVertexAttribArray(2);
     }
 }
 

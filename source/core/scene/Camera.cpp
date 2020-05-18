@@ -7,8 +7,6 @@
 Ludvig::Core::Scene::Camera::Camera()
 {
     this->transform = std::make_unique<Transform>();
-
-    transform->translate(0,0,5);
 }
 
 glm::mat4 Ludvig::Core::Scene::Camera::get_view_projection_matrix()

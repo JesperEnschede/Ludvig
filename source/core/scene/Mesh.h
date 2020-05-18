@@ -10,6 +10,8 @@
 #include "Shader.h"
 #include "Transform.h"
 
+#include "glm.hpp"
+
 #include "vector"
 #include "memory"
 
@@ -26,9 +28,18 @@ namespace Ludvig
             {
             public:
                 Mesh();
-                Mesh(std::vector<GLfloat> vertices, std::vector<GLfloat> uvs, std::vector<GLfloat> normals, std::vector<unsigned int> indices);
+                Mesh(std::vector<glm::vec3> vertices, std::vector<glm::vec2> uvs, std::vector<glm::vec3> normals);
 
                 std::vector<unsigned int> get_mesh_indices();
+
+                /*
+                * Temp testing function.
+                * Returns the size of the vertices vector.
+                */
+                int get_vertices_size()
+                {
+                    return this->vertices.size();
+                }
 
             private:
                 /*
@@ -42,6 +53,11 @@ namespace Ludvig
                 void generate_vertex_buffer();
 
                 /*
+                 * Generate a normal buffer object: this->nbo;
+                 */
+                void generate_normal_buffer();
+
+                /*
                  * Generate a uv buffer object: this-> ubo;
                  */
                 void generate_uv_buffer();
@@ -53,18 +69,20 @@ namespace Ludvig
                 void generate_element_buffer();
 
             public:
-                GLuint vao;
-                GLuint vbo;
-                GLuint ubo;
-                GLuint ebo;
+                GLuint vao; // vertex array
+
+                GLuint vbo; // vertex buffer
+                GLuint ubo; // uv buffer
+                GLuint nbo; // normal buffer
+                GLuint ebo; // element buffer
 
             public:
                 std::unique_ptr<Transform> transform;
 
             private:
-                std::vector<GLfloat> vertices = std::vector<GLfloat>();
-                std::vector<GLfloat> uvs = std::vector<GLfloat>();
-                std::vector<GLfloat> normals = std::vector<GLfloat>();
+                std::vector<glm::vec3> vertices;
+                std::vector<glm::vec2> uvs;
+                std::vector<glm::vec3> normals;
                 std::vector<unsigned int> indices = std::vector<unsigned int>();
             };
         }

@@ -23,7 +23,7 @@ void Ludvig::Core::Application::runtime()
 {
     while (!this->window->is_closing())
     {
-        this->renderer->clear(GL_COLOR_BUFFER_BIT);
+        this->renderer->clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         this->window->poll_events();
 
