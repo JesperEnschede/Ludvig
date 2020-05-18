@@ -38,6 +38,11 @@ namespace Ludvig
                 void set_mat4x4(const char* uniform, glm::mat4 matrix);
 
                 /*
+                 * Set a uniform vector 3.
+                 */
+                void set_vec3(const char* uniform, glm::vec3 vector);
+
+                /*
                  * Set a uniform texture
                  */
                 void set_texture(const char* uniform, GLuint id);

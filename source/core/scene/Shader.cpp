@@ -87,8 +87,15 @@ void Ludvig::Core::Scene::Shader::set_mat4x4(const char *uniform, glm::mat4 matr
     glUniformMatrix4fv(glGetUniformLocation(this->program, uniform),1,GL_FALSE, &matrix[0][0]);
 }
 
+void Ludvig::Core::Scene::Shader::set_vec3(const char *uniform, glm::vec3 vector)
+{
+    glUniform3f(glGetUniformLocation(this->program,uniform),vector.x,vector.y,vector.z);
+}
+
 void Ludvig::Core::Scene::Shader::set_texture(const char *uniform, GLuint id)
 {
     glUniform1i(glGetUniformLocation(this->program,uniform),id);
 }
+
+
 
