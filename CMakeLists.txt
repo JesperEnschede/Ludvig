@@ -3,7 +3,7 @@ project(Ludvig)
 
 set(CMAKE_CXX_STANDARD 14)
 
-include_directories(external/gl external/dearimgui external/glm)
+include_directories(external/gl external/dearimgui external/glm external/stb)
 
 add_subdirectory(external/glfw)
 include_directories(glfw/include/)
