@@ -42,3 +42,18 @@ void Ludvig::Core::Scene::Transform::set_scale(float x, float y, float z)
     this->scale.y += y;
     this->scale.z += z;
 }
+
+glm::vec3 Ludvig::Core::Scene::Transform::get_position()
+{
+    return this->position;
+}
+
+glm::vec3 Ludvig::Core::Scene::Transform::get_rotation()
+{
+    return this->rotation;
+}
+
+glm::vec3 Ludvig::Core::Scene::Transform::get_scale()
+{
+    return this->scale;
+}

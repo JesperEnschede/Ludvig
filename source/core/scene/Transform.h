@@ -25,6 +25,10 @@ namespace Ludvig
                 void rotate(float yaw, float pitch, float roll);
                 void set_scale(float x, float y, float z);
 
+                glm::vec3 get_position();
+                glm::vec3 get_rotation();
+                glm::vec3 get_scale();
+
             private:
                 glm::vec3 position = glm::vec3(0.0f,0.0f,0.0f);
                 glm::vec3 rotation = glm::vec3(0.0f,90.0f,0.0f); // todo: quaternions.
