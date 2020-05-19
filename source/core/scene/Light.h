@@ -7,6 +7,8 @@
 
 #include "Transform.h"
 
+#include "../Object.h"
+
 #include "memory"
 
 namespace Ludvig
@@ -15,12 +17,10 @@ namespace Ludvig
     {
         namespace Scene
         {
-            class Light
+            class Light : public Object
             {
             public:
-                Light();
-
-                std::unique_ptr<Transform> transform = std::make_unique<Transform>();
+                Light() = default;
             };
         }
     }

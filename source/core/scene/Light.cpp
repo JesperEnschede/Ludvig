@@ -4,7 +4,3 @@
 
 #include "Light.h"
 
-Ludvig::Core::Scene::Light::Light()
-{
-    this->transform = std::make_unique<Transform>();
-}
