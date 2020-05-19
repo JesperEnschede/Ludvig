@@ -15,6 +15,7 @@ namespace Ludvig
     {
         class Object
         {
+        public:
             std::unique_ptr<Scene::Transform> transform = std::make_unique<Scene::Transform>();
         };
     }
