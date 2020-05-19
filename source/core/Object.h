@@ -5,10 +5,21 @@
 #ifndef LUDVIG_OBJECT_H
 #define LUDVIG_OBJECT_H
 
+#include "scene/Transform.h"
 
-class Object {
+#include "memory"
 
-};
+namespace Ludvig
+{
+    namespace Core
+    {
+        class Object
+        {
+            std::unique_ptr<Scene::Transform> transform = std::make_unique<Scene::Transform>();
+        };
+    }
+}
+
 
 
 #endif //LUDVIG_OBJECT_H
