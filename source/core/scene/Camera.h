@@ -7,6 +7,8 @@
 
 #include "Transform.h"
 
+#include "../Object.h"
+
 #include "glm.hpp"
 #include "gtc/matrix_transform.hpp"
 
@@ -18,10 +20,10 @@ namespace Ludvig
     {
         namespace Scene
         {
-            class Camera
+            class Camera : public Object
             {
             public:
-                Camera();
+                Camera() = default;
 
                 glm::mat4 get_view_projection_matrix();
 
@@ -32,8 +34,6 @@ namespace Ludvig
                 void calculate_view_projection_matrix();
 
             public:
-                std::unique_ptr<Transform> transform;
-
                 float nearClipping = 0.1f;
                 float farClipping = 100.0f;
                 float fieldOfView = 60.0f;

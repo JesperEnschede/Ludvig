@@ -4,11 +4,6 @@
 
 #include "Camera.h"
 
-Ludvig::Core::Scene::Camera::Camera()
-{
-    this->transform = std::make_unique<Transform>();
-}
-
 glm::mat4 Ludvig::Core::Scene::Camera::get_view_projection_matrix()
 {
     return this->projectionMatrix * this->viewMatrix;
