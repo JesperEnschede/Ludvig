@@ -7,6 +7,8 @@
 
 #include "glad/glad.h"
 
+#include "../Object.h"
+
 #include "Shader.h"
 #include "Transform.h"
 
@@ -24,10 +26,9 @@ namespace Ludvig
             /*
              * A mesh is an object in a 3D space.
              */
-            class Mesh
+            class Mesh : public Object
             {
             public:
-                Mesh();
                 Mesh(std::vector<glm::vec3> vertices, std::vector<glm::vec2> uvs, std::vector<glm::vec3> normals);
 
                 std::vector<unsigned int> get_mesh_indices();
@@ -64,7 +65,6 @@ namespace Ludvig
 
                 /*
                  * Generate a element buffer object: this->ebo;
-                 * WARNING: CURRENTLY NOT IMPLEMENTED.
                  */
                 void generate_element_buffer();
 
@@ -75,9 +75,6 @@ namespace Ludvig
                 GLuint ubo; // uv buffer
                 GLuint nbo; // normal buffer
                 GLuint ebo; // element buffer
-
-            public:
-                std::unique_ptr<Transform> transform;
 
             private:
                 std::vector<glm::vec3> vertices;
