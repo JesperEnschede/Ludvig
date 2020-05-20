@@ -25,13 +25,13 @@ Ludvig::Rendering::Renderer::Renderer(Window* window)
     ImGui_ImplGlfw_InitForOpenGL(window->get_context(), true);
     ImGui_ImplOpenGL3_Init("#version 130");
 
-    glClearColor(0.0f,0.0f,0.2f,1);
+    glClearColor(0.1f,0.1f,0.1f,1);
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
     glEnable(GL_CULL_FACE);
 
     this->shaders.push_back(std::make_unique<Core::Scene::Shader>("default_vertex.glsl","default_fragment.glsl"));
-    this->textures.push_back(std::make_unique<Core::Scene::Texture>("monkey.jpg"));
+    this->textures.push_back(std::make_unique<Core::Scene::Texture>("grey.jpg"));
 }
 
 void Ludvig::Rendering::Renderer::clear(int mask)
@@ -59,7 +59,6 @@ void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene
         this->shaders[0]->set_mat4x4("MVP",mvp);
         this->shaders[0]->set_mat4x4("M",mesh->transform->get_trs());
         this->shaders[0]->set_mat4x4("V",scene->camera->get_view_matrix());
-
         this->shaders[0]->set_vec3("lightPosition_worldSpace",scene->light->transform->get_position());
 
         // Vertex buffer
@@ -86,7 +85,7 @@ void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene
 
         glDisableVertexAttribArray(0);
         glDisableVertexAttribArray(1);
-        // glDisableVertexAttribArray(2);
+        glDisableVertexAttribArray(2);
     }
 }
 
