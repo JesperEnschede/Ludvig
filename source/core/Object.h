@@ -5,7 +5,7 @@
 #ifndef LUDVIG_OBJECT_H
 #define LUDVIG_OBJECT_H
 
-#include "scene/Transform.h"
+#include "Transform.h"
 
 #include "memory"
 

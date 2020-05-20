@@ -4,7 +4,7 @@
 
 #include "Shader.h"
 
-#include "../../data/FileReader.h"
+#include "../data/FileReader.h"
 
 #include "vector"
 #include "iostream"

@@ -9,8 +9,8 @@
 
 #include "../Object.h"
 
-#include "Shader.h"
-#include "Transform.h"
+#include "../../rendering/Shader.h"
+#include "../Transform.h"
 
 #include "glm.hpp"
 

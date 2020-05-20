@@ -5,7 +5,7 @@
 #ifndef LUDVIG_LIGHT_H
 #define LUDVIG_LIGHT_H
 
-#include "Transform.h"
+#include "../Transform.h"
 
 #include "../Object.h"
 

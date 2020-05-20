@@ -6,8 +6,8 @@
 #define LUDVIG_RENDERER_H
 
 #include "../core/scene/Scene.h"
-#include "../core/scene/Shader.h"
-#include "../core/scene/Texture.h"
+#include "Shader.h"
+#include "Texture.h"
 
 #include "glad/glad.h"
 #include "Window.h"

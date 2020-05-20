@@ -30,20 +30,20 @@ add_executable(
         source/GUI/windows/GWIncludes.h
         source/GUI/windows/GWProfiler.cpp
         source/GUI/windows/GWProfiler.h
-        source/core/scene/Shader.cpp
-        source/core/scene/Shader.h
+        source/rendering/Shader.cpp
+        source/rendering/Shader.h
         source/data/FileReader.cpp
         source/data/FileReader.h
-        source/core/scene/Transform.cpp
-        source/core/scene/Transform.h
+        source/core/Transform.cpp
+        source/core/Transform.h
         source/core/scene/Camera.cpp
         source/core/scene/Camera.h
         source/data/ModelLoader.cpp
         source/data/ModelLoader.h
         source/rendering/VertexBufferIndexer.cpp
         source/rendering/VertexBufferIndexer.h
-        source/core/scene/Texture.cpp
-        source/core/scene/Texture.h
+        source/rendering/Texture.cpp
+        source/rendering/Texture.h
 
         external/dearimgui/imgui.cpp
         external/dearimgui/imgui_draw.cpp

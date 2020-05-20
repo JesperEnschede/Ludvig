@@ -5,7 +5,7 @@
 #ifndef LUDVIG_CAMERA_H
 #define LUDVIG_CAMERA_H
 
-#include "Transform.h"
+#include "../Transform.h"
 
 #include "../Object.h"
 
