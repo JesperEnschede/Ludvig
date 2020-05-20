@@ -40,8 +40,6 @@ add_executable(
         source/core/scene/Camera.h
         source/data/ModelLoader.cpp
         source/data/ModelLoader.h
-        source/rendering/VertexBufferIndexer.cpp
-        source/rendering/VertexBufferIndexer.h
         source/rendering/Texture.cpp
         source/rendering/Texture.h
 
@@ -50,7 +48,7 @@ add_executable(
         external/dearimgui/imgui_impl_glfw.cpp
         external/dearimgui/imgui_impl_opengl3.cpp
         external/dearimgui/imgui_widgets.cpp
-        source/core/scene/Light.cpp source/core/scene/Light.h source/core/Object.cpp source/core/Object.h)
+        source/core/scene/Light.cpp source/core/scene/Light.h source/core/Object.cpp source/core/Object.h source/rendering/Skybox.cpp source/rendering/Skybox.h)
 
 target_link_libraries(Ludvig glfw ${GLFW_LIBRARIES} -lOpenGL32)
 
