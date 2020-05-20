@@ -31,6 +31,11 @@ void Ludvig::Core::Application::runtime()
 
         this->renderer->create_gui_frame();
         // this->guiManager->draw_windows();
+
+        ImGui::Begin("profiler");
+        ImGui::Text("%.3f ms/frame | %.3f FPS", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+        ImGui::End();
+
         this->renderer->draw_gui_frame();
 
         this->window->swap_buffers();
