@@ -80,7 +80,7 @@ void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene
         glVertexAttribPointer(2,3,GL_FLOAT,GL_FALSE,0,(void*)0);
 
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->ebo);
-        //glDrawElements(GL_TRIANGLES,mesh->get_mesh_indices().size(), GL_UNSIGNED_INT, nullptr);
+        // glDrawElements(GL_TRIANGLES,mesh->get_mesh_indices().size(), GL_UNSIGNED_INT, nullptr);
         glDrawArrays(GL_TRIANGLES,0,mesh->get_vertices_size()); // todo FIX INDICES!
 
         glDisableVertexAttribArray(0);
