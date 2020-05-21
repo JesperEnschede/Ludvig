@@ -29,7 +29,7 @@ namespace Ludvig
                 glm::vec3 get_rotation();
                 glm::vec3 get_scale();
 
-            private:
+            public:
                 glm::vec3 position = glm::vec3(0.0f,0.0f,0.0f);
                 glm::vec3 rotation = glm::vec3(0.0f,0.1f,0.0f); // todo: quaternions. and fix rotation in general.
                 glm::vec3 scale = glm::vec3(1.0f,1.0f,1.0f);
