@@ -25,11 +25,7 @@ add_executable(
         source/GUI/GUIManager.cpp
         source/GUI/GUIManager.h
         source/GUI/GUIWindow.h
-        source/GUI/windows/GWMenuBar.cpp
-        source/GUI/windows/GWMenuBar.h
         source/GUI/windows/GWIncludes.h
-        source/GUI/windows/GWProfiler.cpp
-        source/GUI/windows/GWProfiler.h
         source/rendering/Shader.cpp
         source/rendering/Shader.h
         source/data/FileReader.cpp
