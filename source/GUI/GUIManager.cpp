@@ -16,7 +16,6 @@ void Ludvig::GUI::GUIManager::draw_windows()
 {
     for (int i = 0; i < this->windows.size(); ++i)
     {
-
         GUIWindow* window = this->windows[i].get();
 
         if (window->isStatic)
@@ -27,9 +26,7 @@ void Ludvig::GUI::GUIManager::draw_windows()
 
         ImGui::Begin(window->windowName, nullptr,window->windowFlags);
 
-        ImGui::PushID(i);
         window->on_gui();
-        ImGui::PopID();
 
         ImGui::End();
     }

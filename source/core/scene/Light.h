@@ -31,6 +31,4 @@ namespace Ludvig
     }
 }
 
-
-
 #endif //LUDVIG_LIGHT_H
