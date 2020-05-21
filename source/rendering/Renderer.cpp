@@ -61,6 +61,9 @@ void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene
         this->shaders[0]->set_mat4x4("V",scene->camera->get_view_matrix());
         this->shaders[0]->set_vec3("lightPosition_worldSpace",scene->light->transform->get_position());
 
+        this->shaders[0]->set_float("lightPower",scene->light->intensity);
+        this->shaders[0]->set_vec3("lightColor",scene->light->color);
+
         // Vertex buffer
         glEnableVertexAttribArray(0);
 
