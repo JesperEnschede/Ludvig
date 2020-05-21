@@ -9,6 +9,8 @@
 
 #include "../Object.h"
 
+#include "glm.hpp"
+
 #include "memory"
 
 namespace Ludvig
@@ -21,6 +23,9 @@ namespace Ludvig
             {
             public:
                 Light() = default;
+
+                float intensity = 50.0f;
+                glm::vec3 color = glm::vec3(1.0f,1.0f,1.0f);
             };
         }
     }
