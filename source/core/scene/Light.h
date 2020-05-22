@@ -24,7 +24,7 @@ namespace Ludvig
             public:
                 Light() = default;
 
-                float intensity = 50.0f;
+                float intensity = 1.0f;
                 glm::vec3 color = glm::vec3(1.0f,1.0f,1.0f);
             };
         }
