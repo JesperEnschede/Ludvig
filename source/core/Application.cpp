@@ -35,28 +35,16 @@ void Ludvig::Core::Application::runtime()
         float upInput = -glfwGetKey(window->get_context(),GLFW_KEY_SPACE);
         float downInput = glfwGetKey(window->get_context(),GLFW_KEY_LEFT_SHIFT);
 
-        float yawPlusInput = -glfwGetKey(window->get_context(),GLFW_KEY_R);
-        float yawMinusInput = glfwGetKey(window->get_context(),GLFW_KEY_F);
-        float pitchPlusInput = glfwGetKey(window->get_context(),GLFW_KEY_T);
-        float pitchMinusInput = -glfwGetKey(window->get_context(),GLFW_KEY_G);
-        float rollPlusInput = -glfwGetKey(window->get_context(),GLFW_KEY_Y);
-        float rollMinusInput = glfwGetKey(window->get_context(),GLFW_KEY_H);
-
         // Temp cameras movement.
         scene->camera->transform->translate(
                 (rightInput + leftInput) / 150,
                 (upInput + downInput) / 150,
                 (forwardInput + backwardsInput) / 150);
 
-        scene->meshes[0]->transform->set_scale(
-                (yawPlusInput + yawMinusInput) / 150,
-                (pitchPlusInput + pitchMinusInput) / 150,
-                (rollPlusInput + rollMinusInput) / 150);
-
         this->renderer->render_scene(this->scene.get());
 
         this->renderer->create_gui_frame();
-        this->guiManager->draw_windows();
+        // this->guiManager->draw_windows();
 
         ImGui::Begin("profiler");
         ImGui::Text("%.3f ms/frame | %.3f FPS", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
@@ -70,6 +58,18 @@ void Ludvig::Core::Application::runtime()
         float crot[3] = { scene->camera->transform->rotation.x,scene->camera->transform->rotation.y,scene->camera->transform->rotation.z };
         ImGui::DragFloat3("Rotation",crot,0.1f);
         scene->camera->transform->rotation = { crot[0], crot[1], crot[2] };
+
+        float cfov = scene->camera->fieldOfView;
+        ImGui::DragFloat("Field of view",&cfov,0.1f,1,179.99f);
+        scene->camera->fieldOfView = cfov;
+
+        float cnear = scene->camera->nearClipping;
+        ImGui::DragFloat("Near clipping",&cnear,0.01f,0.0001,INT_MAX);
+        scene->camera->nearClipping = cnear;
+
+        float cfar = scene->camera->farClipping;
+        ImGui::DragFloat("Far clipping",&cfar,0.01f,0.0001,INT_MAX);
+        scene->camera->farClipping = cfar;
         ImGui::End();
 
         ImGui::Begin("Light");
