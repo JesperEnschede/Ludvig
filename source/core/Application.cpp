@@ -46,10 +46,6 @@ void Ludvig::Core::Application::runtime()
         this->renderer->create_gui_frame();
         this->guiManager->draw_windows();
 
-        ImGui::Begin("profiler");
-        ImGui::Text("%.3f ms/frame | %.3f FPS", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
-        ImGui::End();
-
         ImGui::Begin("Camera");
         float cpos[3] = { scene->camera->transform->position.x,scene->camera->transform->position.y,scene->camera->transform->position.z };
         ImGui::DragFloat3("Position",cpos,0.1f);
