@@ -11,7 +11,7 @@ Ludvig::Core::Application::Application()
     this->window = std::make_unique<Rendering::Window>(800,600,true);
     this->renderer = std::make_unique<Rendering::Renderer>(this->window.get());
     this->scene = std::make_unique<Scene::Scene>();
-    this->guiManager = std::make_unique<GUIManager>();
+    this->guiManager = std::make_unique<GUIManager>(this);
 }
 
 void Ludvig::Core::Application::start()

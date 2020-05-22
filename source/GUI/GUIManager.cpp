@@ -7,7 +7,7 @@
 
 #include "windows/GWIncludes.h"
 
-Ludvig::Core::GUIManager::GUIManager()
+Ludvig::Core::GUIManager::GUIManager(Application *app)
 {
     this->set_gui_style();
 

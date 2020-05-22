@@ -16,16 +16,20 @@ namespace Ludvig
 {
     namespace Core
     {
+        class Application;
+
         /*
          * The gui manager handles all the GUI windows.
          */
         class GUIManager
         {
+            friend Application;
+
         public:
             /*
              * Initialize GUI windows.
              */
-            GUIManager();
+            GUIManager(Application *app);
 
         public:
             /*
@@ -46,6 +50,8 @@ namespace Ludvig
             void set_gui_style();
 
         private:
+            Core::Application* application;
+
             std::vector<std::unique_ptr<GUIWindow>> windows;
         };
 
