@@ -9,7 +9,7 @@
 
 namespace Ludvig
 {
-    namespace GUI
+    namespace Core
     {
         /*
          * A GUI window that can be attached to a GUIManager to be rendered to a window.

@@ -7,14 +7,14 @@
 
 #include "windows/GWIncludes.h"
 
-Ludvig::GUI::GUIManager::GUIManager()
+Ludvig::Core::GUIManager::GUIManager()
 {
     this->set_gui_style();
 
-    this->add_window<Windows::GWProfiler>();
+    this->add_window<GWProfiler>();
 }
 
-void Ludvig::GUI::GUIManager::draw_windows()
+void Ludvig::Core::GUIManager::draw_windows()
 {
     for (int i = 0; i < this->windows.size(); ++i)
     {
@@ -22,7 +22,7 @@ void Ludvig::GUI::GUIManager::draw_windows()
     }
 }
 
-void Ludvig::GUI::GUIManager::set_gui_style()
+void Ludvig::Core::GUIManager::set_gui_style()
 {
     ImGuiStyle& style = ImGui::GetStyle();
 

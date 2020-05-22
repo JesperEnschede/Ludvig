@@ -11,16 +11,13 @@
 
 namespace Ludvig
 {
-    namespace GUI
+    namespace Core
     {
-        namespace Windows
+        class GWProfiler : public GUIWindow
         {
-            class GWProfiler : public GUIWindow
-            {
-            public:
-                void on_gui() override;
-            };
-        }
+        public:
+            void on_gui() override;
+        };
     }
 }
 

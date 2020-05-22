@@ -16,11 +16,15 @@ namespace Ludvig
 {
     namespace Core
     {
+        class GUIManager;
+
         /*
          * The application class is the main core class of the Ludvig rendering engine. is manages all the core instances. and does the main runtime loop.
          */
         class Application final
         {
+            friend GUIManager;
+
         public:
             /*
              * Initialize default application components.
@@ -42,7 +46,7 @@ namespace Ludvig
             std::unique_ptr<Rendering::Window> window;
             std::unique_ptr<Rendering::Renderer> renderer;
             std::unique_ptr<Scene::Scene> scene;
-            std::unique_ptr<GUI::GUIManager> guiManager;
+            std::unique_ptr<GUIManager> guiManager;
         };
     }
 }

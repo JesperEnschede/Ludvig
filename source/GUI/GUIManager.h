@@ -5,6 +5,8 @@
 #ifndef LUDVIG_GUIMANAGER_H
 #define LUDVIG_GUIMANAGER_H
 
+#include "../core/Application.h"
+
 #include "GUIWindow.h"
 
 #include "memory"
@@ -12,7 +14,7 @@
 
 namespace Ludvig
 {
-    namespace GUI
+    namespace Core
     {
         /*
          * The gui manager handles all the GUI windows.
