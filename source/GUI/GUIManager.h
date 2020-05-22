@@ -38,6 +38,9 @@ namespace Ludvig
             template <class T>
             void add_window();
 
+            template <class T>
+            GUIWindow* get_window();
+
             void set_gui_style();
 
         private:
@@ -48,6 +51,25 @@ namespace Ludvig
         inline void GUIManager::add_window()
         {
             this->windows.push_back(std::make_unique<T>());
+        }
+
+        template <class T>
+        inline GUIWindow* GUIManager::get_window()
+        {
+            if (!std::is_base_of<GUIWindow, T>())
+            {
+                return nullptr;
+            }
+
+            for (int i = 0; i < windows.size(); i++)
+            {
+                if (dynamic_cast<T*>(windows[i].get()) != nullptr)
+                {
+                    return dynamic_cast<T*>(windows[i].get());
+                }
+            }
+
+            return nullptr;
         }
     }
 }
