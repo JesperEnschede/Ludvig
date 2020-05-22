@@ -3,3 +3,9 @@
 //
 
 #include "GWProfiler.h"
+
+void Ludvig::GUI::Windows::GWProfiler::on_gui()
+{
+    ImGui::Begin("Profiler", nullptr, ImGuiWindowFlags_NoMove);
+    ImGui::End();
+}
