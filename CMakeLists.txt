@@ -44,7 +44,7 @@ add_executable(
         external/dearimgui/imgui_impl_glfw.cpp
         external/dearimgui/imgui_impl_opengl3.cpp
         external/dearimgui/imgui_widgets.cpp
-        source/core/scene/Light.cpp source/core/scene/Light.h source/core/Object.cpp source/core/Object.h source/rendering/Skybox.cpp source/rendering/Skybox.h)
+        source/core/scene/Light.cpp source/core/scene/Light.h source/core/Object.cpp source/core/Object.h source/rendering/Skybox.cpp source/rendering/Skybox.h source/GUI/windows/GWProfiler.cpp source/GUI/windows/GWProfiler.h)
 
 target_link_libraries(Ludvig glfw ${GLFW_LIBRARIES} -lOpenGL32)
 
