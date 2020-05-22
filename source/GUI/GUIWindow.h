@@ -22,19 +22,6 @@ namespace Ludvig
              * Can be override to implement ImGui calls.
              */
             virtual void on_gui() = 0;
-
-        public:
-            const char* windowName;
-
-            ImGuiWindowFlags windowFlags;
-
-            int x = 5;
-            int y = 5;
-
-            int width = 10;
-            int height = 10;
-
-            bool isStatic = true;
         };
     }
 }

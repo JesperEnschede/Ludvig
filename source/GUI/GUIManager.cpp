@@ -10,25 +10,15 @@
 Ludvig::GUI::GUIManager::GUIManager()
 {
     this->set_gui_style();
+
+    this->add_window<Windows::GWProfiler>();
 }
 
 void Ludvig::GUI::GUIManager::draw_windows()
 {
     for (int i = 0; i < this->windows.size(); ++i)
     {
-        GUIWindow* window = this->windows[i].get();
-
-        if (window->isStatic)
-        {
-            ImGui::SetNextWindowPos(ImVec2(window->x,window->y));
-            ImGui::SetNextWindowSize(ImVec2(window->width, window->height));
-        }
-
-        ImGui::Begin(window->windowName, nullptr,window->windowFlags);
-
-        window->on_gui();
-
-        ImGui::End();
+        this->windows[i]->on_gui();
     }
 }
 
