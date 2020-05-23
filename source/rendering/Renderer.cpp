@@ -30,8 +30,8 @@ Ludvig::Rendering::Renderer::Renderer(Window* window)
     glDepthFunc(GL_LESS);
     glEnable(GL_CULL_FACE);
 
-    this->shaders.push_back(std::make_unique<Core::Scene::Shader>("default_vertex.glsl","default_fragment.glsl"));
-    this->textures.push_back(std::make_unique<Core::Scene::Texture>("grey.jpg"));
+    this->shaders.push_back(std::make_unique<Core::Scene::Shader>("assets/shaders/default_vertex.glsl","assets/shaders/default_fragment.glsl"));
+    this->textures.push_back(std::make_unique<Core::Scene::Texture>("assets/textures/grey.jpg"));
 }
 
 void Ludvig::Rendering::Renderer::clear(int mask)
@@ -63,6 +63,7 @@ void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene
 
         this->shaders[0]->set_float("lightPower",scene->light->intensity);
         this->shaders[0]->set_vec3("lightColor",scene->light->color);
+        this->shaders[0]->set_vec3("ambientColor",scene->lightSettings->ambientLightColor);
 
         // Vertex buffer
         glEnableVertexAttribArray(0);
@@ -83,7 +84,8 @@ void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene
         glVertexAttribPointer(2,3,GL_FLOAT,GL_FALSE,0,(void*)0);
 
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->ebo);
-        // glDrawElements(GL_TRIANGLES,mesh->get_mesh_indices().size(), GL_UNSIGNED_INT, nullptr);
+
+        //glDrawElements(GL_TRIANGLES,mesh->get_mesh_indices().size(), GL_UNSIGNED_INT, nullptr);
         glDrawArrays(GL_TRIANGLES,0,mesh->get_vertices_size()); // todo FIX INDICES!
 
         glDisableVertexAttribArray(0);
