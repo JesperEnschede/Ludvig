@@ -37,9 +37,9 @@ void Ludvig::Core::Application::runtime()
 
         // Temp cameras movement.
         scene->camera->transform->translate(
-                (rightInput + leftInput) / 150,
-                (upInput + downInput) / 150,
-                (forwardInput + backwardsInput) / 150);
+                (rightInput + leftInput) / 75,
+                (upInput + downInput) / 75,
+                (forwardInput + backwardsInput) / 75);
 
         this->renderer->render_scene(this->scene.get());
 
