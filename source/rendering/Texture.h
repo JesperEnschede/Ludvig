@@ -21,7 +21,7 @@ namespace Ludvig
             public:
                 GLuint id;
 
-            private:
+            protected:
                 unsigned char* data;
 
                 int width;
