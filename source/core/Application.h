@@ -42,6 +42,11 @@ namespace Ludvig
              */
             void runtime();
 
+            /*
+             * Returns a pointer to the current scene.
+             */
+            Scene::Scene* get_current_scene();
+
         private:
             std::unique_ptr<Rendering::Window> window;
             std::unique_ptr<Rendering::Renderer> renderer;

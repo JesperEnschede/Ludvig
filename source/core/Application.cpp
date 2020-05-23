@@ -109,3 +109,8 @@ void Ludvig::Core::Application::runtime()
         this->window->swap_buffers();
     }
 }
+
+Ludvig::Core::Scene::Scene *Ludvig::Core::Application::get_current_scene()
+{
+    return this->scene.get();
+}
