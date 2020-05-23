@@ -5,10 +5,34 @@
 #ifndef LUDVIG_CUBEMAP_H
 #define LUDVIG_CUBEMAP_H
 
+#include "Texture.h"
 
-class Cubemap {
+#include "stb_image.h"
 
-};
+#include "vector"
+
+namespace Ludvig
+{
+    namespace Rendering
+    {
+        class Cubemap
+        {
+        public:
+            Cubemap(std::vector<const char*> faces);
+
+        public:
+            GLuint id;
+
+        private:
+            const char* data;
+
+            int width;
+            int height;
+            int channels;
+        };
+    }
+}
+
 
 
 #endif //LUDVIG_CUBEMAP_H
