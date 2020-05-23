@@ -50,7 +50,7 @@ namespace Ludvig
             void set_gui_style();
 
         private:
-            Core::Application* application;
+            Application* application;
 
             std::vector<std::unique_ptr<GUIWindow>> windows;
         };

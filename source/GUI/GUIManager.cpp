@@ -9,6 +9,8 @@
 
 Ludvig::Core::GUIManager::GUIManager(Application *app)
 {
+    this->application = app;
+
     this->set_gui_style();
 
     this->add_window<GWProfiler>();
