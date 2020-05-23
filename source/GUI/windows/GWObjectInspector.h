@@ -5,10 +5,30 @@
 #ifndef LUDVIG_GWOBJECTINSPECTOR_H
 #define LUDVIG_GWOBJECTINSPECTOR_H
 
+#include "../GUIWindow.h"
 
-class GWObjectInspector {
+#include "../../core/Object.h"
 
-};
+namespace Ludvig
+{
+    namespace Core
+    {
+        class GWObjectInspector : public GUIWindow
+        {
+        public:
+            GWObjectInspector(Object* object)
+            {
+                this->object = object;
+            }
+
+            void on_gui() override = 0;
+
+        protected:
+            Object* object;
+        };
+    }
+}
+
 
 
 #endif //LUDVIG_GWOBJECTINSPECTOR_H
