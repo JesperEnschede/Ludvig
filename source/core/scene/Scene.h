@@ -8,6 +8,7 @@
 #include "Mesh.h"
 #include "Camera.h"
 #include "Light.h"
+#include "../../rendering/LightSettings.h"
 
 #include "memory"
 #include "vector"
@@ -36,10 +37,9 @@ namespace Ludvig
 
             public:
                 std::vector<std::unique_ptr<Mesh>> meshes;
-
                 std::unique_ptr<Camera> camera;
-
                 std::unique_ptr<Light> light;
+                std::unique_ptr<Rendering::LightSettings> lightSettings;
             };
         }
     }
