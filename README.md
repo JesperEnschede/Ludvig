@@ -12,7 +12,7 @@ Ludvig is an open-source graphics renderer made in C++. It alows for easy render
 
 #### Screenshots
 
-![Monkey](https://i.imgur.com/pV23U1b.png)
+![Monkey](https://i.imgur.com/pNB72Gd.png)
 
 #### Credits
 
