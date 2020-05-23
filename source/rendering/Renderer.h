@@ -8,6 +8,7 @@
 #include "../core/scene/Scene.h"
 #include "Shader.h"
 #include "Texture.h"
+#include "Cubemap.h"
 
 #include "glad/glad.h"
 #include "Window.h"
@@ -36,6 +37,7 @@ namespace Ludvig
         private:
             std::vector<std::unique_ptr<Core::Scene::Shader>> shaders;
             std::vector<std::unique_ptr<Core::Scene::Texture>> textures;
+            std::vector<std::unique_ptr<Cubemap>> cubeMaps;
         };
     }
 }
