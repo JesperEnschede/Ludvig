@@ -8,5 +8,6 @@
 // This header file includes all the GuiWindows.
 
 #include "GWProfiler.h"
+#include "GWMeshInspector.h"
 
 #endif //LUDVIG_GWINCLUDES_H

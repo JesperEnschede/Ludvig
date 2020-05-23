@@ -14,6 +14,7 @@ Ludvig::Core::GUIManager::GUIManager(Application *app)
     this->set_gui_style();
 
     this->add_window<GWProfiler>();
+    this->windows.push_back(std::make_unique<GWMeshInspector>(app->scene->meshes[0].get()));
 }
 
 void Ludvig::Core::GUIManager::draw_windows()

@@ -5,10 +5,30 @@
 #ifndef LUDVIG_GWMESHINSPECTOR_H
 #define LUDVIG_GWMESHINSPECTOR_H
 
+#include "GWObjectInspector.h"
 
-class GWMeshInspector {
+namespace Ludvig
+{
+    namespace Core
+    {
+        class GWMeshInspector : public GWObjectInspector
+        {
+        public:
+            GWMeshInspector(Object *object) : GWObjectInspector(object)
+            {
 
-};
+            }
+
+            void on_gui() override
+            {
+                ImGui::Begin("Mesh inspector");
+                this->draw_transform(object->transform.get());
+                ImGui::End();
+            }
+        };
+    }
+}
+
 
 
 #endif //LUDVIG_GWMESHINSPECTOR_H
