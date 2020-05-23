@@ -9,5 +9,7 @@
 
 #include "GWProfiler.h"
 #include "GWMeshInspector.h"
+#include "GWCameraInspector.h"
+#include "GWLightInspector.h"
 
 #endif //LUDVIG_GWINCLUDES_H
