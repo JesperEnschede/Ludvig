@@ -7,6 +7,8 @@
 
 #include "imgui.h"
 
+#include "../core/Transform.h"
+
 namespace Ludvig
 {
     namespace Core
@@ -22,6 +24,13 @@ namespace Ludvig
              * Can be override to implement ImGui calls.
              */
             virtual void on_gui() = 0;
+
+            static void draw_transform(Scene::Transform* transform)
+            {
+                ImGui::DragFloat3("Position", (float*)&transform->position);
+                ImGui::DragFloat3("Rotation", (float*)&transform->rotation);
+                ImGui::DragFloat3("Scale", (float*)&transform->scale);
+            }
         };
     }
 }
