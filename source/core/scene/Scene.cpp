@@ -11,9 +11,12 @@ Ludvig::Core::Scene::Scene::Scene()
     this->camera = std::make_unique<Camera>();
     this->light = std::make_unique<Light>();
 
+    this->light->name = "Light";
+
+    this->camera->name = "Camera";
     this->camera->transform->translate(0,0,5);
 
-    load_mesh("monkey.obj");
+    load_mesh("assets/models/monkey.obj");
 }
 
 bool Ludvig::Core::Scene::Scene::load_mesh(const char *path)
@@ -25,6 +28,7 @@ bool Ludvig::Core::Scene::Scene::load_mesh(const char *path)
     Data::load_obj(path, vertices,uvs,normals);
 
     this->meshes.push_back(std::make_unique<Mesh>(vertices,uvs,normals));
+    this->meshes[0]->name = "Mesh";
 
     return false;
 }
