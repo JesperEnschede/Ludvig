@@ -25,9 +25,9 @@ namespace Ludvig
             {
                 ImGui::Begin("Camera inspector");
                 this->draw_transform(this->object->transform.get());
-                ImGui::DragFloat("Field of view", &this->camera->fieldOfView,0.1,0.1,179);
-                ImGui::DragFloat("Near clipping", &this->camera->nearClipping,0.1,0.1,179);
-                ImGui::DragFloat("Far clipping", &this->camera->farClipping,0.1,0.1,179);
+                ImGui::DragFloat("Field of view", &this->camera->fieldOfView,0.025,0.1,179);
+                ImGui::DragFloat("Near clipping", &this->camera->nearClipping,0.025,0.1,179);
+                ImGui::DragFloat("Far clipping", &this->camera->farClipping,0.025,0.1,179);
                 ImGui::End();
             }
 

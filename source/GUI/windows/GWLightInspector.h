@@ -26,7 +26,7 @@ namespace Ludvig
                 ImGui::Begin("Light inspector");
                 this->draw_transform(this->object->transform.get());
                 ImGui::ColorEdit3("Color", (float*)&this->light->color);
-                ImGui::DragFloat("Intensity", &this->light->intensity,0.05,0.1,INT_MAX);
+                ImGui::DragFloat("Intensity", &this->light->intensity,0.025,0.1,INT_MAX);
                 ImGui::End();
             }
 
