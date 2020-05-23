@@ -32,7 +32,17 @@ Ludvig::Rendering::Renderer::Renderer(Window* window)
 
     this->shaders.push_back(std::make_unique<Core::Scene::Shader>("assets/shaders/default_vertex.glsl","assets/shaders/default_fragment.glsl"));
     this->shaders.push_back(std::make_unique<Core::Scene::Shader>("assets/shaders/skybox_vertex.glsl","assets/shaders/skybox_fragment.glsl"));
+
     this->textures.push_back(std::make_unique<Core::Scene::Texture>("assets/textures/grey.jpg"));
+
+    std::vector<const char*> faces = { "assets/skybox/right.jpg",
+                                       "assets/skybox/left.jpg",
+                                       "assets/skybox/top.jpg",
+                                       "assets/skybox/bottom.jpg",
+                                       "assets/skybox/front.jpg",
+                                       "assets/skybox/back.jpg"};
+
+    this->cubeMaps.push_back(std::make_unique<Cubemap>(faces));
 }
 
 void Ludvig::Rendering::Renderer::clear(int mask)
