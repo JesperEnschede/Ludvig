@@ -17,6 +17,7 @@ Ludvig::Core::GUIManager::GUIManager(Application *app)
     this->windows.push_back(std::make_unique<GWMeshInspector>(app->scene->meshes[0].get()));
     this->windows.push_back(std::make_unique<GWCameraInspector>(app->scene->camera.get()));
     this->windows.push_back(std::make_unique<GWLightInspector>(app->scene->light.get()));
+    this->windows.push_back(std::make_unique<GWLightSettingsInspector>(app->scene->lightSettings.get()));
 }
 
 void Ludvig::Core::GUIManager::draw_windows()

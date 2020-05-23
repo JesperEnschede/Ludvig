@@ -11,5 +11,6 @@
 #include "GWMeshInspector.h"
 #include "GWCameraInspector.h"
 #include "GWLightInspector.h"
+#include "GWLightSettingsInspector.h"
 
 #endif //LUDVIG_GWINCLUDES_H
