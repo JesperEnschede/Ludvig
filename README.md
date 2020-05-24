@@ -20,3 +20,4 @@ Ludvig is an open-source graphics renderer made in C++. It alows for easy render
 - ##### [GLFW](https://github.com/glfw/glfw) window library.
 - ##### [GLM](https://github.com/g-truc/glm) mathematics library.
 - ##### [DearImGui](https://github.com/ocornut/imgui) user interface library.
+- ##### [stb](https://github.com/nothings/stb) single-file libraries
