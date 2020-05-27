@@ -24,6 +24,11 @@ namespace Ludvig
                  */
                 Texture(const char* path);
 
+                /*
+                 * Deletes the texture
+                 */
+                ~Texture();
+
             public:
                 GLuint id;
 

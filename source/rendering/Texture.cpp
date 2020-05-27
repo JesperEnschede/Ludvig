@@ -36,3 +36,8 @@ Ludvig::Core::Scene::Texture::Texture(const char *path)
 
     glGenerateMipmap(GL_TEXTURE_2D);
 }
+
+Ludvig::Core::Scene::Texture::~Texture()
+{
+    glDeleteTextures(1,&id);
+}
