@@ -17,6 +17,16 @@ Ludvig::Core::Scene::Mesh::Mesh(std::vector<glm::vec3> vertices, std::vector<glm
     this->generate_element_buffer();
 }
 
+Ludvig::Core::Scene::Mesh::~Mesh()
+{
+    glDeleteBuffers(1,&vbo);
+    glDeleteBuffers(1,&nbo);
+    glDeleteBuffers(1,&ubo);
+    glDeleteBuffers(1,&ebo);
+    
+    glDeleteVertexArrays(1,&vao);
+}
+
 void Ludvig::Core::Scene::Mesh::generate_vertex_array()
 {
     glGenVertexArrays(1,&this->vao);
@@ -55,3 +65,4 @@ std::vector<unsigned int> Ludvig::Core::Scene::Mesh::get_mesh_indices()
 {
     return this->indices;
 }
+

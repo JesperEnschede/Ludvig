@@ -31,6 +31,11 @@ namespace Ludvig
             public:
                 Mesh(std::vector<glm::vec3> vertices, std::vector<glm::vec2> uvs, std::vector<glm::vec3> normals);
 
+                /*
+                 * Destroys all buffer objects & the vertex array object.
+                 */
+                ~Mesh();
+
                 std::vector<unsigned int> get_mesh_indices();
 
                 /*
