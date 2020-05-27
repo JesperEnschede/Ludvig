@@ -18,9 +18,6 @@ namespace Ludvig
         {
         public:
             glm::vec3 ambientLightColor = glm::vec3(0.1f,0.1f,0.1f);
-
-        private:
-            // skybox
         };
     }
 }
