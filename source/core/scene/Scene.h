@@ -8,6 +8,7 @@
 #include "Mesh.h"
 #include "Camera.h"
 #include "Light.h"
+#include "Skybox.h"
 #include "../../rendering/LightSettings.h"
 
 #include "memory"
@@ -35,8 +36,11 @@ namespace Ludvig
                  */
                 bool load_mesh(const char* path);
 
+                bool load_skybox();
+
             public:
                 std::vector<std::unique_ptr<Mesh>> meshes;
+                std::unique_ptr<Skybox> skybox;
                 std::unique_ptr<Camera> camera;
                 std::unique_ptr<Light> light;
                 std::unique_ptr<Rendering::LightSettings> lightSettings;

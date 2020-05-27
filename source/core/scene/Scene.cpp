@@ -11,6 +11,7 @@ Ludvig::Core::Scene::Scene::Scene()
     this->camera = std::make_unique<Camera>();
     this->light = std::make_unique<Light>();
     this->lightSettings = std::make_unique<Rendering::LightSettings>();
+    this->skybox = std::make_unique<Skybox>();
 
     this->light->name = "Light";
     this->camera->name = "Camera";
