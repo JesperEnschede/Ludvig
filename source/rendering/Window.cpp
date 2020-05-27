@@ -79,8 +79,6 @@ void Ludvig::Rendering::Window::set_vSync(int buffers)
 
 void Ludvig::Rendering::Window::window_resize_callback(int w, int h)
 {
-    std::printf("Resizing window: w:%i  h:%i \n",w,h);
-
     this->width = w;
     this->height = h;
 
