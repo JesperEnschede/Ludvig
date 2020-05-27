@@ -20,8 +20,10 @@ namespace Ludvig
             static void log_warning(std::string warning);
             static void log_error(std::string error);
 
+            static std::string get_log();
+
         private:
-            static DebugLog* instance = nullptr;
+            inline static DebugLog* instance;
 
             std::string log = "";
         };
