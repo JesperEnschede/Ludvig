@@ -17,6 +17,9 @@ namespace Ludvig
         class Window
         {
         public:
+            /*
+             * Initialize and create a GLFW window.
+             */
             Window(int width, int height, bool fullscreen);
 
             /*

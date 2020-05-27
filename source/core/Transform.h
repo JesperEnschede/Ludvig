@@ -14,16 +14,36 @@ namespace Ludvig
     {
         namespace Scene
         {
+            /*
+             * A transform is a transformation matrix of a Mesh.
+             */
             class Transform
             {
             public:
+                /*
+                 * Default constructor.
+                 */
                 Transform();
 
             public:
+                /*
+                 * Returns the t*r*s matrix.
+                 */
                 glm::mat4 get_trs();
 
+                /*
+                 * Translate the position.
+                 */
                 void translate(float x, float y, float z);
+
+                /*
+                 * Rotate the rotation value.
+                 */
                 void rotate(float yaw, float pitch, float roll);
+
+                /*
+                 * Set the scale.
+                 */
                 void set_scale(float x, float y, float z);
 
                 glm::vec3 get_position();

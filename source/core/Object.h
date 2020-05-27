@@ -13,6 +13,9 @@ namespace Ludvig
 {
     namespace Core
     {
+        /*
+         * An object is the base class for everything inside of a scene.
+         */
         class Object
         {
         public:

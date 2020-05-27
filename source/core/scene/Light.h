@@ -19,6 +19,9 @@ namespace Ludvig
     {
         namespace Scene
         {
+            /*
+             * A light is a type of Object that is used to calculate light on a Mesh from.
+             */
             class Light : public Object
             {
             public:

@@ -19,6 +19,9 @@ namespace Ludvig
 {
     namespace Rendering
     {
+        /*
+         * Renderer contains all openGL rendering functions.
+         */
         class Renderer
         {
         public:
@@ -28,10 +31,24 @@ namespace Ludvig
             Renderer(Window* window);
 
         public:
+            /*
+             * Render a scene
+             */
             void render_scene(Core::Scene::Scene* scene);
+
+            /*
+             * Clear the screen
+             */
             void clear(int mask);
 
+            /*
+             * Create a DearImGui frame.
+             */
             void create_gui_frame();
+
+            /*
+             * Draw every ImGui draw call
+             */
             void draw_gui_frame();
 
         private:

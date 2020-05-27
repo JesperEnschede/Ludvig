@@ -15,9 +15,15 @@ namespace Ludvig
     {
         namespace Scene
         {
+            /*
+             * A skybox is a inverted cube mesh that can have a cubemap texture to create a sky.
+             */
             class Skybox
             {
             public:
+                /*
+                 * Bind the skybox vbo.
+                 */
                 Skybox();
 
                 GLuint vbo;

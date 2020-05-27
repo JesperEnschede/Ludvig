@@ -13,11 +13,17 @@
 
 namespace Ludvig
 {
+    /*
+     * A cubemap is a 6-sided texture that you can use as a skybox.
+     */
     namespace Rendering
     {
         class Cubemap
         {
         public:
+            /*
+             * Load and bind the cubemap
+             */
             Cubemap(std::vector<const char*> faces);
 
         public:
