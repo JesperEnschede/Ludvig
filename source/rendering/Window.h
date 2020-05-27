@@ -22,6 +22,9 @@ namespace Ludvig
              */
             Window(int width, int height, bool fullscreen);
 
+            /*
+             * Delete this window and terminate GLFW
+             */
             ~Window();
 
             /*
