@@ -32,7 +32,6 @@ void Ludvig::Core::GUIManager::set_gui_style()
 {
     ImGuiStyle& style = ImGui::GetStyle();
 
-    // style from https://github.com/ocornut/imgui/pull/511#issuecomment-175719267
     style.Alpha = 1.0f;
     style.FrameRounding = 0.0f;
     style.WindowRounding = 0.0f;
