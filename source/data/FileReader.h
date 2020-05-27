@@ -11,6 +11,9 @@ namespace Ludvig
 {
     namespace Data
     {
+        /*
+         * Read a text file and return it as a std::string.
+         */
         std::string read_file(std::string path);
     }
 }

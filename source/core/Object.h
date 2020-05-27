@@ -13,9 +13,14 @@ namespace Ludvig
 {
     namespace Core
     {
+        /*
+         * An object is the base class for everything inside of a scene.
+         */
         class Object
         {
         public:
+            const char* name;
+
             std::unique_ptr<Scene::Transform> transform = std::make_unique<Scene::Transform>();
         };
     }

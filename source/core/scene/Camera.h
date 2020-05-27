@@ -20,17 +20,32 @@ namespace Ludvig
     {
         namespace Scene
         {
+            /*
+             * The camera is a type of Object that is the point of where to user looks from.
+             */
             class Camera : public Object
             {
             public:
                 Camera() = default;
 
+                /*
+                 * Return the view * projection matrix.
+                 */
                 glm::mat4 get_view_projection_matrix();
 
+                /*
+                 * Returns the view matrix.
+                 */
                 glm::mat4 get_view_matrix();
 
+                /*
+                 * Returns the projection matrix.
+                 */
                 glm::mat4 get_projection_matrix();
 
+                /*
+                 * Calculate the view projection matrix.
+                 */
                 void calculate_view_projection_matrix();
 
             public:

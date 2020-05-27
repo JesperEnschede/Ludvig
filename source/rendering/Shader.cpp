@@ -97,5 +97,10 @@ void Ludvig::Core::Scene::Shader::set_texture(const char *uniform, GLuint id)
     glUniform1i(glGetUniformLocation(this->program,uniform),id);
 }
 
+void Ludvig::Core::Scene::Shader::set_float(const char *uniform, float value)
+{
+    glUniform1f(glGetUniformLocation(this->program,uniform),value);
+}
+
 
 

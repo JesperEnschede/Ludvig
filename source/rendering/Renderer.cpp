@@ -7,6 +7,7 @@
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
+#include "gtc/matrix_transform.hpp"
 
 Ludvig::Rendering::Renderer::Renderer(Window* window)
 {
@@ -30,8 +31,21 @@ Ludvig::Rendering::Renderer::Renderer(Window* window)
     glDepthFunc(GL_LESS);
     glEnable(GL_CULL_FACE);
 
-    this->shaders.push_back(std::make_unique<Core::Scene::Shader>("default_vertex.glsl","default_fragment.glsl"));
-    this->textures.push_back(std::make_unique<Core::Scene::Texture>("grey.jpg"));
+    this->shaders.push_back(std::make_unique<Core::Scene::Shader>("assets/shaders/default_vertex.glsl","assets/shaders/default_fragment.glsl"));
+    this->shaders.push_back(std::make_unique<Core::Scene::Shader>("assets/shaders/skybox_vertex.glsl","assets/shaders/skybox_fragment.glsl"));
+
+    this->textures.push_back(std::make_unique<Core::Scene::Texture>("assets/textures/grey.jpg"));
+
+    /*
+    std::vector<const char*> faces = { "assets/skybox/right.jpg",
+                                       "assets/skybox/left.jpg",
+                                       "assets/skybox/top.jpg",
+                                       "assets/skybox/bottom.jpg",
+                                       "assets/skybox/front.jpg",
+                                       "assets/skybox/back.jpg"};
+
+    this->cubeMaps.push_back(std::make_unique<Cubemap>(faces));
+    */
 }
 
 void Ludvig::Rendering::Renderer::clear(int mask)
@@ -59,7 +73,11 @@ void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene
         this->shaders[0]->set_mat4x4("MVP",mvp);
         this->shaders[0]->set_mat4x4("M",mesh->transform->get_trs());
         this->shaders[0]->set_mat4x4("V",scene->camera->get_view_matrix());
+
         this->shaders[0]->set_vec3("lightPosition_worldSpace",scene->light->transform->get_position());
+        this->shaders[0]->set_float("lightPower",scene->light->intensity);
+        this->shaders[0]->set_vec3("lightColor",scene->light->color);
+        this->shaders[0]->set_vec3("ambientColor",scene->lightSettings->ambientLightColor);
 
         // Vertex buffer
         glEnableVertexAttribArray(0);
@@ -80,6 +98,7 @@ void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene
         glVertexAttribPointer(2,3,GL_FLOAT,GL_FALSE,0,(void*)0);
 
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->ebo);
+
         //glDrawElements(GL_TRIANGLES,mesh->get_mesh_indices().size(), GL_UNSIGNED_INT, nullptr);
         glDrawArrays(GL_TRIANGLES,0,mesh->get_vertices_size()); // todo FIX INDICES!
 

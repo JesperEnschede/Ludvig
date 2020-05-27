@@ -1,5 +1,5 @@
 //
-// Created by Jesper on 5/11/2020.
+// Created by Jesper on 5/22/2020.
 //
 
 #ifndef LUDVIG_GWPROFILER_H
@@ -7,23 +7,17 @@
 
 #include "../GUIWindow.h"
 
+#include "imgui.h"
+
 namespace Ludvig
 {
-    namespace GUI
+    namespace Core
     {
-        namespace Windows
+        class GWProfiler : public GUIWindow
         {
-            class GWProfiler : public GUIWindow
-            {
-            public:
-                GWProfiler();
-
-                void on_gui() override;
-
-            private:
-                float frame_times[5];
-            };
-        }
+        public:
+            void on_gui() override;
+        };
     }
 }
 

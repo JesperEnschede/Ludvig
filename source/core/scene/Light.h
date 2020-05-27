@@ -9,6 +9,8 @@
 
 #include "../Object.h"
 
+#include "glm.hpp"
+
 #include "memory"
 
 namespace Ludvig
@@ -17,15 +19,19 @@ namespace Ludvig
     {
         namespace Scene
         {
+            /*
+             * A light is a type of Object that is used to calculate light on a Mesh from.
+             */
             class Light : public Object
             {
             public:
                 Light() = default;
+
+                float intensity = 1.0f;
+                glm::vec3 color = glm::vec3(1.0f,1.0f,1.0f);
             };
         }
     }
 }
-
-
 
 #endif //LUDVIG_LIGHT_H

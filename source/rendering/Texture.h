@@ -13,15 +13,21 @@ namespace Ludvig
     {
         namespace Scene
         {
+            /*
+             * A texture holds the id of a image that the renderer can use to draw meshes with texture.
+             */
             class Texture
             {
             public:
+                /*
+                 * Loads and creates a GL texture.
+                 */
                 Texture(const char* path);
 
             public:
                 GLuint id;
 
-            private:
+            protected:
                 unsigned char* data;
 
                 int width;

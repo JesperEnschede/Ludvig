@@ -6,12 +6,14 @@
 
 #include "imgui.h"
 
+#include "chrono"
+
 Ludvig::Core::Application::Application()
 {
     this->window = std::make_unique<Rendering::Window>(800,600,true);
     this->renderer = std::make_unique<Rendering::Renderer>(this->window.get());
     this->scene = std::make_unique<Scene::Scene>();
-    this->guiManager = std::make_unique<GUI::GUIManager>();
+    this->guiManager = std::make_unique<GUIManager>(this);
 }
 
 void Ludvig::Core::Application::start()
@@ -21,23 +23,44 @@ void Ludvig::Core::Application::start()
 
 void Ludvig::Core::Application::runtime()
 {
+    auto timePoint1 = std::chrono::system_clock::now();
+    auto timePoint2 = std::chrono::system_clock::now();
+
     while (!this->window->is_closing())
     {
+        timePoint2 = std::chrono::system_clock::now();
+        std::chrono::duration<float> deltaTime = timePoint2 - timePoint1;
+        timePoint1 = timePoint2;
+
         this->renderer->clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         this->window->poll_events();
 
+        // Temp input system for camera movement.
+        float forwardInput = -glfwGetKey(window->get_context(),GLFW_KEY_W);
+        float backwardsInput = glfwGetKey(window->get_context(),GLFW_KEY_S);
+        float rightInput = glfwGetKey(window->get_context(),GLFW_KEY_D);
+        float leftInput = -glfwGetKey(window->get_context(),GLFW_KEY_A);
+        float upInput = -glfwGetKey(window->get_context(),GLFW_KEY_SPACE);
+        float downInput = glfwGetKey(window->get_context(),GLFW_KEY_LEFT_SHIFT);
+
+        // Temp cameras movement.
+        scene->camera->transform->translate(
+                (rightInput + leftInput) * 30.0f * deltaTime.count(),
+                (upInput + downInput) * 30.0f * deltaTime.count(),
+                (forwardInput + backwardsInput) * 30.0f * deltaTime.count());
+
         this->renderer->render_scene(this->scene.get());
 
         this->renderer->create_gui_frame();
-        // this->guiManager->draw_windows();
-
-        ImGui::Begin("profiler");
-        ImGui::Text("%.3f ms/frame | %.3f FPS", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
-        ImGui::End();
-
+        this->guiManager->draw_windows();
         this->renderer->draw_gui_frame();
 
         this->window->swap_buffers();
     }
+}
+
+Ludvig::Core::Scene::Scene *Ludvig::Core::Application::get_current_scene()
+{
+    return this->scene.get();
 }

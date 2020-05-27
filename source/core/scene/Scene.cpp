@@ -10,11 +10,15 @@ Ludvig::Core::Scene::Scene::Scene()
 {
     this->camera = std::make_unique<Camera>();
     this->light = std::make_unique<Light>();
+    this->lightSettings = std::make_unique<Rendering::LightSettings>();
+    this->skybox = std::make_unique<Skybox>();
 
-    this->light->transform->translate(5,0,0);
-    this->camera->transform->translate(0,0,5);
+    this->light->name = "Light";
+    this->camera->name = "Camera";
+    this->camera->transform->translate(0,-3.5,15);
 
-    load_mesh("monkey.obj");
+    load_mesh("assets/models/monkey.obj");
+    load_mesh("assets/models/plane.obj");
 }
 
 bool Ludvig::Core::Scene::Scene::load_mesh(const char *path)
@@ -25,7 +29,11 @@ bool Ludvig::Core::Scene::Scene::load_mesh(const char *path)
 
     Data::load_obj(path, vertices,uvs,normals);
 
-    this->meshes.push_back(std::make_unique<Mesh>(vertices,uvs,normals));
+    Mesh* mesh = new Mesh(vertices,uvs,normals);
+    mesh->name = path;
+    mesh->transform->position = glm::vec3(0,0,0);
+
+    this->meshes.push_back(std::move(std::unique_ptr<Mesh>(mesh)));
 
     return false;
 }

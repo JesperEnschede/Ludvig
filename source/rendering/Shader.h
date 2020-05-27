@@ -47,6 +47,11 @@ namespace Ludvig
                  */
                 void set_texture(const char* uniform, GLuint id);
 
+                /*
+                 * Set a uniform float value.
+                 */
+                void set_float(const char* uniform, float value);
+
             public:
                 /*
                  * Compile a GLSL shader.

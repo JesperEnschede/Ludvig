@@ -7,9 +7,11 @@
 
 #include "imgui.h"
 
+#include "../core/Transform.h"
+
 namespace Ludvig
 {
-    namespace GUI
+    namespace Core
     {
         /*
          * A GUI window that can be attached to a GUIManager to be rendered to a window.
@@ -23,18 +25,12 @@ namespace Ludvig
              */
             virtual void on_gui() = 0;
 
-        public:
-            const char* windowName;
-
-            ImGuiWindowFlags windowFlags;
-
-            int x = 5;
-            int y = 5;
-
-            int width = 10;
-            int height = 10;
-
-            bool isStatic = true;
+            static void draw_transform(Scene::Transform* transform)
+            {
+                ImGui::DragFloat3("Position", (float*)&transform->position),0.025;
+                ImGui::DragFloat3("Rotation", (float*)&transform->rotation,0.025);
+                ImGui::DragFloat3("Scale", (float*)&transform->scale,0.025);
+            }
         };
     }
 }
