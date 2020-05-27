@@ -102,5 +102,10 @@ void Ludvig::Core::Scene::Shader::set_float(const char *uniform, float value)
     glUniform1f(glGetUniformLocation(this->program,uniform),value);
 }
 
+Ludvig::Core::Scene::Shader::~Shader()
+{
+    glDeleteProgram(this->program);
+}
+
 
 
