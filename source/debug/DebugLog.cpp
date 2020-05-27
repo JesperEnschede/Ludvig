@@ -6,7 +6,7 @@
 
 Ludvig::Debug::DebugLog::DebugLog()
 {
-    instance = this;
+    DebugLog::instance = this;
 }
 
 void Ludvig::Debug::DebugLog::log_message(std::string message)
@@ -22,4 +22,9 @@ void Ludvig::Debug::DebugLog::log_warning(std::string warning)
 void Ludvig::Debug::DebugLog::log_error(std::string error)
 {
     instance->log += "error: " + error;
+}
+
+std::string Ludvig::Debug::DebugLog::get_log()
+{
+    return instance->log;
 }
