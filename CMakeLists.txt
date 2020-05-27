@@ -44,7 +44,7 @@ add_executable(
         external/dearimgui/imgui_impl_glfw.cpp
         external/dearimgui/imgui_impl_opengl3.cpp
         external/dearimgui/imgui_widgets.cpp
-        source/core/scene/Light.cpp source/core/scene/Light.h source/core/Object.cpp source/core/Object.h source/GUI/windows/GWProfiler.cpp source/GUI/windows/GWProfiler.h source/GUI/windows/GWObjectInspector.h source/GUI/windows/GWMeshInspector.h source/GUI/windows/GWCameraInspector.h source/GUI/windows/GWLightInspector.h source/rendering/LightSettings.h source/GUI/windows/GWLightSettingsInspector.h source/rendering/Cubemap.cpp source/rendering/Cubemap.h source/core/scene/Skybox.cpp source/core/scene/Skybox.h)
+        source/core/scene/Light.h source/core/Object.cpp source/core/Object.h source/GUI/windows/GWProfiler.cpp source/GUI/windows/GWProfiler.h source/GUI/windows/GWObjectInspector.h source/GUI/windows/GWMeshInspector.h source/GUI/windows/GWCameraInspector.h source/GUI/windows/GWLightInspector.h source/rendering/LightSettings.h source/GUI/windows/GWLightSettingsInspector.h source/rendering/Cubemap.cpp source/rendering/Cubemap.h source/core/scene/Skybox.cpp source/core/scene/Skybox.h)
 
 target_link_libraries(Ludvig glfw ${GLFW_LIBRARIES} -lOpenGL32)
 
