@@ -6,6 +6,7 @@
 #define LUDVIG_TRANSFORM_H
 
 #include "glm.hpp"
+#include "gtx/quaternion.hpp"
 
 namespace Ludvig
 {
