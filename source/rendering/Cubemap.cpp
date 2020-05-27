@@ -8,7 +8,7 @@
 Ludvig::Rendering::Cubemap::Cubemap(std::vector<const char *> faces)
 {
     unsigned int textureID;
-    glGenTextures(1, &textureID);
+    glGenTextures(0, &textureID);
     glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
 
     int width, height, nrChannels;
