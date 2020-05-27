@@ -24,7 +24,7 @@ Ludvig::Rendering::Window::Window(int width, int height, bool fullscreen)
         return;
     }
 
-    set_samples(8); // default samples.
+    set_samples(16); // default samples.
 
     glfwMakeContextCurrent(this->window);
 
