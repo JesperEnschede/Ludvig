@@ -26,6 +26,11 @@ namespace Ludvig
                  */
                 Skybox();
 
+                /*
+                 * Cleanup the skybox vbo
+                 */
+                ~Skybox();
+
                 GLuint vbo;
 
             private:
