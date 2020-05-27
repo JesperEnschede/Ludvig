@@ -11,17 +11,17 @@ Ludvig::Debug::DebugLog::DebugLog()
 
 void Ludvig::Debug::DebugLog::log_message(std::string message)
 {
-    instance->log += message;
+    instance->log += message + "\n";
 }
 
 void Ludvig::Debug::DebugLog::log_warning(std::string warning)
 {
-    instance->log += "warning: " + warning;
+    instance->log += "warning: " + warning + "\n";
 }
 
 void Ludvig::Debug::DebugLog::log_error(std::string error)
 {
-    instance->log += "error: " + error;
+    instance->log += "error: " + error + "\n";
 }
 
 std::string Ludvig::Debug::DebugLog::get_log()
