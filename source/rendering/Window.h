@@ -22,6 +22,8 @@ namespace Ludvig
              */
             Window(int width, int height, bool fullscreen);
 
+            ~Window();
+
             /*
              * Poll window events.
              */

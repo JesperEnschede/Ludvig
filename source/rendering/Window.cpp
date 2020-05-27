@@ -3,7 +3,6 @@
 //
 
 #include "Window.h"
-
 #include "iostream"
 
 Ludvig::Rendering::Window::Window(int width, int height, bool fullscreen)
@@ -40,6 +39,13 @@ Ludvig::Rendering::Window::Window(int width, int height, bool fullscreen)
                                   reinterpret_cast<Window*>(glfwGetWindowUserPointer(w))->window_resize_callback(newWidth,newHeight);
                               });
 }
+
+Ludvig::Rendering::Window::~Window()
+{
+    glfwDestroyWindow(window);
+    glfwTerminate();
+}
+
 
 void Ludvig::Rendering::Window::poll_events()
 {
@@ -90,4 +96,5 @@ bool Ludvig::Rendering::Window::is_closing() const
 {
     return glfwWindowShouldClose(window);
 }
+
 
