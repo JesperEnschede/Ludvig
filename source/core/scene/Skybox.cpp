@@ -3,3 +3,10 @@
 //
 
 #include "Skybox.h"
+
+Ludvig::Core::Scene::Skybox::Skybox()
+{
+    glGenBuffers(1,&vbo);
+    glBindBuffer(GL_ARRAY_BUFFER,vbo);
+    glBufferData(GL_ARRAY_BUFFER,this->vertices.size() * sizeof(float), &this->vertices[0], GL_STATIC_DRAW);
+}
