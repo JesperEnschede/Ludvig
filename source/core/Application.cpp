@@ -6,6 +6,8 @@
 
 #include "imgui.h"
 
+#include "chrono"
+
 Ludvig::Core::Application::Application()
 {
     this->window = std::make_unique<Rendering::Window>(800,600,true);
@@ -21,8 +23,15 @@ void Ludvig::Core::Application::start()
 
 void Ludvig::Core::Application::runtime()
 {
+    auto timePoint1 = std::chrono::system_clock::now();
+    auto timePoint2 = std::chrono::system_clock::now();
+
     while (!this->window->is_closing())
     {
+        timePoint2 = std::chrono::system_clock::now();
+        std::chrono::duration<float> deltaTime = timePoint2 - timePoint1;
+        timePoint1 = timePoint2;
+
         this->renderer->clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         this->window->poll_events();
@@ -37,9 +46,9 @@ void Ludvig::Core::Application::runtime()
 
         // Temp cameras movement.
         scene->camera->transform->translate(
-                (rightInput + leftInput) / 75,
-                (upInput + downInput) / 75,
-                (forwardInput + backwardsInput) / 75);
+                (rightInput + leftInput) * 30.0f * deltaTime.count(),
+                (upInput + downInput) * 30.0f * deltaTime.count(),
+                (forwardInput + backwardsInput) * 30.0f * deltaTime.count());
 
         this->renderer->render_scene(this->scene.get());
 
