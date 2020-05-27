@@ -23,7 +23,7 @@ Ludvig::Core::Scene::Mesh::~Mesh()
     glDeleteBuffers(1,&nbo);
     glDeleteBuffers(1,&ubo);
     glDeleteBuffers(1,&ebo);
-    
+
     glDeleteVertexArrays(1,&vao);
 }
 
@@ -38,6 +38,8 @@ void Ludvig::Core::Scene::Mesh::generate_vertex_buffer()
     glGenBuffers(1,&this->vbo);
     glBindBuffer(GL_ARRAY_BUFFER,this->vbo);
     glBufferData(GL_ARRAY_BUFFER,this->vertices.size() * sizeof(glm::vec3), &this->vertices[0], GL_STATIC_DRAW);
+
+    glVertexAttribPointer(0,3,GL_FLOAT, GL_FALSE,0,(void*)0);
 }
 
 void Ludvig::Core::Scene::Mesh::generate_normal_buffer()
@@ -45,6 +47,7 @@ void Ludvig::Core::Scene::Mesh::generate_normal_buffer()
     glGenBuffers(1,&this->nbo);
     glBindBuffer(GL_ARRAY_BUFFER, this->nbo);
     glBufferData(GL_ARRAY_BUFFER,this->normals.size() * sizeof(glm::vec2), &this->normals[0],GL_STATIC_DRAW);
+    glVertexAttribPointer(2,3,GL_FLOAT,GL_FALSE,0,(void*)0);
 }
 
 void Ludvig::Core::Scene::Mesh::generate_uv_buffer()
@@ -52,6 +55,7 @@ void Ludvig::Core::Scene::Mesh::generate_uv_buffer()
     glGenBuffers(1,&this->ubo);
     glBindBuffer(GL_ARRAY_BUFFER, this->ubo);
     glBufferData(GL_ARRAY_BUFFER, this->uvs.size() * sizeof(glm::vec3), &this->uvs[0], GL_STATIC_DRAW);
+    glVertexAttribPointer(1,2,GL_FLOAT,GL_FALSE,0,(void*)0);
 }
 
 void Ludvig::Core::Scene::Mesh::generate_element_buffer()
