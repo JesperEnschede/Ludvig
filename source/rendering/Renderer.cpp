@@ -58,6 +58,13 @@ void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene
     scene->camera->calculate_view_projection_matrix();
     glm::mat4 viewProjectionMatrix = scene->camera->get_view_projection_matrix();
 
+    this->shaders[0]->set_vec3("lightPosition_worldSpace",scene->light->transform->get_position());
+    this->shaders[0]->set_float("lightPower",scene->light->intensity);
+    this->shaders[0]->set_vec3("lightColor",scene->light->color);
+    this->shaders[0]->set_vec3("ambientColor",scene->lightSettings->ambientLightColor);
+    this->shaders[0]->set_mat4x4("V",scene->camera->get_view_matrix());
+    this->shaders[0]->set_mat4x4("MVP",mvp);
+
     for (int i = 0; i < scene->meshes.size(); ++i)
     {
         Core::Scene::Mesh* mesh = scene->meshes[i].get();
@@ -69,15 +76,7 @@ void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, this->textures[0]->id);
         this->shaders[0]->set_texture("textureSampler",this->textures[0]->id);
-
-        this->shaders[0]->set_mat4x4("MVP",mvp);
         this->shaders[0]->set_mat4x4("M",mesh->transform->get_trs());
-        this->shaders[0]->set_mat4x4("V",scene->camera->get_view_matrix());
-
-        this->shaders[0]->set_vec3("lightPosition_worldSpace",scene->light->transform->get_position());
-        this->shaders[0]->set_float("lightPower",scene->light->intensity);
-        this->shaders[0]->set_vec3("lightColor",scene->light->color);
-        this->shaders[0]->set_vec3("ambientColor",scene->lightSettings->ambientLightColor);
 
         //todo: fix vertex attrib array enable : disable :(
         glEnableVertexAttribArray(0);
