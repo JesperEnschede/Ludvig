@@ -19,8 +19,9 @@ namespace Ludvig
         class BufferObject
         {
         public:
-            BufferObject(int dim, const std::vector<glm::vec2>& data);
-            BufferObject(int dim, const std::vector<glm::vec3>& data);
+            BufferObject(int dim, const std::vector<glm::vec2>& data, int GL_BUFFER);
+            BufferObject(int dim, const std::vector<glm::vec3>& data, int GL_BUFFER);
+            BufferObject(int dim, const std::vector<unsigned int>& data, int GL_BUFFER);
             ~BufferObject();
 
         private:
