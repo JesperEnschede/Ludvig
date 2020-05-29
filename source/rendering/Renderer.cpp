@@ -82,7 +82,7 @@ void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene
         glEnableVertexAttribArray(1);
         glEnableVertexAttribArray(2);
 
-        glBindVertexArray(mesh->vao);
+        mesh->get_vao()->bind();
 
         glDrawArrays(GL_TRIANGLES,0,mesh->get_vertices_size()); // todo FIX INDICES!
 

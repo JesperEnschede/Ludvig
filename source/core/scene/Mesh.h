@@ -17,6 +17,9 @@
 #include "vector"
 #include "memory"
 
+#include "../../rendering/VertexArrayObject.h"
+#include "../../rendering/BufferObject.h"
+
 namespace Ludvig
 {
     namespace Core
@@ -31,61 +34,24 @@ namespace Ludvig
             public:
                 Mesh(std::vector<glm::vec3> vertices, std::vector<glm::vec2> uvs, std::vector<glm::vec3> normals);
 
-                /*
-                 * Destroys all buffer objects & the vertex array object.
-                 */
-                ~Mesh();
-
                 std::vector<unsigned int> get_mesh_indices();
 
                 /*
                 * Temp testing function.
                 * Returns the size of the vertices vector.
                 */
-                int get_vertices_size()
-                {
-                    return this->vertices.size();
-                }
+                int get_vertices_size();
 
-            private:
-                /*
-                 * Generate a vertex array object: this->vao;
-                 */
-                void generate_vertex_array();
-
-                /*
-                 * Generate a vertex buffer object: this->vbo;
-                 */
-                void generate_vertex_buffer();
-
-                /*
-                 * Generate a normal buffer object: this->nbo;
-                 */
-                void generate_normal_buffer();
-
-                /*
-                 * Generate a uv buffer object: this-> ubo;
-                 */
-                void generate_uv_buffer();
-
-                /*
-                 * Generate a element buffer object: this->ebo;
-                 */
-                void generate_element_buffer();
-
-            public:
-                GLuint vao; // vertex array
-
-                GLuint vbo; // vertex buffer
-                GLuint ubo; // uv buffer
-                GLuint nbo; // normal buffer
-                GLuint ebo; // element buffer
+                Rendering::VertexArrayObject* get_vao() const;
 
             private:
                 std::vector<glm::vec3> vertices;
                 std::vector<glm::vec2> uvs;
                 std::vector<glm::vec3> normals;
                 std::vector<unsigned int> indices = std::vector<unsigned int>();
+
+                std::unique_ptr<Rendering::VertexArrayObject> vertexArrayObject;
+                std::vector<std::unique_ptr<Rendering::BufferObject>> buffers = std::vector<std::unique_ptr<Rendering::BufferObject>>();
             };
         }
     }
