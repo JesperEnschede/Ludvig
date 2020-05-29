@@ -11,27 +11,36 @@ Ludvig::Rendering::BufferObject::BufferObject(int dim,int index, const std::vect
 
     glGenBuffers(1,&this->buffer);
     glBindBuffer(GL_BUFFER,this->buffer);
-    glBufferData(GL_BUFFER, data.size() * sizeof(float), data.data(), GL_STATIC_DRAW);
+    glBufferData(GL_BUFFER, data.size() * sizeof(glm::vec2), data.data(), GL_STATIC_DRAW);
 
-    glVertexAttribPointer(index,dim,GL_FLOAT,GL_FALSE,0,(void*)0);
+    if (GL_BUFFER != GL_ELEMENT_ARRAY_BUFFER)
+    {
+        glVertexAttribPointer(index,dim,GL_FLOAT,GL_FALSE,0,(void*)0);
+    }
 }
 
 Ludvig::Rendering::BufferObject::BufferObject(int dim,int index, const std::vector<glm::vec3> &data, int GL_BUFFER)
 {
     glGenBuffers(1,&this->buffer);
     glBindBuffer(GL_BUFFER,this->buffer);
-    glBufferData(GL_BUFFER, data.size() * sizeof(float), data.data(), GL_STATIC_DRAW);
+    glBufferData(GL_BUFFER, data.size() * sizeof(glm::vec3), data.data(), GL_STATIC_DRAW);
 
-    glVertexAttribPointer(index,dim,GL_FLOAT,GL_FALSE,0,(void*)0);
+    if (GL_BUFFER != GL_ELEMENT_ARRAY_BUFFER)
+    {
+        glVertexAttribPointer(index,dim,GL_FLOAT,GL_FALSE,0,(void*)0);
+    }
 }
 
 Ludvig::Rendering::BufferObject::BufferObject(int dim,int index, const std::vector<unsigned int> &data, int GL_BUFFER)
 {
     glGenBuffers(1,&this->buffer);
     glBindBuffer(GL_BUFFER,this->buffer);
-    glBufferData(GL_BUFFER, data.size() * sizeof(float), data.data(), GL_STATIC_DRAW);
+    glBufferData(GL_BUFFER, data.size() * sizeof(unsigned int), data.data(), GL_STATIC_DRAW);
 
-    glVertexAttribPointer(index,dim,GL_FLOAT,GL_FALSE,0,(void*)0);
+    if (GL_BUFFER != GL_ELEMENT_ARRAY_BUFFER)
+    {
+        glVertexAttribPointer(index,dim,GL_FLOAT,GL_FALSE,0,(void*)0);
+    }
 }
 
 
