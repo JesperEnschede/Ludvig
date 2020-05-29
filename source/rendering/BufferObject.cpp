@@ -5,7 +5,14 @@
 #include "BufferObject.h"
 #include "glad/glad.h"
 
-Ludvig::Rendering::BufferObject::BufferObject(int dim, const std::vector<float> &data)
+Ludvig::Rendering::BufferObject::BufferObject(int dim, const std::vector<glm::vec2> &data)
+{
+    glGenBuffers(1,&this->buffer);
+    glBindBuffer(GL_ARRAY_BUFFER,this->buffer);
+    glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(float), data.data(), GL_STATIC_DRAW);
+}
+
+Ludvig::Rendering::BufferObject::BufferObject(int dim, const std::vector<glm::vec3> &data)
 {
     glGenBuffers(1,&this->buffer);
     glBindBuffer(GL_ARRAY_BUFFER,this->buffer);
@@ -16,3 +23,5 @@ Ludvig::Rendering::BufferObject::~BufferObject()
 {
     glDeleteBuffers(1,&this->buffer);
 }
+
+

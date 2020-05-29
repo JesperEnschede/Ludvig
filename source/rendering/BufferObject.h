@@ -5,6 +5,8 @@
 #ifndef LUDVIG_BUFFEROBJECT_H
 #define LUDVIG_BUFFEROBJECT_H
 
+#include "glm.hpp"
+
 #include "vector"
 
 namespace Ludvig
@@ -17,7 +19,8 @@ namespace Ludvig
         class BufferObject
         {
         public:
-            BufferObject(int dim, const std::vector<float>& data);
+            BufferObject(int dim, const std::vector<glm::vec2>& data);
+            BufferObject(int dim, const std::vector<glm::vec3>& data);
             ~BufferObject();
 
         private:
