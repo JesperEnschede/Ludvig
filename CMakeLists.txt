@@ -57,7 +57,7 @@ add_executable(
         source/rendering/Cubemap.h
         source/core/scene/Skybox.cpp
         source/core/scene/Skybox.h
-        source/debug/DebugLog.cpp source/debug/DebugLog.h)
+        source/debug/DebugLog.cpp source/debug/DebugLog.h source/rendering/BufferObject.cpp source/rendering/BufferObject.h)
 
 target_link_libraries(Ludvig glfw ${GLFW_LIBRARIES} -lOpenGL32)
 
