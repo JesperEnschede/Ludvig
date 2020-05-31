@@ -15,10 +15,18 @@ namespace Ludvig
             FrameBuffer();
             ~FrameBuffer();
 
-            void bind(int target);
+            void bind(unsigned int target);
+
+            unsigned int get_color_buffer();
+
+            unsigned int quadVAO; // vao for test :(
 
         private:
             unsigned int buffer;
+            unsigned int colorBuffer;
+            unsigned int renderBuffer;
+
+            unsigned int quadVBO; // vbo for framebuffer testing only.
         };
     }
 }
