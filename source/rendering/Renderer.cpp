@@ -33,6 +33,7 @@ Ludvig::Rendering::Renderer::Renderer(Window* window)
 
     this->shaders.push_back(std::make_unique<Core::Scene::Shader>("assets/shaders/default_vertex.glsl","assets/shaders/default_fragment.glsl"));
     this->shaders.push_back(std::make_unique<Core::Scene::Shader>("assets/shaders/skybox_vertex.glsl","assets/shaders/skybox_fragment.glsl"));
+    this->shaders.push_back(std::make_unique<Core::Scene::Shader>("assets/shaders/framebuffer_vertex.glsl","assets/shaders/framebuffer_fragment.glsl"));
 
     this->textures.push_back(std::make_unique<Core::Scene::Texture>("assets/textures/grey.jpg"));
 
@@ -53,6 +54,8 @@ void Ludvig::Rendering::Renderer::clear(int mask)
 
 void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene)
 {
+    glPolygonMode(GL_FRONT, GL_LINE);
+
     scene->camera->calculate_view_projection_matrix();
     glm::mat4 viewProjectionMatrix = scene->camera->get_view_projection_matrix();
 
@@ -61,7 +64,6 @@ void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene
     this->shaders[0]->set_vec3("lightColor",scene->light->color);
     this->shaders[0]->set_vec3("ambientColor",scene->lightSettings->ambientLightColor);
     this->shaders[0]->set_mat4x4("V",scene->camera->get_view_matrix());
-
 
     for (int i = 0; i < scene->meshes.size(); ++i)
     {
