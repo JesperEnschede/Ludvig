@@ -37,12 +37,12 @@ void Ludvig::Core::Application::runtime()
         this->window->poll_events();
 
         // Temp input system for camera movement.
-        float forwardInput = -glfwGetKey(window->get_context(),GLFW_KEY_W);
-        float backwardsInput = glfwGetKey(window->get_context(),GLFW_KEY_S);
-        float rightInput = glfwGetKey(window->get_context(),GLFW_KEY_D);
-        float leftInput = -glfwGetKey(window->get_context(),GLFW_KEY_A);
-        float upInput = -glfwGetKey(window->get_context(),GLFW_KEY_SPACE);
-        float downInput = glfwGetKey(window->get_context(),GLFW_KEY_LEFT_SHIFT);
+        float forwardInput = glfwGetKey(window->get_context(),GLFW_KEY_W);
+        float backwardsInput = -glfwGetKey(window->get_context(),GLFW_KEY_S);
+        float rightInput = -glfwGetKey(window->get_context(),GLFW_KEY_D);
+        float leftInput = glfwGetKey(window->get_context(),GLFW_KEY_A);
+        float upInput = glfwGetKey(window->get_context(),GLFW_KEY_SPACE);
+        float downInput = -glfwGetKey(window->get_context(),GLFW_KEY_LEFT_SHIFT);
 
         // Temp cameras movement.
         scene->camera->transform->translate(
