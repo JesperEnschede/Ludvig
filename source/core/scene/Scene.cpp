@@ -15,10 +15,10 @@ Ludvig::Core::Scene::Scene::Scene()
 
     this->light->name = "Light";
     this->camera->name = "Camera";
-    this->camera->transform->translate(0,-3.5,15);
+    this->camera->transform->translate(0,0,15);
 
-    load_mesh("assets/models/monkey.obj");
-    load_mesh("assets/models/plane.obj");
+    load_mesh("assets/models/well.obj");
+    // load_mesh("assets/models/plane.obj");
 }
 
 bool Ludvig::Core::Scene::Scene::load_mesh(const char *path)
