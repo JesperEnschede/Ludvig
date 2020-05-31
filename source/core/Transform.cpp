@@ -27,8 +27,7 @@ glm::mat4 Ludvig::Core::Scene::Transform::get_trs()
     //glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f),glm::radians(-180.0f), this->rotation);
 
     glm::mat4 rotationMatrix = glm::mat4(1.0f);// = glm::mat4_cast(this->rotation);
-    glm::vec3 eulerAngles = glm::eulerAngles(this->rotation);
-    this->rotation = glm::quat(eulerAngles);
+    this->rotation = glm::quat(glm::eulerAngles(this->rotation));
     rotationMatrix = glm::mat4_cast(this->rotation);
     glm::mat4 translationMatrix = glm::translate(glm::mat4(1.0f), this->position);
     glm::mat4 scaleMatrix = glm::scale(glm::mat4(1.0f), this->scale);
