@@ -69,9 +69,8 @@ void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene
     this->shaders[0]->set_vec3("light.diffuse",scene->light->color * glm::vec3(0.5f));
     this->shaders[0]->set_vec3("light.specular",glm::vec3(1.0f, 1.0f, 1.0f));
 
-    this->shaders[0]->set_vec3("material.ambient",glm::vec3(1.0f,0.5f,0.31f));
-    this->shaders[0]->set_vec3("material.diffuse",glm::vec3(1.0f,0.5f,0.31f));
-    this->shaders[0]->set_vec3("material.specular",glm::vec3(0.5f,0.5f,0.5f));
+    this->shaders[0]->set_texture("material.diffuse",this->textures[0]->id);
+    this->shaders[0]->set_texture("material.specular",this->textures[0]->id);
     this->shaders[0]->set_float("material.shininess",512.0f);
 
     for (int i = 0; i < scene->meshes.size(); ++i)
