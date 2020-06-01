@@ -22,12 +22,21 @@ namespace Ludvig
             /*
              * A light is a type of Object that is used to calculate light on a Mesh from.
              */
+
+            enum LightType
+            {
+                Directional = 0,
+                Point = 1,
+                SpotLight = 2
+            };
+
             class Light : public Object
             {
             public:
                 Light() = default;
 
                 float intensity = 1.0f;
+                LightType type = LightType::Directional;
                 glm::vec3 color = glm::vec3(1.0f,1.0f,1.0f);
             };
         }
