@@ -54,7 +54,7 @@ void Ludvig::Rendering::Renderer::clear(int mask)
 
 void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene)
 {
-    glPolygonMode(GL_FRONT, GL_LINE);
+    glPolygonMode(GL_FRONT, GL_FILL);
 
     scene->camera->calculate_view_projection_matrix();
     glm::mat4 viewProjectionMatrix = scene->camera->get_view_projection_matrix();
