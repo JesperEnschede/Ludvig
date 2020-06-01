@@ -59,11 +59,20 @@ void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene
     scene->camera->calculate_view_projection_matrix();
     glm::mat4 viewProjectionMatrix = scene->camera->get_view_projection_matrix();
 
-    this->shaders[0]->set_vec3("lightPosition_worldSpace",scene->light->transform->get_position());
-    this->shaders[0]->set_float("lightPower",scene->light->intensity);
-    this->shaders[0]->set_vec3("lightColor",scene->light->color);
-    this->shaders[0]->set_vec3("ambientColor",scene->lightSettings->ambientLightColor);
-    this->shaders[0]->set_mat4x4("V",scene->camera->get_view_matrix());
+    this->shaders[0]->set_mat4x4("view",scene->camera->get_view_matrix());
+    this->shaders[0]->set_mat4x4("projection",scene->camera->get_projection_matrix());
+
+    this->shaders[0]->set_vec3("light.position",scene->light->transform->position);
+    this->shaders[0]->set_vec3("viewPosition",scene->camera->transform->position);
+
+    this->shaders[0]->set_vec3("light.ambient",scene->lightSettings->ambientLightColor);
+    this->shaders[0]->set_vec3("light.diffuse",scene->light->color * glm::vec3(0.5f));
+    this->shaders[0]->set_vec3("light.specular",glm::vec3(1.0f, 1.0f, 1.0f));
+
+    this->shaders[0]->set_vec3("material.ambient",glm::vec3(1.0f,0.5f,0.31f));
+    this->shaders[0]->set_vec3("material.diffuse",glm::vec3(1.0f,0.5f,0.31f));
+    this->shaders[0]->set_vec3("material.specular",glm::vec3(0.5f,0.5f,0.5f));
+    this->shaders[0]->set_float("material.shininess",512.0f);
 
     for (int i = 0; i < scene->meshes.size(); ++i)
     {
@@ -75,9 +84,8 @@ void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene
 
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, this->textures[0]->id);
-        this->shaders[0]->set_texture("textureSampler",this->textures[0]->id);
-        this->shaders[0]->set_mat4x4("M",mesh->transform->get_trs());
-        this->shaders[0]->set_mat4x4("MVP",mvp);
+        this->shaders[0]->set_mat4x4("model",mesh->transform->get_trs());
+
 
         //todo: fix vertex attrib array enable : disable :(
         glEnableVertexAttribArray(0);
