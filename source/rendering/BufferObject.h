@@ -14,15 +14,15 @@ namespace Ludvig
     namespace Rendering
     {
         /*
-         * A buffer object holds openGL buffer data.
+         * A buffer object holds a buffer object.
          */
-        class BufferObject
+        class VertexBufferObject
         {
         public:
-            BufferObject(int dim,int index, const std::vector<glm::vec2>& data, int GL_BUFFER);
-            BufferObject(int dim,int index, const std::vector<glm::vec3>& data, int GL_BUFFER);
-            BufferObject(int dim,int index, const std::vector<unsigned int>& data, int GL_BUFFER);
-            ~BufferObject();
+            VertexBufferObject(int dim,int index, const std::vector<glm::vec2>& data, int GL_BUFFER);
+            VertexBufferObject(int dim,int index, const std::vector<glm::vec3>& data, int GL_BUFFER);
+            VertexBufferObject(int dim,int index, const std::vector<unsigned int>& data, int GL_BUFFER);
+            ~VertexBufferObject();
 
         private:
             unsigned int buffer;

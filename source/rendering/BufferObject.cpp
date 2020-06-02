@@ -5,7 +5,7 @@
 #include "BufferObject.h"
 #include "glad/glad.h"
 
-Ludvig::Rendering::BufferObject::BufferObject(int dim,int index, const std::vector<glm::vec2> &data, int GL_BUFFER)
+Ludvig::Rendering::VertexBufferObject::VertexBufferObject(int dim,int index, const std::vector<glm::vec2> &data, int GL_BUFFER)
 {
     GL_ARRAY_BUFFER;
 
@@ -19,7 +19,7 @@ Ludvig::Rendering::BufferObject::BufferObject(int dim,int index, const std::vect
     }
 }
 
-Ludvig::Rendering::BufferObject::BufferObject(int dim,int index, const std::vector<glm::vec3> &data, int GL_BUFFER)
+Ludvig::Rendering::VertexBufferObject::VertexBufferObject(int dim,int index, const std::vector<glm::vec3> &data, int GL_BUFFER)
 {
     glGenBuffers(1,&this->buffer);
     glBindBuffer(GL_BUFFER,this->buffer);
@@ -31,7 +31,7 @@ Ludvig::Rendering::BufferObject::BufferObject(int dim,int index, const std::vect
     }
 }
 
-Ludvig::Rendering::BufferObject::BufferObject(int dim,int index, const std::vector<unsigned int> &data, int GL_BUFFER)
+Ludvig::Rendering::VertexBufferObject::VertexBufferObject(int dim,int index, const std::vector<unsigned int> &data, int GL_BUFFER)
 {
     glGenBuffers(1,&this->buffer);
     glBindBuffer(GL_BUFFER,this->buffer);
@@ -44,7 +44,7 @@ Ludvig::Rendering::BufferObject::BufferObject(int dim,int index, const std::vect
 }
 
 
-Ludvig::Rendering::BufferObject::~BufferObject()
+Ludvig::Rendering::VertexBufferObject::~VertexBufferObject()
 {
     glDeleteBuffers(1,&this->buffer);
 }
