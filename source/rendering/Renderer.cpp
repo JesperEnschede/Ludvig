@@ -37,6 +37,7 @@ Ludvig::Rendering::Renderer::Renderer(Window* window)
 
     this->textures.push_back(std::make_unique<Core::Scene::Texture>("assets/textures/grey.jpg"));
 
+    /*
     std::vector<const char*> faces = { "assets/skybox/right.jpg",
                                        "assets/skybox/left.jpg",
                                        "assets/skybox/top.jpg",
@@ -45,7 +46,8 @@ Ludvig::Rendering::Renderer::Renderer(Window* window)
                                        "assets/skybox/back.jpg"};
 
     this->cubeMaps.push_back(std::make_unique<Cubemap>(faces));
-
+    */
+    
     this->frameBuffer = std::make_unique<FrameBuffer>();
 }
 
