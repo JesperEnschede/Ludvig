@@ -9,11 +9,14 @@
 Ludvig::Core::Scene::Scene::Scene()
 {
     this->camera = std::make_unique<Camera>();
-    this->light = std::make_unique<Light>();
+
     this->lightSettings = std::make_unique<Rendering::LightSettings>();
     this->skybox = std::make_unique<Skybox>();
 
-    this->light->name = "Light";
+    this->light.push_back(std::make_unique<Light>());
+    this->light[0]->type = LightType::Directional;
+    this->light[0]->name = "Directional light \0";
+    
     this->camera->name = "Camera";
     this->camera->transform->translate(0,0,15);
 
