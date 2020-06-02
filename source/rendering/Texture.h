@@ -20,6 +20,11 @@ namespace Ludvig
             {
             public:
                 /*
+                 * Creates an empty texture.
+                 */
+                Texture();
+
+                /*
                  * Loads and creates a GL texture.
                  */
                 Texture(const char* path);
