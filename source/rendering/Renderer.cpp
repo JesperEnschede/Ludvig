@@ -36,6 +36,7 @@ Ludvig::Rendering::Renderer::Renderer(Window* window)
     this->shaders.push_back(std::make_unique<Core::Scene::Shader>("assets/shaders/framebuffer_vertex.glsl","assets/shaders/framebuffer_fragment.glsl"));
 
     this->textures.push_back(std::make_unique<Core::Scene::Texture>("assets/textures/grey.jpg"));
+    // this->textures.push_back(std::make_unique<Core::Scene::Texture>("assets/textures/container2_specular.jpg"));
 
     std::vector<const char*> faces = { "assets/skybox/right.jpg",
                                        "assets/skybox/left.jpg",
@@ -45,6 +46,21 @@ Ludvig::Rendering::Renderer::Renderer(Window* window)
                                        "assets/skybox/back.jpg"};
 
     this->cubeMaps.push_back(std::make_unique<Cubemap>(faces));
+
+    glGenFramebuffers(1,&this->depthMapFrameBuffer);
+    glGenTextures(1,&this->depthMap);
+    glBindTexture(GL_TEXTURE_2D, depthMap);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, 1024,1024,0,GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+    glBindFramebuffer(GL_FRAMEBUFFER, depthMapFrameBuffer);
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, depthMap, 0);
+    glDrawBuffer(GL_NONE);
+    glReadBuffer(GL_NONE);
+    glBindFramebuffer(GL_FRAMEBUFFER,0);
 }
 
 void Ludvig::Rendering::Renderer::clear(int mask)
@@ -62,16 +78,16 @@ void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene
     this->shaders[0]->set_mat4x4("view",scene->camera->get_view_matrix());
     this->shaders[0]->set_mat4x4("projection",scene->camera->get_projection_matrix());
 
-    this->shaders[0]->set_vec3("light.position",scene->light->transform->position);
-    this->shaders[0]->set_vec3("viewPosition",scene->camera->transform->position);
+    this->shaders[0]->set_vec3("directionalLight.direction", scene->light[0]->transform->position);
+    this->shaders[0]->set_vec3("directionalLight.ambient", glm::vec3(0.05f, 0.05f, 0.05f));
+    this->shaders[0]->set_vec3("directionalLight.diffuse", glm::vec3(0.4f, 0.4f, 0.4f));
+    this->shaders[0]->set_vec3("directionalLight.specular", glm::vec3(0.5f, 0.5f, 0.5f));
 
-    this->shaders[0]->set_vec3("light.ambient",scene->lightSettings->ambientLightColor);
-    this->shaders[0]->set_vec3("light.diffuse",scene->light->color * glm::vec3(0.5f));
-    this->shaders[0]->set_vec3("light.specular",glm::vec3(1.0f, 1.0f, 1.0f));
+    this->shaders[0]->set_vec3("viewPosition",scene->camera->transform->position);
 
     this->shaders[0]->set_texture("material.diffuse",this->textures[0]->id);
     this->shaders[0]->set_texture("material.specular",this->textures[0]->id);
-    this->shaders[0]->set_float("material.shininess",512.0f);
+    this->shaders[0]->set_float("material.shininess",32.0f);
 
     for (int i = 0; i < scene->meshes.size(); ++i)
     {
@@ -84,7 +100,6 @@ void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, this->textures[0]->id);
         this->shaders[0]->set_mat4x4("model",mesh->transform->get_trs());
-
 
         //todo: fix vertex attrib array enable : disable :(
         glEnableVertexAttribArray(0);

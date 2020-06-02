@@ -59,6 +59,9 @@ namespace Ludvig
             std::vector<std::unique_ptr<Cubemap>> cubeMaps;
 
             std::unique_ptr<FrameBuffer> frameBuffer;
+
+            unsigned int depthMapFrameBuffer;
+            unsigned int depthMap;
         };
     }
 }
