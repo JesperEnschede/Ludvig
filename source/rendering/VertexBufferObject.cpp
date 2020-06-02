@@ -7,8 +7,6 @@
 
 Ludvig::Rendering::VertexBufferObject::VertexBufferObject(int dim,int index, const std::vector<glm::vec2> &data, int GL_BUFFER)
 {
-    GL_ARRAY_BUFFER;
-
     glGenBuffers(1,&this->buffer);
     glBindBuffer(GL_BUFFER,this->buffer);
     glBufferData(GL_BUFFER, data.size() * sizeof(glm::vec2), data.data(), GL_STATIC_DRAW);
