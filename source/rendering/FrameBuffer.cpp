@@ -11,10 +11,34 @@
 
 Ludvig::Rendering::FrameBuffer::FrameBuffer()
 {
+    this->screenShader = std::make_unique<Core::Scene::Shader>("screen_vertex.glsl","screen_fragment.glsl");
+
+    this->screenQuad =
+    new Core::Scene::Mesh
+            (
+                    {
+                            glm::vec3(-1.0f,  1.0f,0.0f),
+                            glm::vec3(-1.0f, -1.0f,0.0f),
+                            glm::vec3(1.0f, -1.0f,0.0f),
+                            glm::vec3(-1.0f,  1.0f,0.0f),
+                            glm::vec3(1.0f, -1.0f,0.0f),
+                            glm::vec3(1.0f,  1.0f,0.0f)
+                    },
+                    {
+                            glm::vec3(0.0f, 1.0f,0.0f),
+                            glm::vec3( 0.0f, 0.0f,0.0f),
+                            glm::vec3(1.0f, 0.0f,0.0f),
+                            glm::vec3(0.0f, 1.0f,0.0f),
+                            glm::vec3(1.0f, 0.0f,0.0f),
+                            glm::vec3(1.0f, 1.0f,0.0f)
+                    });
+
     glGenBuffers(1,&this->frameBufferObject);
     glBindFramebuffer(GL_FRAMEBUFFER, this->frameBufferObject);
 
     this->colorBufferTexture = std::make_unique<Core::Scene::Texture>();
+
+    screenShader->set_texture("screenTexture",colorBufferTexture->id);
 
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, this->colorBufferTexture->id, 0);
 
@@ -28,7 +52,7 @@ Ludvig::Rendering::FrameBuffer::FrameBuffer()
         Debug::DebugLog::log_error("Framebuffer is not complete!");
     }
 
-    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    // glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
 Ludvig::Rendering::FrameBuffer::~FrameBuffer()
@@ -38,5 +62,20 @@ Ludvig::Rendering::FrameBuffer::~FrameBuffer()
 
 void Ludvig::Rendering::FrameBuffer::bind(unsigned int target)
 {
-    glBindFramebuffer(target,this->frameBufferObject);
+    glBindFramebuffer(GL_FRAMEBUFFER,this->frameBufferObject);
+}
+
+Ludvig::Core::Scene::Texture *Ludvig::Rendering::FrameBuffer::get_color_buffer_texture()
+{
+    return colorBufferTexture.get();
+}
+
+Ludvig::Core::Scene::Mesh *Ludvig::Rendering::FrameBuffer::get_screen_quad_mesh()
+{
+    return screenQuad;
+}
+
+Ludvig::Core::Scene::Shader *Ludvig::Rendering::FrameBuffer::get_screen_shader()
+{
+    return this->screenShader.get();
 }
