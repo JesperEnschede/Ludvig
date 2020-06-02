@@ -20,7 +20,7 @@ Ludvig::Rendering::FrameBuffer::FrameBuffer()
 
     glGenRenderbuffers(1,&this->renderBufferObject);
     glBindRenderbuffer(GL_RENDERBUFFER, this->renderBufferObject);
-    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, 800, 600);
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, 1920, 1080);
     glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, this->renderBufferObject);
 
     if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
@@ -28,7 +28,7 @@ Ludvig::Rendering::FrameBuffer::FrameBuffer()
         Debug::DebugLog::log_error("Framebuffer is not complete!");
     }
 
-    // glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
 Ludvig::Rendering::FrameBuffer::~FrameBuffer()
