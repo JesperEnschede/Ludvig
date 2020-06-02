@@ -51,7 +51,7 @@ namespace Ludvig
                 std::vector<unsigned int> indices = std::vector<unsigned int>();
 
                 std::unique_ptr<Rendering::VertexArrayObject> vertexArrayObject;
-                std::vector<std::unique_ptr<Rendering::BufferObject>> buffers = std::vector<std::unique_ptr<Rendering::BufferObject>>();
+                std::vector<std::unique_ptr<Rendering::VertexBufferObject>> buffers = std::vector<std::unique_ptr<Rendering::VertexBufferObject>>();
             };
         }
     }
