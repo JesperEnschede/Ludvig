@@ -4,6 +4,17 @@
 
 #include "Mesh.h"
 
+
+Ludvig::Core::Scene::Mesh::Mesh(std::vector<glm::vec3> vertices, std::vector<glm::vec2> uvs)
+{
+    this->vertices = vertices;
+    this->uvs = uvs;
+
+    this->vertexArrayObject = std::make_unique<Rendering::VertexArrayObject>();
+    this->buffers.push_back(std::make_unique<Rendering::VertexBufferObject>(3,0,vertices, GL_ARRAY_BUFFER));
+    this->buffers.push_back(std::make_unique<Rendering::VertexBufferObject>(2,1,uvs, GL_ARRAY_BUFFER));
+}
+
 Ludvig::Core::Scene::Mesh::Mesh(std::vector<glm::vec3> vertices, std::vector<glm::vec2> uvs, std::vector<glm::vec3> normals)
 {
     this->vertices = vertices;
