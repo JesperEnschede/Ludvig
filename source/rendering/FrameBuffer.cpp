@@ -32,29 +32,6 @@ Ludvig::Rendering::FrameBuffer::FrameBuffer()
     }
 
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
-
-    float quadVertices[] =
-    {
-            // positions   // texCoords
-            -1.0f,  1.0f,  0.0f, 1.0f,
-            -1.0f, -1.0f,  0.0f, 0.0f,
-            1.0f, -1.0f,  1.0f, 0.0f,
-
-            -1.0f,  1.0f,  0.0f, 1.0f,
-            1.0f, -1.0f,  1.0f, 0.0f,
-            1.0f,  1.0f,  1.0f, 1.0f
-    };
-
-    glGenVertexArrays(1,&this->quadVAO);
-    glBindVertexArray(this->quadVAO);
-
-    /*
-    glGenBuffers(1,&this->quadVBO);
-    glBindBuffer(GL_ARRAY_BUFFER,this->quadVBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(quadVertices), &quadVertices, GL_STATIC_DRAW);
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0);
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)(2 * sizeof(float)));
-    */
 }
 
 Ludvig::Rendering::FrameBuffer::~FrameBuffer()
@@ -65,9 +42,4 @@ Ludvig::Rendering::FrameBuffer::~FrameBuffer()
 void Ludvig::Rendering::FrameBuffer::bind(unsigned int target)
 {
     glBindFramebuffer(target,this->buffer);
-}
-
-unsigned int Ludvig::Rendering::FrameBuffer::get_color_buffer()
-{
-    return colorBuffer;
 }
