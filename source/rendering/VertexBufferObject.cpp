@@ -2,7 +2,7 @@
 // Created by Jesper on 5/29/2020.
 //
 
-#include "BufferObject.h"
+#include "VertexBufferObject.h"
 #include "glad/glad.h"
 
 Ludvig::Rendering::VertexBufferObject::VertexBufferObject(int dim,int index, const std::vector<glm::vec2> &data, int GL_BUFFER)

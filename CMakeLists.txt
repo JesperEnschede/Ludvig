@@ -57,9 +57,9 @@ add_executable(
         source/rendering/Cubemap.h
         source/core/scene/Skybox.cpp
         source/core/scene/Skybox.h
-        source/debug/DebugLog.cpp source/debug/DebugLog.h 
-        source/rendering/BufferObject.cpp 
-        source/rendering/BufferObject.h 
+        source/debug/DebugLog.cpp source/debug/DebugLog.h
+        source/rendering/VertexBufferObject.cpp
+        source/rendering/VertexBufferObject.h
         source/rendering/VertexArrayObject.cpp
         source/rendering/VertexArrayObject.h
         source/rendering/FrameBuffer.cpp

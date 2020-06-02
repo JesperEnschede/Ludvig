@@ -18,7 +18,7 @@
 #include "memory"
 
 #include "../../rendering/VertexArrayObject.h"
-#include "../../rendering/BufferObject.h"
+#include "../../rendering/VertexBufferObject.h"
 
 namespace Ludvig
 {

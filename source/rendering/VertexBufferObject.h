@@ -2,8 +2,8 @@
 // Created by Jesper on 5/29/2020.
 //
 
-#ifndef LUDVIG_BUFFEROBJECT_H
-#define LUDVIG_BUFFEROBJECT_H
+#ifndef LUDVIG_VERTEXBUFFEROBJECT_H
+#define LUDVIG_VERTEXBUFFEROBJECT_H
 
 #include "glm.hpp"
 
@@ -32,4 +32,4 @@ namespace Ludvig
 
 
 
-#endif //LUDVIG_BUFFEROBJECT_H
+#endif //LUDVIG_VERTEXBUFFEROBJECT_H
