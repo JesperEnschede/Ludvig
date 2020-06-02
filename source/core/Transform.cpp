@@ -24,14 +24,14 @@ glm::mat4 Ludvig::Core::Scene::Transform::get_trs()
     trs = glm::rotate(trs,glm::radians(-180.0f),this->rotation);
     trs = glm::translate(trs,this->position);
     */
-    //glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f),glm::radians(-180.0f), this->rotation);
 
+    // Yes. yes. i know this is the best matrix rotation you've ever seen :(
     glm::mat4 rotationMatrix = glm::mat4(1.0f);// = glm::mat4_cast(this->rotation);
     this->rotation = glm::quat(glm::eulerAngles(this->rotation));
+
     rotationMatrix = glm::mat4_cast(this->rotation);
     glm::mat4 translationMatrix = glm::translate(glm::mat4(1.0f), this->position);
     glm::mat4 scaleMatrix = glm::scale(glm::mat4(1.0f), this->scale);
-
 
     return translationMatrix * rotationMatrix * scaleMatrix;
 }
