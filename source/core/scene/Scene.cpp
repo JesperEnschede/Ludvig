@@ -18,7 +18,7 @@ Ludvig::Core::Scene::Scene::Scene()
     this->light[0]->name = "Directional light \0";
 
     this->camera->name = "Camera";
-    this->camera->transform->translate(0,0,15);
+    this->camera->transform->translate(0,0,-15);
 
     load_mesh("assets/models/well.obj");
     //load_mesh("assets/models/plane.obj");
