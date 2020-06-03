@@ -23,32 +23,17 @@ namespace Ludvig
 
             void bind(unsigned int target);
 
+            Core::Scene::Texture* get_color_buffer_texture();
+            Core::Scene::Mesh* get_screen_quad_mesh();
+            Core::Scene::Shader* get_screen_shader();
+
         private:
             unsigned int frameBufferObject;
             unsigned int renderBufferObject;
 
             std::unique_ptr<Core::Scene::Texture> colorBufferTexture;
-
-            Core::Scene::Mesh screenQuad =
-                    Core::Scene::Mesh
-                    (
-                            {
-                                glm::vec3(-1.0f,  1.0f,0.0f),
-                                glm::vec3(-1.0f, -1.0f,0.0f),
-                                glm::vec3(1.0f, -1.0f,0.0f),
-                                glm::vec3(-1.0f,  1.0f,0.0f),
-                                glm::vec3(1.0f, -1.0f,0.0f),
-                                glm::vec3(1.0f,  1.0f,0.0f)
-                                },
-                            {
-                                glm::vec3(0.0f, 1.0f,0.0f),
-                                glm::vec3( 0.0f, 0.0f,0.0f),
-                                glm::vec3(1.0f, 0.0f,0.0f),
-                                glm::vec3(0.0f, 1.0f,0.0f),
-                                glm::vec3(1.0f, 0.0f,0.0f),
-                                glm::vec3(1.0f, 1.0f,0.0f)
-                                },
-                            { /* we don't do normals here, because i said so :p */ });
+            std::unique_ptr<Core::Scene::Shader> screenShader;
+            Core::Scene::Mesh* screenQuad;
         };
     }
 }
