@@ -11,7 +11,7 @@
 
 Ludvig::Rendering::FrameBuffer::FrameBuffer()
 {
-    this->screenShader = std::make_unique<Core::Scene::Shader>("screen_vertex.glsl","screen_fragment.glsl");
+    this->screenShader = std::make_unique<Core::Scene::Shader>("assets/shaders/screen_vertex.glsl","assets/shaders/screen_fragment.glsl");
 
     std::vector<glm::vec3> quadVertices =
     {
@@ -25,15 +25,38 @@ Ludvig::Rendering::FrameBuffer::FrameBuffer()
 
     std::vector<glm::vec2> quadUVS =
     {
-            glm::vec3(0.0f, 1.0f,0.0f),
-            glm::vec3( 0.0f, 0.0f,0.0f),
-            glm::vec3(1.0f, 0.0f,0.0f),
-            glm::vec3(0.0f, 1.0f,0.0f),
-            glm::vec3(1.0f, 0.0f,0.0f),
-            glm::vec3(1.0f, 1.0f,0.0f)
+            glm::vec2(0.0f, 1.0f),
+            glm::vec2( 0.0f, 0.0f),
+            glm::vec2(1.0f, 0.0f),
+            glm::vec2(0.0f, 1.0f),
+            glm::vec2(1.0f, 0.0f),
+            glm::vec2(1.0f, 1.0f)
     };
 
     this->screenQuad = std::make_unique<Core::Scene::Mesh>(quadVertices,quadUVS);
+
+    float aquadVertices[] = { // vertex attributes for a quad that fills the entire screen in Normalized Device Coordinates.
+            // positions   // texCoords
+            -1.0f,  1.0f,  0.0f, 1.0f,
+            -1.0f, -1.0f,  0.0f, 0.0f,
+            1.0f, -1.0f,  1.0f, 0.0f,
+
+            -1.0f,  1.0f,  0.0f, 1.0f,
+            1.0f, -1.0f,  1.0f, 0.0f,
+            1.0f,  1.0f,  1.0f, 1.0f
+    };
+
+    glGenVertexArrays(1, &testVAO);
+    glGenBuffers(1, &testVBO);
+    glBindVertexArray(testVAO);
+    glBindBuffer(GL_ARRAY_BUFFER, testVBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(aquadVertices), &aquadVertices, GL_STATIC_DRAW);
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(1);
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)(2 * sizeof(float)));
+
+    glBindVertexArray(0);
 
     glGenBuffers(1,&this->frameBufferObject);
     glBindFramebuffer(GL_FRAMEBUFFER, this->frameBufferObject);
@@ -54,7 +77,7 @@ Ludvig::Rendering::FrameBuffer::FrameBuffer()
         Debug::DebugLog::log_error("Framebuffer is not complete!");
     }
 
-    // glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
 Ludvig::Rendering::FrameBuffer::~FrameBuffer()
