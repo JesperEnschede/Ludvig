@@ -32,6 +32,7 @@ namespace Ludvig
             class Mesh : public Object
             {
             public:
+                Mesh(std::vector<glm::vec3> vertices);
                 Mesh(std::vector<glm::vec3> vertices, std::vector<glm::vec2> uvs);
                 Mesh(std::vector<glm::vec3> vertices, std::vector<glm::vec2> uvs, std::vector<glm::vec3> normals);
 
