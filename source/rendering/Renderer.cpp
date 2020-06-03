@@ -48,6 +48,8 @@ Ludvig::Rendering::Renderer::Renderer(Window* window)
     */
 
     this->frameBuffer = std::make_unique<FrameBuffer>();
+
+    this->frameBuffer->get_screen_shader()->set_texture("screenTexture",this->frameBuffer->get_color_buffer_texture()->id);
 }
 
 void Ludvig::Rendering::Renderer::clear(int mask)
@@ -57,12 +59,11 @@ void Ludvig::Rendering::Renderer::clear(int mask)
 
 void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene)
 {
-    /*
     frameBuffer->bind(GL_FRAMEBUFFER);
     glEnable(GL_DEPTH_TEST);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    */
-    glPolygonMode(GL_FRONT, GL_FILL);
+
+    // glPolygonMode(GL_FRONT, GL_LINE);
 
     scene->camera->calculate_view_projection_matrix();
     glm::mat4 viewProjectionMatrix = scene->camera->get_view_projection_matrix();
@@ -91,25 +92,24 @@ void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene
 
         //todo: fix vertex attrib array enable : disable :(
         mesh->get_vao()->bind();
-
+        //glDrawElements(GL_TRIANGLES, mesh->get_vertices_size(), GL_UNSIGNED_SHORT, (void*)0);
         glDrawArrays(GL_TRIANGLES,0,mesh->get_vertices_size()); // todo FIX INDICES!
+
+        glBindVertexArray(0);
     }
 
-    /*
     glBindFramebuffer(GL_FRAMEBUFFER,0);
+    // glPolygonMode(GL_FRONT, GL_LINE);
     glDisable(GL_DEPTH_TEST);
-
-    glClearColor(1,0.5,0.5,1);
+    glClearColor(0,0,0.3,1);
     glClear(GL_COLOR_BUFFER_BIT);
 
     glUseProgram(frameBuffer->get_screen_shader()->get_program());
 
+    frameBuffer->get_screen_quad_mesh()->get_vao()->bind();
     glBindTexture(GL_TEXTURE_2D, frameBuffer->get_color_buffer_texture()->id);
 
-    glBindVertexArray(frameBuffer->testVAO);
-
     glDrawArrays(GL_TRIANGLES,0,6);
-     */
 }
 
 void Ludvig::Rendering::Renderer::create_gui_frame()
