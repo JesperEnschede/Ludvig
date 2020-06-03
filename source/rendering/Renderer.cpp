@@ -101,7 +101,7 @@ void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene
     glBindFramebuffer(GL_FRAMEBUFFER,0);
     // glPolygonMode(GL_FRONT, GL_LINE);
     glDisable(GL_DEPTH_TEST);
-    glClearColor(0,0,0.3,1);
+    glClearColor(0.1f,0.1f,0.1f,1);
     glClear(GL_COLOR_BUFFER_BIT);
 
     glUseProgram(frameBuffer->get_screen_shader()->get_program());
