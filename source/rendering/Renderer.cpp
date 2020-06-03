@@ -48,8 +48,6 @@ Ludvig::Rendering::Renderer::Renderer(Window* window)
     */
 
     this->frameBuffer = std::make_unique<FrameBuffer>();
-
-    this->frameBuffer->get_screen_shader()->set_texture("screenTexture",this->frameBuffer->get_color_buffer_texture()->id);
 }
 
 void Ludvig::Rendering::Renderer::clear(int mask)
@@ -79,6 +77,8 @@ void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene
     this->shaders[0]->set_texture("material.diffuse",this->textures[0]->id);
     this->shaders[0]->set_texture("material.specular",this->textures[0]->id);
     this->shaders[0]->set_float("material.shininess",32.0f);
+
+    this->frameBuffer->get_screen_shader()->set_texture("screenTexture", this->frameBuffer->get_color_buffer_texture()->id);
 
     for (int i = 0; i < scene->meshes.size(); ++i)
     {

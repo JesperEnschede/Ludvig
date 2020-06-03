@@ -27,10 +27,6 @@ namespace Ludvig
             Core::Scene::Mesh* get_screen_quad_mesh();
             Core::Scene::Shader* get_screen_shader();
 
-            unsigned int testVAO;
-            unsigned int testVBO;
-            unsigned int testUVB;
-
         private:
             unsigned int frameBufferObject;
             unsigned int renderBufferObject;

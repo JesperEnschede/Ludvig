@@ -12,6 +12,7 @@
 Ludvig::Rendering::FrameBuffer::FrameBuffer()
 {
     this->screenShader = std::make_unique<Core::Scene::Shader>("assets/shaders/screen_vertex.glsl","assets/shaders/screen_fragment.glsl");
+    this->colorBufferTexture = std::make_unique<Core::Scene::Texture>();
 
     std::vector<glm::vec3> quadVertices =
     {
@@ -35,35 +36,11 @@ Ludvig::Rendering::FrameBuffer::FrameBuffer()
 
     this->screenQuad = std::make_unique<Core::Scene::Mesh>(quadVertices,quadUVS);
 
-    float aquadVertices[] = { // vertex attributes for a quad that fills the entire screen in Normalized Device Coordinates.
-            // positions   // texCoords
-            -1.0f,  1.0f,  0.0f, 1.0f,
-            -1.0f, -1.0f,  0.0f, 0.0f,
-            1.0f, -1.0f,  1.0f, 0.0f,
+    screenShader->set_texture("screenTexture",0);
 
-            -1.0f,  1.0f,  0.0f, 1.0f,
-            1.0f, -1.0f,  1.0f, 0.0f,
-            1.0f,  1.0f,  1.0f, 1.0f
-    };
+    glGenFramebuffers(1,&this->frameBufferObject);
 
-    glGenVertexArrays(1, &testVAO);
-    glGenBuffers(1, &testVBO);
-    glBindVertexArray(testVAO);
-    glBindBuffer(GL_ARRAY_BUFFER, testVBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(aquadVertices), &aquadVertices, GL_STATIC_DRAW);
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0);
-    glEnableVertexAttribArray(1);
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)(2 * sizeof(float)));
-
-    glBindVertexArray(0);
-
-    glGenBuffers(1,&this->frameBufferObject);
     glBindFramebuffer(GL_FRAMEBUFFER, this->frameBufferObject);
-
-    this->colorBufferTexture = std::make_unique<Core::Scene::Texture>();
-
-    screenShader->set_texture("screenTexture",colorBufferTexture->id);
 
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, this->colorBufferTexture->id, 0);
 
@@ -75,6 +52,8 @@ Ludvig::Rendering::FrameBuffer::FrameBuffer()
     if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
     {
         Debug::DebugLog::log_error("Framebuffer is not complete!");
+
+        std::printf("Framebuffer is broken :D \n \0");
     }
 
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
