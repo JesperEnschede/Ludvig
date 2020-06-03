@@ -5,4 +5,22 @@
 #ifndef LUDVIG_GWPOSTPROCESSING_H
 #define LUDVIG_GWPOSTPROCESSING_H
 
+#include "../GUIWindow.h"
+
+namespace Ludvig
+{
+    namespace Core
+    {
+        class GWPostProcessing : public GUIWindow
+        {
+        public:
+            void on_gui() override
+            {
+                ImGui::Begin("Post processing editor");
+                ImGui::End();
+            }
+        };
+    }
+}
+
 #endif //LUDVIG_GWPOSTPROCESSING_H
