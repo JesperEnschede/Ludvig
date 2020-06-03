@@ -13,25 +13,27 @@ Ludvig::Rendering::FrameBuffer::FrameBuffer()
 {
     this->screenShader = std::make_unique<Core::Scene::Shader>("screen_vertex.glsl","screen_fragment.glsl");
 
-    this->screenQuad =
-    new Core::Scene::Mesh
-            (
-                    {
-                            glm::vec3(-1.0f,  1.0f,0.0f),
-                            glm::vec3(-1.0f, -1.0f,0.0f),
-                            glm::vec3(1.0f, -1.0f,0.0f),
-                            glm::vec3(-1.0f,  1.0f,0.0f),
-                            glm::vec3(1.0f, -1.0f,0.0f),
-                            glm::vec3(1.0f,  1.0f,0.0f)
-                    },
-                    {
-                            glm::vec3(0.0f, 1.0f,0.0f),
-                            glm::vec3( 0.0f, 0.0f,0.0f),
-                            glm::vec3(1.0f, 0.0f,0.0f),
-                            glm::vec3(0.0f, 1.0f,0.0f),
-                            glm::vec3(1.0f, 0.0f,0.0f),
-                            glm::vec3(1.0f, 1.0f,0.0f)
-                    });
+    std::vector<glm::vec3> quadVertices =
+    {
+            glm::vec3(-1.0f,  1.0f,0.0f),
+            glm::vec3(-1.0f, -1.0f,0.0f),
+            glm::vec3(1.0f, -1.0f,0.0f),
+            glm::vec3(-1.0f,  1.0f,0.0f),
+            glm::vec3(1.0f, -1.0f,0.0f),
+            glm::vec3(1.0f,  1.0f,0.0f)
+    };
+
+    std::vector<glm::vec2> quadUVS =
+    {
+            glm::vec3(0.0f, 1.0f,0.0f),
+            glm::vec3( 0.0f, 0.0f,0.0f),
+            glm::vec3(1.0f, 0.0f,0.0f),
+            glm::vec3(0.0f, 1.0f,0.0f),
+            glm::vec3(1.0f, 0.0f,0.0f),
+            glm::vec3(1.0f, 1.0f,0.0f)
+    };
+
+    this->screenQuad = std::make_unique<Core::Scene::Mesh>(quadVertices,quadUVS);
 
     glGenBuffers(1,&this->frameBufferObject);
     glBindFramebuffer(GL_FRAMEBUFFER, this->frameBufferObject);
@@ -72,7 +74,7 @@ Ludvig::Core::Scene::Texture *Ludvig::Rendering::FrameBuffer::get_color_buffer_t
 
 Ludvig::Core::Scene::Mesh *Ludvig::Rendering::FrameBuffer::get_screen_quad_mesh()
 {
-    return screenQuad;
+    return screenQuad.get();
 }
 
 Ludvig::Core::Scene::Shader *Ludvig::Rendering::FrameBuffer::get_screen_shader()

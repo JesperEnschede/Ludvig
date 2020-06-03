@@ -33,7 +33,7 @@ namespace Ludvig
 
             std::unique_ptr<Core::Scene::Texture> colorBufferTexture;
             std::unique_ptr<Core::Scene::Shader> screenShader;
-            Core::Scene::Mesh* screenQuad;
+            std::unique_ptr<Core::Scene::Mesh> screenQuad;
         };
     }
 }
