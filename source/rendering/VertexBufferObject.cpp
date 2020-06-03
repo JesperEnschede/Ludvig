@@ -14,6 +14,7 @@ Ludvig::Rendering::VertexBufferObject::VertexBufferObject(int dim,int index, con
     if (GL_BUFFER != GL_ELEMENT_ARRAY_BUFFER)
     {
         glVertexAttribPointer(index,dim,GL_FLOAT,GL_FALSE,0,(void*)0);
+        glEnableVertexAttribArray(index);
     }
 }
 
@@ -26,6 +27,7 @@ Ludvig::Rendering::VertexBufferObject::VertexBufferObject(int dim,int index, con
     if (GL_BUFFER != GL_ELEMENT_ARRAY_BUFFER)
     {
         glVertexAttribPointer(index,dim,GL_FLOAT,GL_FALSE,0,(void*)0);
+        glEnableVertexAttribArray(index);
     }
 }
 
@@ -38,6 +40,7 @@ Ludvig::Rendering::VertexBufferObject::VertexBufferObject(int dim,int index, con
     if (GL_BUFFER != GL_ELEMENT_ARRAY_BUFFER)
     {
         glVertexAttribPointer(index,dim,GL_FLOAT,GL_FALSE,0,(void*)0);
+        glEnableVertexAttribArray(index);
     }
 }
 

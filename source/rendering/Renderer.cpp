@@ -7,7 +7,6 @@
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
-#include "gtc/matrix_transform.hpp"
 
 Ludvig::Rendering::Renderer::Renderer(Window* window)
 {
@@ -35,7 +34,7 @@ Ludvig::Rendering::Renderer::Renderer(Window* window)
     this->shaders.push_back(std::make_unique<Core::Scene::Shader>("assets/shaders/skybox_vertex.glsl","assets/shaders/skybox_fragment.glsl"));
     this->shaders.push_back(std::make_unique<Core::Scene::Shader>("assets/shaders/framebuffer_vertex.glsl","assets/shaders/framebuffer_fragment.glsl"));
 
-    this->textures.push_back(std::make_unique<Core::Scene::Texture>("assets/textures/grey.jpg"));
+    this->textures.push_back(std::make_unique<Core::Scene::Texture>("assets/textures/monkey.jpg"));
 
     /*
     std::vector<const char*> faces = { "assets/skybox/right.jpg",
@@ -47,7 +46,7 @@ Ludvig::Rendering::Renderer::Renderer(Window* window)
 
     this->cubeMaps.push_back(std::make_unique<Cubemap>(faces));
     */
-    
+
     this->frameBuffer = std::make_unique<FrameBuffer>();
 }
 
@@ -58,21 +57,24 @@ void Ludvig::Rendering::Renderer::clear(int mask)
 
 void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene)
 {
+    /*
+    frameBuffer->bind(GL_FRAMEBUFFER);
+    glEnable(GL_DEPTH_TEST);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    */
     glPolygonMode(GL_FRONT, GL_FILL);
 
     scene->camera->calculate_view_projection_matrix();
     glm::mat4 viewProjectionMatrix = scene->camera->get_view_projection_matrix();
 
+    glUseProgram(this->shaders[0]->get_program());
     this->shaders[0]->set_mat4x4("view",scene->camera->get_view_matrix());
     this->shaders[0]->set_mat4x4("projection",scene->camera->get_projection_matrix());
-
     this->shaders[0]->set_vec3("directionalLight.direction", scene->light[0]->transform->position);
     this->shaders[0]->set_vec3("directionalLight.ambient", glm::vec3(0.05f, 0.05f, 0.05f));
     this->shaders[0]->set_vec3("directionalLight.diffuse", glm::vec3(0.4f, 0.4f, 0.4f));
     this->shaders[0]->set_vec3("directionalLight.specular", glm::vec3(0.5f, 0.5f, 0.5f));
-
     this->shaders[0]->set_vec3("viewPosition",scene->camera->transform->position);
-
     this->shaders[0]->set_texture("material.diffuse",this->textures[0]->id);
     this->shaders[0]->set_texture("material.specular",this->textures[0]->id);
     this->shaders[0]->set_float("material.shininess",32.0f);
@@ -83,25 +85,31 @@ void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene
 
         glm::mat4 mvp = viewProjectionMatrix * mesh->transform->get_trs();
 
-        glUseProgram(this->shaders[0]->get_program());
-
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, this->textures[0]->id);
         this->shaders[0]->set_mat4x4("model",mesh->transform->get_trs());
 
         //todo: fix vertex attrib array enable : disable :(
-        glEnableVertexAttribArray(0);
-        glEnableVertexAttribArray(1);
-        glEnableVertexAttribArray(2);
-
         mesh->get_vao()->bind();
 
         glDrawArrays(GL_TRIANGLES,0,mesh->get_vertices_size()); // todo FIX INDICES!
-
-        glDisableVertexAttribArray(0);
-        glDisableVertexAttribArray(1);
-        glDisableVertexAttribArray(2);
     }
+
+    /*
+    glBindFramebuffer(GL_FRAMEBUFFER,0);
+    glDisable(GL_DEPTH_TEST);
+
+    glClearColor(1,0.5,0.5,1);
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    glUseProgram(frameBuffer->get_screen_shader()->get_program());
+
+    glBindTexture(GL_TEXTURE_2D, frameBuffer->get_color_buffer_texture()->id);
+
+    glBindVertexArray(frameBuffer->testVAO);
+
+    glDrawArrays(GL_TRIANGLES,0,6);
+     */
 }
 
 void Ludvig::Rendering::Renderer::create_gui_frame()
