@@ -63,7 +63,7 @@ add_executable(
         source/rendering/VertexArrayObject.cpp
         source/rendering/VertexArrayObject.h
         source/rendering/FrameBuffer.cpp
-        source/rendering/FrameBuffer.h source/rendering/Material.h source/GUI/windows/GWPostProcessing.h)
+        source/rendering/FrameBuffer.h source/rendering/Material.h source/GUI/windows/GWPostProcessing.h source/GUI/windows/GWMenuBar.h)
 
 target_link_libraries(Ludvig glfw ${GLFW_LIBRARIES} -lopengl32)
 
