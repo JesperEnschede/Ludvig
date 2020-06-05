@@ -13,5 +13,6 @@
 #include "GWLightInspector.h"
 #include "GWLightSettingsInspector.h"
 #include "GWPostProcessing.h"
+#include "GWMenuBar.h"
 
 #endif //LUDVIG_GWINCLUDES_H
