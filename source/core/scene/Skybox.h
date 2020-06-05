@@ -5,6 +5,8 @@
 #ifndef LUDVIG_SKYBOX_H
 #define LUDVIG_SKYBOX_H
 
+#include "Mesh.h"
+
 #include "glad/glad.h"
 
 #include "vector"
@@ -31,48 +33,10 @@ namespace Ludvig
                  */
                 ~Skybox();
 
-                GLuint vbo;
+                Mesh* get_skybox_mesh();
 
             private:
-                std::vector<float> vertices =
-                        {
-                                -1.0f,  1.0f, -1.0f,
-                                -1.0f, -1.0f, -1.0f,
-                                1.0f, -1.0f, -1.0f,
-                                1.0f, -1.0f, -1.0f,
-                                1.0f,  1.0f, -1.0f,
-                                -1.0f,  1.0f, -1.0f,
-                                -1.0f, -1.0f,  1.0f,
-                                -1.0f, -1.0f, -1.0f,
-                                -1.0f,  1.0f, -1.0f,
-                                -1.0f,  1.0f, -1.0f,
-                                -1.0f,  1.0f,  1.0f,
-                                -1.0f, -1.0f,  1.0f,
-                                1.0f, -1.0f, -1.0f,
-                                1.0f, -1.0f,  1.0f,
-                                1.0f,  1.0f,  1.0f,
-                                1.0f,  1.0f,  1.0f,
-                                1.0f,  1.0f, -1.0f,
-                                1.0f, -1.0f, -1.0f,
-                                -1.0f, -1.0f,  1.0f,
-                                -1.0f,  1.0f,  1.0f,
-                                1.0f,  1.0f,  1.0f,
-                                1.0f,  1.0f,  1.0f,
-                                1.0f, -1.0f,  1.0f,
-                                -1.0f, -1.0f,  1.0f,
-                                -1.0f,  1.0f, -1.0f,
-                                1.0f,  1.0f, -1.0f,
-                                1.0f,  1.0f,  1.0f,
-                                1.0f,  1.0f,  1.0f,
-                                -1.0f,  1.0f,  1.0f,
-                                -1.0f,  1.0f, -1.0f,
-                                -1.0f, -1.0f, -1.0f,
-                                -1.0f, -1.0f,  1.0f,
-                                1.0f, -1.0f, -1.0f,
-                                1.0f, -1.0f, -1.0f,
-                                -1.0f, -1.0f,  1.0f,
-                                1.0f, -1.0f,  1.0f
-                        };
+                std::unique_ptr<Mesh> skyboxMesh;
             };
         }
     }
