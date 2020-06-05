@@ -36,7 +36,6 @@ Ludvig::Rendering::Renderer::Renderer(Window* window)
 
     this->textures.push_back(std::make_unique<Core::Scene::Texture>("assets/textures/monkey.jpg"));
 
-    /*
     std::vector<const char*> faces = { "assets/skybox/right.jpg",
                                        "assets/skybox/left.jpg",
                                        "assets/skybox/top.jpg",
@@ -45,7 +44,6 @@ Ludvig::Rendering::Renderer::Renderer(Window* window)
                                        "assets/skybox/back.jpg"};
 
     this->cubeMaps.push_back(std::make_unique<Cubemap>(faces));
-    */
 
     this->frameBuffer = std::make_unique<FrameBuffer>();
 }
@@ -69,10 +67,10 @@ void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene
     glUseProgram(this->shaders[0]->get_program());
     this->shaders[0]->set_mat4x4("view",scene->camera->get_view_matrix());
     this->shaders[0]->set_mat4x4("projection",scene->camera->get_projection_matrix());
-    this->shaders[0]->set_vec3("directionalLight.direction", scene->light[0]->transform->position);
-    this->shaders[0]->set_vec3("directionalLight.ambient", glm::vec3(0.05f, 0.05f, 0.05f));
-    this->shaders[0]->set_vec3("directionalLight.diffuse", glm::vec3(0.4f, 0.4f, 0.4f));
-    this->shaders[0]->set_vec3("directionalLight.specular", glm::vec3(0.5f, 0.5f, 0.5f));
+    this->shaders[0]->set_vec3("directionalLight.direction", scene->light[0]->transform->rotation);
+    this->shaders[0]->set_vec3("directionalLight.ambient", scene->lightSettings->ambientLightColor);
+    this->shaders[0]->set_vec3("directionalLight.diffuse", scene->light[0]->color - glm::vec3(0.1f, 0.1f, 0.1f));
+    this->shaders[0]->set_vec3("directionalLight.specular", scene->light[0]->color);
     this->shaders[0]->set_vec3("viewPosition",scene->camera->transform->position);
     this->shaders[0]->set_texture("material.diffuse",this->textures[0]->id);
     this->shaders[0]->set_texture("material.specular",this->textures[0]->id);
