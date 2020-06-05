@@ -12,7 +12,7 @@
 
 Ludvig::Core::Scene::Transform::Transform()
 {
-    this->rotation.w = 1;
+
 }
 
 glm::mat4 Ludvig::Core::Scene::Transform::get_trs()
@@ -26,10 +26,8 @@ glm::mat4 Ludvig::Core::Scene::Transform::get_trs()
     */
 
     // Yes. yes. i know this is the best matrix rotation you've ever seen :(
-    glm::mat4 rotationMatrix = glm::mat4(1.0f);// = glm::mat4_cast(this->rotation);
-    this->rotation = glm::quat(glm::eulerAngles(this->rotation));
-
-    rotationMatrix = glm::mat4_cast(this->rotation);
+    //glm::mat4 rotationMatrix = glm::mat4_cast(this->rotation);
+    glm::mat4 rotationMatrix = glm::eulerAngleYXZ(this->rotation.x, this->rotation.y,this->rotation.z);
     glm::mat4 translationMatrix = glm::translate(glm::mat4(1.0f), this->position);
     glm::mat4 scaleMatrix = glm::scale(glm::mat4(1.0f), this->scale);
 
@@ -48,7 +46,6 @@ void Ludvig::Core::Scene::Transform::rotate(float yaw, float pitch, float roll)
     this->rotation.x += yaw;
     this->rotation.y += pitch;
     this->rotation.z += roll;
-    this->rotation.w = 1;
 }
 
 void Ludvig::Core::Scene::Transform::set_scale(float x, float y, float z)
