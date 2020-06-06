@@ -8,6 +8,8 @@
 #include "../GUIWindow.h"
 #include "../../rendering/Window.h"
 
+#include "GWIncludes.h"
+
 namespace Ludvig
 {
     namespace Core
@@ -34,7 +36,7 @@ namespace Ludvig
                     {
                         if (ImGui::MenuItem("Import model"))
                         {
-                            
+
                         }
 
                         if (ImGui::MenuItem("Exit"))
@@ -51,15 +53,15 @@ namespace Ludvig
                         {
                             if (ImGui::MenuItem("Mesh"))
                             {
-
+                                this->manager->get_window<GWMeshInspector>()->enabled = !this->manager->get_window<GWMeshInspector>()->enabled;
                             }
                             if (ImGui::MenuItem("Light"))
                             {
-
+                                this->manager->get_window<GWLightInspector>()->enabled = !this->manager->get_window<GWLightInspector>()->enabled;
                             }
                             if (ImGui::MenuItem("Camera"))
                             {
-
+                                this->manager->get_window<GWCameraInspector>()->enabled = !this->manager->get_window<GWCameraInspector>()->enabled;
                             }
 
                             ImGui::EndMenu();
@@ -69,12 +71,12 @@ namespace Ludvig
                         {
                             if (ImGui::MenuItem("Post Processing"))
                             {
-
+                                this->manager->get_window<GWPostProcessing>()->enabled = !this->manager->get_window<GWPostProcessing>()->enabled;
                             }
 
                             if (ImGui::MenuItem("Lighting"))
                             {
-
+                                this->manager->get_window<GWLightSettingsInspector>()->enabled = !this->manager->get_window<GWLightSettingsInspector>()->enabled;
                             }
 
                             ImGui::EndMenu();
@@ -84,7 +86,7 @@ namespace Ludvig
                         {
                             if (ImGui::MenuItem("Profiler"))
                             {
-
+                                this->manager->get_window<GWProfiler>()->enabled = !this->manager->get_window<GWProfiler>()->enabled;
                             }
 
                             if (ImGui::MenuItem("Render debug view"))
