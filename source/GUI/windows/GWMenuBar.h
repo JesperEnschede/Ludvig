@@ -96,7 +96,7 @@ namespace Ludvig
 
                             if (ImGui::MenuItem("Console"))
                             {
-                                this->manager->get_window<GWProfiler>()->enabled = !this->manager->get_window<GWConsole>()->enabled;
+                                this->manager->get_window<GWConsole>()->enabled = !this->manager->get_window<GWConsole>()->enabled;
                             }
 
                             ImGui::EndMenu();
