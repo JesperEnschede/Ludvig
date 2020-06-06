@@ -3,8 +3,9 @@
 
 int main()
 {
-    Ludvig::Core::Application renderingEngine;
     Ludvig::Debug::DebugLog log;
+
+    Ludvig::Core::Application renderingEngine;
 
     renderingEngine.start();
 
