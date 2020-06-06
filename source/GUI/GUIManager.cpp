@@ -27,7 +27,8 @@ void Ludvig::Core::GUIManager::draw_windows()
 {
     for (int i = 0; i < this->windows.size(); ++i)
     {
-        this->windows[i]->on_gui();
+        if (this->windows[i]->enabled)
+            this->windows[i]->on_gui();
     }
 }
 
