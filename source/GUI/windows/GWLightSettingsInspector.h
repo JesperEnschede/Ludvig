@@ -19,6 +19,8 @@ namespace Ludvig
             GWLightSettingsInspector(Rendering::LightSettings* lightSettings)
             {
                 this->lightSettings = lightSettings;
+
+                this->enabled = false;
             }
 
             void on_gui() override

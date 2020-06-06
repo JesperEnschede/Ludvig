@@ -14,6 +14,11 @@ namespace Ludvig
         class GWPostProcessing : public GUIWindow
         {
         public:
+            GWPostProcessing()
+            {
+                this->enabled = false;
+            }
+
             void on_gui() override
             {
                 ImGui::Begin("Post processing editor");

@@ -16,7 +16,7 @@ namespace Ludvig
         public:
             GWMeshInspector(Object *object) : GWObjectInspector(object)
             {
-
+                this->enabled = false;
             }
 
             void on_gui() override

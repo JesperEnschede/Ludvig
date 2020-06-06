@@ -19,6 +19,8 @@ namespace Ludvig
             GWObjectInspector(Object* object)
             {
                 this->object = object;
+
+                this->enabled = false;
             }
 
             void on_gui() override = 0;

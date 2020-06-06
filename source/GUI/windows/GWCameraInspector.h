@@ -19,6 +19,8 @@ namespace Ludvig
             GWCameraInspector(Object *object) : GWObjectInspector(object)
             {
                 this->camera = reinterpret_cast<Scene::Camera*>(object);
+
+                this->enabled = false;
             }
 
             void on_gui() override

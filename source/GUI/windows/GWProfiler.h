@@ -16,6 +16,11 @@ namespace Ludvig
         class GWProfiler : public GUIWindow
         {
         public:
+            GWProfiler()
+            {
+                this->enabled = false;
+            }
+
             void on_gui() override;
         };
     }
