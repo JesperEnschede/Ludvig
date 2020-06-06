@@ -7,7 +7,7 @@
 
 #include "GWObjectInspector.h"
 
-#include "../../core/scene/Camera.h"
+#include "../../../core/scene/Camera.h"
 
 namespace Ludvig
 {

@@ -5,9 +5,9 @@
 #ifndef LUDVIG_GWLIGHTSETTINGSINSPECTOR_H
 #define LUDVIG_GWLIGHTSETTINGSINSPECTOR_H
 
-#include "GWObjectInspector.h"
+#include "../Objects/GWObjectInspector.h"
 
-#include "../../rendering/LightSettings.h"
+#include "../../../rendering/LightSettings.h"
 
 namespace Ludvig
 {

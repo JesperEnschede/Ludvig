@@ -5,7 +5,7 @@
 #ifndef LUDVIG_GWPOSTPROCESSING_H
 #define LUDVIG_GWPOSTPROCESSING_H
 
-#include "../GUIWindow.h"
+#include "../../GUIWindow.h"
 
 namespace Ludvig
 {

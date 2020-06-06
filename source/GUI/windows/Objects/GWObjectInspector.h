@@ -5,9 +5,9 @@
 #ifndef LUDVIG_GWOBJECTINSPECTOR_H
 #define LUDVIG_GWOBJECTINSPECTOR_H
 
-#include "../GUIWindow.h"
+#include "../../GUIWindow.h"
 
-#include "../../core/Object.h"
+#include "../../../core/Object.h"
 
 namespace Ludvig
 {

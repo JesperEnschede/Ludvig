@@ -7,12 +7,12 @@
 
 // This header file includes all the GuiWindows.
 
-#include "GWProfiler.h"
-#include "GWMeshInspector.h"
-#include "GWCameraInspector.h"
-#include "GWLightInspector.h"
-#include "GWLightSettingsInspector.h"
-#include "GWPostProcessing.h"
+#include "Debug/GWProfiler.h"
+#include "Objects/GWMeshInspector.h"
+#include "Objects/GWCameraInspector.h"
+#include "Objects/GWLightInspector.h"
+#include "Visual/GWLightSettingsInspector.h"
+#include "Visual/GWPostProcessing.h"
 #include "GWMenuBar.h"
 
 #endif //LUDVIG_GWINCLUDES_H
