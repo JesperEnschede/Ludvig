@@ -4,6 +4,8 @@
 
 #include "Application.h"
 
+#include "../debug/DebugLog.h"
+
 #include "imgui.h"
 
 #include "chrono"
@@ -18,6 +20,8 @@ Ludvig::Core::Application::Application()
 
 void Ludvig::Core::Application::start()
 {
+    Debug::DebugLog::log_message("Starting ludvig " + this->version);
+
     runtime();
 }
 
