@@ -15,8 +15,9 @@ namespace Ludvig
         class GWMenuBar : public GUIWindow
         {
         public:
-            GWMenuBar(Rendering::Window* window)
+            GWMenuBar(GUIManager* manager,Rendering::Window* window)
             {
+                this->manager = manager;
                 this->window = window;
             }
 
@@ -130,6 +131,7 @@ namespace Ludvig
             }
 
         private:
+            GUIManager* manager;
             Rendering::Window* window;
         };
     }
