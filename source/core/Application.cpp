@@ -12,6 +12,8 @@
 
 Ludvig::Core::Application::Application()
 {
+    Debug::DebugLog::log_message("Initializing Ludvig " + this->version);
+
     this->window = std::make_unique<Rendering::Window>(1280,720,true);
     this->renderer = std::make_unique<Rendering::Renderer>(this->window.get());
     this->scene = std::make_unique<Scene::Scene>();
@@ -20,7 +22,7 @@ Ludvig::Core::Application::Application()
 
 void Ludvig::Core::Application::start()
 {
-    Debug::DebugLog::log_message("Starting ludvig " + this->version);
+    Debug::DebugLog::log_message("Starting Ludvig runtime");
 
     runtime();
 }
