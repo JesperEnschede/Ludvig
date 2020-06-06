@@ -16,11 +16,12 @@ Ludvig::Core::Scene::Scene::Scene()
     this->light.push_back(std::make_unique<Light>());
     this->light[0]->type = LightType::Directional;
     this->light[0]->name = "Directional light \0";
+    this->light[0]->transform->rotation = glm::vec3(0,0,1.5);
 
     this->camera->name = "Camera";
     this->camera->transform->translate(0,0,-15);
 
-    load_mesh("assets/models/well.obj");
+    load_mesh("assets/models/monkey.obj");
     //load_mesh("assets/models/plane.obj");
 }
 
