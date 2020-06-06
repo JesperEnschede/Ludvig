@@ -57,6 +57,8 @@ namespace Ludvig
                  */
                 void set_float(const char* uniform, float value);
 
+                void set_bool(const char* uniform, int boolean);
+
             public:
                 /*
                  * Compile a GLSL shader.

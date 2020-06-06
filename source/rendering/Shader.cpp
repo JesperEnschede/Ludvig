@@ -17,6 +17,11 @@ Ludvig::Core::Scene::Shader::Shader(std::string vertexPath, std::string fragment
     this->program = compile(vertexCode,fragmentCode);
 }
 
+Ludvig::Core::Scene::Shader::~Shader()
+{
+    glDeleteProgram(this->program);
+}
+
 GLuint Ludvig::Core::Scene::Shader::get_program() const
 {
     return this->program;
@@ -102,9 +107,9 @@ void Ludvig::Core::Scene::Shader::set_float(const char *uniform, float value)
     glUniform1f(glGetUniformLocation(this->program,uniform),value);
 }
 
-Ludvig::Core::Scene::Shader::~Shader()
+void Ludvig::Core::Scene::Shader::set_bool(const char *uniform, int boolean)
 {
-    glDeleteProgram(this->program);
+    glUniform1i(glGetUniformLocation(this->program,uniform), boolean);
 }
 
 
