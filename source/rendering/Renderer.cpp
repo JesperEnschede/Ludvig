@@ -14,7 +14,11 @@ Ludvig::Rendering::Renderer::Renderer(Window* window)
 {
     if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress))
     {
-        Debug::DebugLog::log_error("failed to load openGL | GLVersion.major: " + std::to_string(GLVersion.major) + " GLVersion.minor: "+ std::to_string(GLVersion.minor));
+        Debug::DebugLog::log_error("Failed to load openGL | GLVersion.major: " + std::to_string(GLVersion.major) + " GLVersion.minor: "+ std::to_string(GLVersion.minor));
+    }
+    else
+    {
+        Debug::DebugLog::log_message("Successfully initialized renderer");
     }
 
     IMGUI_CHECKVERSION();

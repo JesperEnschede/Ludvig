@@ -5,9 +5,12 @@
 #include "Scene.h"
 
 #include "../../data/ModelLoader.h"
+#include "../../debug/DebugLog.h"
 
 Ludvig::Core::Scene::Scene::Scene()
 {
+    Debug::DebugLog::log_message("Creating scene");
+
     this->camera = std::make_unique<Camera>();
 
     this->lightSettings = std::make_unique<Rendering::LightSettings>();
@@ -27,6 +30,8 @@ Ludvig::Core::Scene::Scene::Scene()
 
 bool Ludvig::Core::Scene::Scene::load_mesh(const char *path)
 {
+    Debug::DebugLog::log_message("Loading mesh: " + std::string(path));
+
     std::vector<glm::vec3> vertices = std::vector<glm::vec3>();
     std::vector<glm::vec2> uvs = std::vector<glm::vec2>();
     std::vector<glm::vec3> normals = std::vector<glm::vec3>();
