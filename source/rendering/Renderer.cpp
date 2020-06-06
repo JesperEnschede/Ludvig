@@ -4,6 +4,8 @@
 
 #include "Renderer.h"
 
+#include "../debug/DebugLog.h"
+
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
@@ -12,10 +14,7 @@ Ludvig::Rendering::Renderer::Renderer(Window* window)
 {
     if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress))
     {
-        std::printf("Error: failed to load openGL!");
-        std::printf("OpenGL: major: %d  minor: %d", GLVersion.major, GLVersion.minor);
-
-        return;
+        Debug::DebugLog::log_error("failed to load openGL | GLVersion.major: " + std::to_string(GLVersion.major) + " GLVersion.minor: "+ std::to_string(GLVersion.minor));
     }
 
     IMGUI_CHECKVERSION();
