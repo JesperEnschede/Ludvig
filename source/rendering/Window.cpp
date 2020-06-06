@@ -82,7 +82,7 @@ void Ludvig::Rendering::Window::window_resize_callback(int w, int h)
     this->width = w;
     this->height = h;
 
-    glViewport(0,0,width,height);
+    glViewport(0,0,w,h);
 }
 
 GLFWwindow *Ludvig::Rendering::Window::get_context() const
