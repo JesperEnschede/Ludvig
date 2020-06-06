@@ -14,16 +14,15 @@ namespace Ludvig
             class PostProcessingVolume
             {
             public:
-                bool enable_kernel;
-                bool enable_colorShift;
-                bool enable_invert;
+                bool enable_kernel = false;
+                bool enable_colorShift = false;
+                bool enable_invert = false;
 
                 float kernel[9] = { 0,0,0,0,0,0,0,0,0};
-                float colorShift[3] = { 1,1,1};
+                float colorShift[3] = { 0.5f,0.5f,0.5f};
             };
         }
     }
 }
-
 
 #endif //LUDVIG_POSTPROCESSINGVOLUME_H
