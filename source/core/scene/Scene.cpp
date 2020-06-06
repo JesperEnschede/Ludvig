@@ -12,9 +12,9 @@ Ludvig::Core::Scene::Scene::Scene()
     Debug::DebugLog::log_message("Creating scene");
 
     this->camera = std::make_unique<Camera>();
-
     this->lightSettings = std::make_unique<Rendering::LightSettings>();
     this->skybox = std::make_unique<Skybox>();
+    this->postProcessingVolume = std::make_unique<PostProcessingVolume>();
 
     this->light.push_back(std::make_unique<Light>());
     this->light[0]->type = LightType::Directional;
