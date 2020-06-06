@@ -72,8 +72,8 @@ void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene
     this->shaders[0]->set_mat4x4("projection",scene->camera->get_projection_matrix());
     this->shaders[0]->set_vec3("directionalLight.direction", scene->light[0]->transform->rotation);
     this->shaders[0]->set_vec3("directionalLight.ambient", scene->lightSettings->ambientLightColor);
-    this->shaders[0]->set_vec3("directionalLight.diffuse", scene->light[0]->color - glm::vec3(0.1f, 0.1f, 0.1f));
-    this->shaders[0]->set_vec3("directionalLight.specular", scene->light[0]->color);
+    this->shaders[0]->set_vec3("directionalLight.diffuse", scene->light[0]->color - glm::vec3(0.1f, 0.1f, 0.1f) * scene->light[0]->intensity);
+    this->shaders[0]->set_vec3("directionalLight.specular", scene->light[0]->color * scene->light[0]->intensity);
     this->shaders[0]->set_vec3("viewPosition",scene->camera->transform->position);
     this->shaders[0]->set_texture("material.diffuse",this->textures[0]->id);
     this->shaders[0]->set_texture("material.specular",this->textures[0]->id);
