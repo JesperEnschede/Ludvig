@@ -79,7 +79,18 @@ void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene
     this->shaders[0]->set_texture("material.specular",this->textures[0]->id);
     this->shaders[0]->set_float("material.shininess",32.0f);
 
-    this->frameBuffer->get_screen_shader()->set_texture("screenTexture", this->frameBuffer->get_color_buffer_texture()->id);
+    glUseProgram(frameBuffer->get_screen_shader()->get_program());
+    this->frameBuffer->get_screen_shader()->set_bool("post_kernel", scene->postProcessingVolume->enable_kernel);
+    for (int j = 0; j < 9; ++j)
+    {
+        this->frameBuffer->get_screen_shader()->set_float(std::string("kernel[ " + std::to_string(j) + " ]").c_str(), scene->postProcessingVolume->kernel[0]);
+    }
+
+    this->frameBuffer->get_screen_shader()->set_bool("post_colorShift", scene->postProcessingVolume->enable_colorShift);
+    this->frameBuffer->get_screen_shader()->set_vec3("colorShift", glm::vec3(scene->postProcessingVolume->colorShift[0],scene->postProcessingVolume->colorShift[1],scene->postProcessingVolume->colorShift[2]));
+    this->frameBuffer->get_screen_shader()->set_bool("post_invert", scene->postProcessingVolume->enable_invert);
+
+    glUseProgram(this->shaders[0]->get_program());
 
     for (int i = 0; i < scene->meshes.size(); ++i)
     {
