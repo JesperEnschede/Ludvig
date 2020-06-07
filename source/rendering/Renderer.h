@@ -9,7 +9,7 @@
 #include "Shader.h"
 #include "Texture.h"
 #include "Cubemap.h"
-#include "FrameBuffer.h"
+#include "Buffers/FrameBuffer.h"
 
 #include "glad/glad.h"
 #include "Window.h"

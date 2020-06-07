@@ -9,6 +9,8 @@
 
 #include "GUIWindow.h"
 
+#include "imgui.h"
+
 #include "memory"
 #include "vector"
 

@@ -58,12 +58,12 @@ add_executable(
         source/core/scene/Skybox.cpp
         source/core/scene/Skybox.h
         source/debug/DebugLog.cpp source/debug/DebugLog.h
-        source/rendering/VertexBufferObject.cpp
-        source/rendering/VertexBufferObject.h
+        source/rendering/Buffers/VertexBufferObject.cpp
+        source/rendering/Buffers/VertexBufferObject.h
         source/rendering/VertexArrayObject.cpp
         source/rendering/VertexArrayObject.h
-        source/rendering/FrameBuffer.cpp
-        source/rendering/FrameBuffer.h source/rendering/Material.h source/GUI/windows/Visual/GWPostProcessing.h source/GUI/windows/GWMenuBar.h source/GUI/windows/Debug/GWConsole.h source/core/scene/PostProcessingVolume.cpp source/core/scene/PostProcessingVolume.h)
+        source/rendering/Buffers/FrameBuffer.cpp
+        source/rendering/Buffers/FrameBuffer.h source/rendering/Material.h source/GUI/windows/Visual/GWPostProcessing.h source/GUI/windows/GWMenuBar.h source/GUI/windows/Debug/GWConsole.h source/core/scene/PostProcessingVolume.cpp source/core/scene/PostProcessingVolume.h)
 
 target_link_libraries(Ludvig glfw ${GLFW_LIBRARIES} -lopengl32)
 

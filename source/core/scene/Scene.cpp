@@ -24,8 +24,7 @@ Ludvig::Core::Scene::Scene::Scene()
     this->camera->name = "Camera";
     this->camera->transform->translate(0,0,-15);
 
-    load_mesh("assets/models/monkey.obj");
-    //load_mesh("assets/models/plane.obj");
+    load_mesh("assets/models/well.obj");
 }
 
 bool Ludvig::Core::Scene::Scene::load_mesh(const char *path)

@@ -4,7 +4,7 @@
 
 #include "FrameBuffer.h"
 
-#include "../debug/DebugLog.h"
+#include "../../debug/DebugLog.h"
 
 #include "glad/glad.h"
 

@@ -6,10 +6,10 @@
 #define LUDVIG_FRAMEBUFFER_H
 
 #include "VertexBufferObject.h"
-#include "Texture.h"
+#include "../Texture.h"
 
-#include "Shader.h"
-#include "../core/scene/Mesh.h"
+#include "../Shader.h"
+#include "../../core/scene/Mesh.h"
 
 namespace Ludvig
 {
