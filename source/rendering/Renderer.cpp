@@ -37,7 +37,7 @@ Ludvig::Rendering::Renderer::Renderer(Window* window)
     this->shaders.push_back(std::make_unique<Core::Scene::Shader>("assets/shaders/skybox_vertex.glsl","assets/shaders/skybox_fragment.glsl"));
     this->shaders.push_back(std::make_unique<Core::Scene::Shader>("assets/shaders/framebuffer_vertex.glsl","assets/shaders/framebuffer_fragment.glsl"));
 
-    this->textures.push_back(std::make_unique<Core::Scene::Texture>("assets/textures/monkey.jpg"));
+    this->textures.push_back(std::make_unique<Core::Scene::Texture>("assets/textures/grey.jpg"));
 
     std::vector<const char*> faces = { "assets/skybox/right.jpg",
                                        "assets/skybox/left.jpg",
@@ -81,10 +81,6 @@ void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene
 
     glUseProgram(frameBuffer->get_screen_shader()->get_program());
     this->frameBuffer->get_screen_shader()->set_bool("post_kernel", scene->postProcessingVolume->enable_kernel);
-    for (int j = 0; j < 9; ++j)
-    {
-        this->frameBuffer->get_screen_shader()->set_float(std::string("kernel[ " + std::to_string(j) + " ]").c_str(), scene->postProcessingVolume->kernel[0]);
-    }
 
     this->frameBuffer->get_screen_shader()->set_bool("post_colorShift", scene->postProcessingVolume->enable_colorShift);
     this->frameBuffer->get_screen_shader()->set_vec3("colorShift", glm::vec3(scene->postProcessingVolume->colorShift[0],scene->postProcessingVolume->colorShift[1],scene->postProcessingVolume->colorShift[2]));
