@@ -63,7 +63,7 @@ add_executable(
         source/rendering/VertexArrayObject.cpp
         source/rendering/VertexArrayObject.h
         source/rendering/Buffers/FrameBuffer.cpp
-        source/rendering/Buffers/FrameBuffer.h source/rendering/Material.h source/GUI/windows/Visual/GWPostProcessing.h source/GUI/windows/GWMenuBar.h source/GUI/windows/Debug/GWConsole.h source/core/scene/PostProcessingVolume.cpp source/core/scene/PostProcessingVolume.h source/rendering/Buffers/UniformBufferObject.cpp source/rendering/Buffers/UniformBufferObject.h)
+        source/rendering/Buffers/FrameBuffer.h source/rendering/Material.h source/GUI/windows/Visual/GWPostProcessing.h source/GUI/windows/GWMenuBar.h source/GUI/windows/Debug/GWConsole.h source/core/scene/PostProcessingVolume.cpp source/core/scene/PostProcessingVolume.h source/rendering/Buffers/UniformBufferObject.cpp source/rendering/Buffers/UniformBufferObject.h source/rendering/Shader/UniformBlock.cpp source/rendering/Shader/UniformBlock.h)
 
 target_link_libraries(Ludvig glfw ${GLFW_LIBRARIES} -lopengl32)
 
