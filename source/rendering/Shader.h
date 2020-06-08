@@ -28,6 +28,11 @@ namespace Ludvig
                 Shader(std::string vertexPath, std::string fragmentPath);
 
                 /*
+                 * Destroys the shader program.
+                 */
+                ~Shader();
+
+                /*
                  * Returns the shader program.
                  */
                 GLuint get_program() const;
@@ -51,6 +56,8 @@ namespace Ludvig
                  * Set a uniform float value.
                  */
                 void set_float(const char* uniform, float value);
+
+                void set_bool(const char* uniform, int boolean);
 
             public:
                 /*

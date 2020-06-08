@@ -26,6 +26,11 @@ namespace Ludvig
              */
             Cubemap(std::vector<const char*> faces);
 
+            /*
+             * Destroys the cubemap texture.
+             */
+            ~Cubemap();
+
         public:
             GLuint id;
 

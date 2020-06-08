@@ -13,18 +13,23 @@ Ludvig::Core::GUIManager::GUIManager(Application *app)
 
     this->set_gui_style();
 
-    this->add_window<GWProfiler>();
+    this->windows.push_back(std::make_unique<GWMenuBar>(this,app->window.get()));
+
+    this->windows.push_back(std::make_unique<GWProfiler>());
     this->windows.push_back(std::make_unique<GWMeshInspector>(app->scene->meshes[0].get()));
     this->windows.push_back(std::make_unique<GWCameraInspector>(app->scene->camera.get()));
-    this->windows.push_back(std::make_unique<GWLightInspector>(app->scene->light.get()));
+    this->windows.push_back(std::make_unique<GWLightInspector>(app->scene->light[0].get()));
     this->windows.push_back(std::make_unique<GWLightSettingsInspector>(app->scene->lightSettings.get()));
+    this->windows.push_back(std::make_unique<GWPostProcessing>(app->scene->postProcessingVolume.get()));
+    this->windows.push_back(std::make_unique<GWConsole>());
 }
 
 void Ludvig::Core::GUIManager::draw_windows()
 {
     for (int i = 0; i < this->windows.size(); ++i)
     {
-        this->windows[i]->on_gui();
+        if (this->windows[i]->enabled)
+            this->windows[i]->on_gui();
     }
 }
 
@@ -32,7 +37,6 @@ void Ludvig::Core::GUIManager::set_gui_style()
 {
     ImGuiStyle& style = ImGui::GetStyle();
 
-    // style from https://github.com/ocornut/imgui/pull/511#issuecomment-175719267
     style.Alpha = 1.0f;
     style.FrameRounding = 0.0f;
     style.WindowRounding = 0.0f;

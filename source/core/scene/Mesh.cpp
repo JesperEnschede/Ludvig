@@ -4,54 +4,49 @@
 
 #include "Mesh.h"
 
+Ludvig::Core::Scene::Mesh::Mesh(std::vector<glm::vec3> vertices)
+{
+    this->vertices = vertices;
+
+    this->vertexArrayObject = std::make_unique<Rendering::VertexArrayObject>();
+    this->buffers.push_back(std::make_unique<Rendering::VertexBufferObject>(3,0,vertices, GL_ARRAY_BUFFER));
+}
+
+Ludvig::Core::Scene::Mesh::Mesh(std::vector<glm::vec3> vertices, std::vector<glm::vec2> uvs)
+{
+    this->vertices = vertices;
+    this->uvs = uvs;
+
+    this->vertexArrayObject = std::make_unique<Rendering::VertexArrayObject>();
+    this->buffers.push_back(std::make_unique<Rendering::VertexBufferObject>(3,0,vertices, GL_ARRAY_BUFFER));
+    this->buffers.push_back(std::make_unique<Rendering::VertexBufferObject>(2,1,uvs, GL_ARRAY_BUFFER));
+}
+
 Ludvig::Core::Scene::Mesh::Mesh(std::vector<glm::vec3> vertices, std::vector<glm::vec2> uvs, std::vector<glm::vec3> normals)
 {
     this->vertices = vertices;
     this->uvs = uvs;
     this->normals = normals;
 
-    this->generate_vertex_array();
-    this->generate_vertex_buffer();
-    this->generate_normal_buffer();
-    this->generate_uv_buffer();
-    this->generate_element_buffer();
-}
-
-void Ludvig::Core::Scene::Mesh::generate_vertex_array()
-{
-    glGenVertexArrays(1,&this->vao);
-    glBindVertexArray(this->vao);
-}
-
-void Ludvig::Core::Scene::Mesh::generate_vertex_buffer()
-{
-    glGenBuffers(1,&this->vbo);
-    glBindBuffer(GL_ARRAY_BUFFER,this->vbo);
-    glBufferData(GL_ARRAY_BUFFER,this->vertices.size() * sizeof(glm::vec3), &this->vertices[0], GL_STATIC_DRAW);
-}
-
-void Ludvig::Core::Scene::Mesh::generate_normal_buffer()
-{
-    glGenBuffers(1,&this->nbo);
-    glBindBuffer(GL_ARRAY_BUFFER, this->nbo);
-    glBufferData(GL_ARRAY_BUFFER,this->normals.size() * sizeof(glm::vec2), &this->normals[0],GL_STATIC_DRAW);
-}
-
-void Ludvig::Core::Scene::Mesh::generate_uv_buffer()
-{
-    glGenBuffers(1,&this->ubo);
-    glBindBuffer(GL_ARRAY_BUFFER, this->ubo);
-    glBufferData(GL_ARRAY_BUFFER, this->uvs.size() * sizeof(glm::vec3), &this->uvs[0], GL_STATIC_DRAW);
-}
-
-void Ludvig::Core::Scene::Mesh::generate_element_buffer()
-{
-    glGenBuffers(1,&this->ebo);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,this->ebo);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned int), &indices[0], GL_STATIC_DRAW);
+    this->vertexArrayObject = std::make_unique<Rendering::VertexArrayObject>();
+    this->buffers.push_back(std::make_unique<Rendering::VertexBufferObject>(3,0,vertices, GL_ARRAY_BUFFER));
+    this->buffers.push_back(std::make_unique<Rendering::VertexBufferObject>(2,1,uvs, GL_ARRAY_BUFFER));
+    this->buffers.push_back(std::make_unique<Rendering::VertexBufferObject>(3,2,normals, GL_ARRAY_BUFFER));
+    this->buffers.push_back(std::make_unique<Rendering::VertexBufferObject>(3,3,indices, GL_ELEMENT_ARRAY_BUFFER));
 }
 
 std::vector<unsigned int> Ludvig::Core::Scene::Mesh::get_mesh_indices()
 {
     return this->indices;
 }
+
+Ludvig::Rendering::VertexArrayObject *Ludvig::Core::Scene::Mesh::get_vao() const
+{
+    return this->vertexArrayObject.get();
+}
+
+int Ludvig::Core::Scene::Mesh::get_vertices_size()
+{
+    return this->vertices.size();
+}
+

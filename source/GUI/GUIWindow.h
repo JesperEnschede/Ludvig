@@ -27,10 +27,12 @@ namespace Ludvig
 
             static void draw_transform(Scene::Transform* transform)
             {
-                ImGui::DragFloat3("Position", (float*)&transform->position),0.025;
+                ImGui::DragFloat3("Position", (float*)&transform->position,0.025);
                 ImGui::DragFloat3("Rotation", (float*)&transform->rotation,0.025);
                 ImGui::DragFloat3("Scale", (float*)&transform->scale,0.025);
             }
+
+            bool enabled = true;
         };
     }
 }

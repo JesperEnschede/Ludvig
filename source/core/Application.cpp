@@ -4,13 +4,17 @@
 
 #include "Application.h"
 
+#include "../debug/DebugLog.h"
+
 #include "imgui.h"
 
 #include "chrono"
 
 Ludvig::Core::Application::Application()
 {
-    this->window = std::make_unique<Rendering::Window>(800,600,true);
+    Debug::DebugLog::log_message("Initializing Ludvig " + this->version);
+
+    this->window = std::make_unique<Rendering::Window>(1280,720,true);
     this->renderer = std::make_unique<Rendering::Renderer>(this->window.get());
     this->scene = std::make_unique<Scene::Scene>();
     this->guiManager = std::make_unique<GUIManager>(this);
@@ -18,6 +22,8 @@ Ludvig::Core::Application::Application()
 
 void Ludvig::Core::Application::start()
 {
+    Debug::DebugLog::log_message("Starting Ludvig runtime");
+
     runtime();
 }
 
@@ -37,12 +43,12 @@ void Ludvig::Core::Application::runtime()
         this->window->poll_events();
 
         // Temp input system for camera movement.
-        float forwardInput = -glfwGetKey(window->get_context(),GLFW_KEY_W);
-        float backwardsInput = glfwGetKey(window->get_context(),GLFW_KEY_S);
-        float rightInput = glfwGetKey(window->get_context(),GLFW_KEY_D);
-        float leftInput = -glfwGetKey(window->get_context(),GLFW_KEY_A);
-        float upInput = -glfwGetKey(window->get_context(),GLFW_KEY_SPACE);
-        float downInput = glfwGetKey(window->get_context(),GLFW_KEY_LEFT_SHIFT);
+        float forwardInput = glfwGetKey(window->get_context(),GLFW_KEY_W);
+        float backwardsInput = -glfwGetKey(window->get_context(),GLFW_KEY_S);
+        float rightInput = -glfwGetKey(window->get_context(),GLFW_KEY_D);
+        float leftInput = glfwGetKey(window->get_context(),GLFW_KEY_A);
+        float upInput = glfwGetKey(window->get_context(),GLFW_KEY_SPACE);
+        float downInput = -glfwGetKey(window->get_context(),GLFW_KEY_LEFT_SHIFT);
 
         // Temp cameras movement.
         scene->camera->transform->translate(

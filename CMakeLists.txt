@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
 project(Ludvig)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 
 include_directories(external/gl external/dearimgui external/glm external/stb)
 
@@ -44,8 +44,27 @@ add_executable(
         external/dearimgui/imgui_impl_glfw.cpp
         external/dearimgui/imgui_impl_opengl3.cpp
         external/dearimgui/imgui_widgets.cpp
-        source/core/scene/Light.h source/core/Object.cpp source/core/Object.h source/GUI/windows/GWProfiler.cpp source/GUI/windows/GWProfiler.h source/GUI/windows/GWObjectInspector.h source/GUI/windows/GWMeshInspector.h source/GUI/windows/GWCameraInspector.h source/GUI/windows/GWLightInspector.h source/rendering/LightSettings.h source/GUI/windows/GWLightSettingsInspector.h source/rendering/Cubemap.cpp source/rendering/Cubemap.h source/core/scene/Skybox.cpp source/core/scene/Skybox.h)
+        source/core/scene/Light.h source/core/Object.cpp source/core/Object.h
+        source/GUI/windows/Debug/GWProfiler.cpp
+        source/GUI/windows/Debug/GWProfiler.h
+        source/GUI/windows/Objects/GWObjectInspector.h
+        source/GUI/windows/Objects/GWMeshInspector.h
+        source/GUI/windows/Objects/GWCameraInspector.h
+        source/GUI/windows/Objects/GWLightInspector.h
+        source/rendering/LightSettings.h
+        source/GUI/windows/Visual/GWLightSettingsInspector.h
+        source/rendering/Cubemap.cpp
+        source/rendering/Cubemap.h
+        source/core/scene/Skybox.cpp
+        source/core/scene/Skybox.h
+        source/debug/DebugLog.cpp source/debug/DebugLog.h
+        source/rendering/Buffers/VertexBufferObject.cpp
+        source/rendering/Buffers/VertexBufferObject.h
+        source/rendering/VertexArrayObject.cpp
+        source/rendering/VertexArrayObject.h
+        source/rendering/Buffers/FrameBuffer.cpp
+        source/rendering/Buffers/FrameBuffer.h source/rendering/Material.h source/GUI/windows/Visual/GWPostProcessing.h source/GUI/windows/GWMenuBar.h source/GUI/windows/Debug/GWConsole.h source/core/scene/PostProcessingVolume.cpp source/core/scene/PostProcessingVolume.h source/rendering/Buffers/UniformBufferObject.cpp source/rendering/Buffers/UniformBufferObject.h source/rendering/Shader/UniformBlock.cpp source/rendering/Shader/UniformBlock.h)
 
-target_link_libraries(Ludvig glfw ${GLFW_LIBRARIES} -lOpenGL32)
+target_link_libraries(Ludvig glfw ${GLFW_LIBRARIES} -lopengl32)
 
 find_package(OpenGL REQUIRED)

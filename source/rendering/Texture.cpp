@@ -9,6 +9,17 @@
 
 #include "iostream"
 
+Ludvig::Core::Scene::Texture::Texture()
+{
+    glGenTextures(1,&this->id);
+    glBindTexture(GL_TEXTURE_2D, this->id);
+
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 1920, 1080, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+}
+
 Ludvig::Core::Scene::Texture::Texture(const char *path)
 {
     glGenTextures(0,&this->id);
@@ -35,4 +46,9 @@ Ludvig::Core::Scene::Texture::Texture(const char *path)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 
     glGenerateMipmap(GL_TEXTURE_2D);
+}
+
+Ludvig::Core::Scene::Texture::~Texture()
+{
+    glDeleteTextures(1,&id);
 }

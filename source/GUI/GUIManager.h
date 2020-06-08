@@ -9,6 +9,8 @@
 
 #include "GUIWindow.h"
 
+#include "imgui.h"
+
 #include "memory"
 #include "vector"
 
@@ -37,15 +39,15 @@ namespace Ludvig
              */
             void draw_windows();
 
+            template <class T>
+            GUIWindow* get_window();
+
         private:
             /*
              * Add a new window of type T.
              */
             template <class T>
             void add_window();
-
-            template <class T>
-            GUIWindow* get_window();
 
             void set_gui_style();
 

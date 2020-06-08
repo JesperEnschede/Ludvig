@@ -7,7 +7,7 @@
 
 #include "GWObjectInspector.h"
 
-#include "../../core/scene/Light.h"
+#include "../../../core/scene/Light.h"
 
 namespace Ludvig
 {
@@ -19,14 +19,16 @@ namespace Ludvig
             GWLightInspector(Object* object) : GWObjectInspector(object)
             {
                 this->light = reinterpret_cast<Scene::Light*>(object);
+
+                this->enabled = false;
             }
 
             void on_gui() override
             {
-                ImGui::Begin("Light inspector");
+                ImGui::Begin(object->name);
                 this->draw_transform(this->object->transform.get());
                 ImGui::ColorEdit3("Color", (float*)&this->light->color);
-                ImGui::DragFloat("Intensity", &this->light->intensity,0.025,0.1,INT_MAX);
+                ImGui::DragFloat("Intensity", &this->light->intensity,0.025,0.0,INT_MAX);
                 ImGui::End();
             }
 

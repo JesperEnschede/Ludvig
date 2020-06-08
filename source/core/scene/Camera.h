@@ -50,7 +50,7 @@ namespace Ludvig
 
             public:
                 float nearClipping = 0.1f;
-                float farClipping = 100.0f;
+                float farClipping = 1000.0f;
                 float fieldOfView = 60.0f;
 
             private:

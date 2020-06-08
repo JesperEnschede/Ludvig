@@ -3,25 +3,34 @@
 //
 
 #include "Window.h"
-
 #include "iostream"
+
+#include "../debug/DebugLog.h"
 
 Ludvig::Rendering::Window::Window(int width, int height, bool fullscreen)
 {
     if (glfwInit() != GLFW_TRUE)
     {
-        std::printf("Error: failed to initialize window! \n");
+        Debug::DebugLog::log_error("Failed to initialize window");
 
         return;
+    }
+    else
+    {
+        Debug::DebugLog::log_message("Successfully initialized window");
     }
 
     this->window = glfwCreateWindow(width,height,"Ludvig", nullptr,nullptr);
 
     if (window == nullptr)
     {
-        std::printf("Error: failed to create window! \n");
+        Debug::DebugLog::log_error("Failed to create window");
 
         return;
+    }
+    else
+    {
+        Debug::DebugLog::log_message("Successfully created window");
     }
 
     set_samples(16); // default samples.
@@ -40,6 +49,13 @@ Ludvig::Rendering::Window::Window(int width, int height, bool fullscreen)
                                   reinterpret_cast<Window*>(glfwGetWindowUserPointer(w))->window_resize_callback(newWidth,newHeight);
                               });
 }
+
+Ludvig::Rendering::Window::~Window()
+{
+    glfwDestroyWindow(window);
+    glfwTerminate();
+}
+
 
 void Ludvig::Rendering::Window::poll_events()
 {
@@ -73,12 +89,10 @@ void Ludvig::Rendering::Window::set_vSync(int buffers)
 
 void Ludvig::Rendering::Window::window_resize_callback(int w, int h)
 {
-    std::printf("Resizing window: w:%i  h:%i \n",w,h);
-
     this->width = w;
     this->height = h;
 
-    glViewport(0,0,width,height);
+    glViewport(0,0,w,h);
 }
 
 GLFWwindow *Ludvig::Rendering::Window::get_context() const
@@ -90,4 +104,5 @@ bool Ludvig::Rendering::Window::is_closing() const
 {
     return glfwWindowShouldClose(window);
 }
+
 

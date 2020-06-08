@@ -6,7 +6,55 @@
 
 Ludvig::Core::Scene::Skybox::Skybox()
 {
-    glGenBuffers(1,&vbo);
-    glBindBuffer(GL_ARRAY_BUFFER,vbo);
-    glBufferData(GL_ARRAY_BUFFER,this->vertices.size() * sizeof(float), &this->vertices[0], GL_STATIC_DRAW);
+    std::vector<glm::vec3> vertices =
+            {
+                    glm::vec3(-1.0f,  1.0f, -1.0f),
+                    glm::vec3(-1.0f, -1.0f, -1.0f),
+                    glm::vec3(1.0f, -1.0f, -1.0f),
+                    glm::vec3(1.0f,  1.0f, -1.0f),
+                    glm::vec3(-1.0f,  1.0f, -1.0f),
+                    glm::vec3(-1.0f, -1.0f,  1.0f),
+                    glm::vec3(-1.0f, -1.0f, -1.0f),
+                    glm::vec3(-1.0f,  1.0f, -1.0f),
+                    glm::vec3(-1.0f,  1.0f, -1.0f),
+                    glm::vec3(-1.0f,  1.0f,  1.0f),
+                    glm::vec3(-1.0f, -1.0f,  1.0f),
+                    glm::vec3(1.0f, -1.0f, -1.0f),
+                    glm::vec3(1.0f, -1.0f, -1.0f),
+                    glm::vec3(1.0f, -1.0f,  1.0f),
+                    glm::vec3(1.0f,  1.0f,  1.0f),
+                    glm::vec3(1.0f,  1.0f,  1.0f),
+                    glm::vec3(1.0f,  1.0f, -1.0f),
+                    glm::vec3(1.0f, -1.0f, -1.0f),
+                    glm::vec3(-1.0f, -1.0f,  1.0f),
+                    glm::vec3(-1.0f,  1.0f,  1.0f),
+                    glm::vec3(1.0f,  1.0f,  1.0f),
+                    glm::vec3(1.0f,  1.0f,  1.0f),
+                    glm::vec3(1.0f, -1.0f,  1.0f),
+                    glm::vec3(-1.0f, -1.0f,  1.0f),
+                    glm::vec3(-1.0f,  1.0f, -1.0f),
+                    glm::vec3(1.0f,  1.0f, -1.0f),
+                    glm::vec3(1.0f,  1.0f,  1.0f),
+                    glm::vec3(1.0f,  1.0f,  1.0f),
+                    glm::vec3(-1.0f,  1.0f,  1.0f),
+                    glm::vec3(-1.0f,  1.0f, -1.0f),
+                    glm::vec3(-1.0f, -1.0f, -1.0f),
+                    glm::vec3(-1.0f, -1.0f,  1.0f),
+                    glm::vec3(1.0f, -1.0f, -1.0f),
+                    glm::vec3(1.0f, -1.0f, -1.0f),
+                    glm::vec3(-1.0f, -1.0f,  1.0f),
+                    glm::vec3(1.0f, -1.0f,  1.0f)
+            };
+
+    this->skyboxMesh = std::make_unique<Mesh>(vertices);
+}
+
+Ludvig::Core::Scene::Skybox::~Skybox()
+{
+
+}
+
+Ludvig::Core::Scene::Mesh *Ludvig::Core::Scene::Skybox::get_skybox_mesh()
+{
+    return this->skyboxMesh.get();
 }

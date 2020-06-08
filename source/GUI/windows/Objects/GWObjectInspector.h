@@ -5,9 +5,9 @@
 #ifndef LUDVIG_GWOBJECTINSPECTOR_H
 #define LUDVIG_GWOBJECTINSPECTOR_H
 
-#include "../GUIWindow.h"
+#include "../../GUIWindow.h"
 
-#include "../../core/Object.h"
+#include "../../../core/Object.h"
 
 namespace Ludvig
 {
@@ -19,6 +19,8 @@ namespace Ludvig
             GWObjectInspector(Object* object)
             {
                 this->object = object;
+
+                this->enabled = false;
             }
 
             void on_gui() override = 0;

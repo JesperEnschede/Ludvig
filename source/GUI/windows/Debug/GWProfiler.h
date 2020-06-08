@@ -5,7 +5,7 @@
 #ifndef LUDVIG_GWPROFILER_H
 #define LUDVIG_GWPROFILER_H
 
-#include "../GUIWindow.h"
+#include "../../GUIWindow.h"
 
 #include "imgui.h"
 
@@ -16,6 +16,11 @@ namespace Ludvig
         class GWProfiler : public GUIWindow
         {
         public:
+            GWProfiler()
+            {
+                this->enabled = false;
+            }
+
             void on_gui() override;
         };
     }

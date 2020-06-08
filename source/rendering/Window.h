@@ -23,6 +23,11 @@ namespace Ludvig
             Window(int width, int height, bool fullscreen);
 
             /*
+             * Delete this window and terminate GLFW
+             */
+            ~Window();
+
+            /*
              * Poll window events.
              */
             void poll_events();

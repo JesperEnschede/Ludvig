@@ -9,11 +9,13 @@
 #include "Shader.h"
 #include "Texture.h"
 #include "Cubemap.h"
+#include "Buffers/FrameBuffer.h"
 
 #include "glad/glad.h"
 #include "Window.h"
 
 #include "vector"
+#include "memory"
 
 namespace Ludvig
 {
@@ -55,6 +57,8 @@ namespace Ludvig
             std::vector<std::unique_ptr<Core::Scene::Shader>> shaders;
             std::vector<std::unique_ptr<Core::Scene::Texture>> textures;
             std::vector<std::unique_ptr<Cubemap>> cubeMaps;
+
+            std::unique_ptr<FrameBuffer> frameBuffer;
         };
     }
 }
