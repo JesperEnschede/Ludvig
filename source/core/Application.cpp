@@ -14,7 +14,7 @@ Ludvig::Core::Application::Application()
 {
     Debug::DebugLog::log_message("Initializing Ludvig " + this->version);
 
-    this->window = std::make_unique<Rendering::Window>(1280,720,true);
+    this->window = std::make_unique<Rendering::Window>(1920,1080, true);
     this->renderer = std::make_unique<Rendering::Renderer>(this->window.get());
     this->scene = std::make_unique<Scene::Scene>();
     this->guiManager = std::make_unique<GUIManager>(this);

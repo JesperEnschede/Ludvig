@@ -28,24 +28,7 @@ namespace Ludvig
                 ImGui::Begin("Post processing editor");
 
                 ImGui::Checkbox("Blur", &postProcessingVolume->enable_kernel);
-                /*
-                if (postProcessingVolume->enable_kernel)
-                {
-                    ImGui::DragFloat3("Kernel row 1", kernelRow1, 0.01);
-                    ImGui::DragFloat3("Kernel row 2", kernelRow2, 0.01);
-                    ImGui::DragFloat3("Kernel row 3", kernelRow3, 0.01);
 
-                    this->postProcessingVolume->kernel[0] = kernelRow1[0];
-                    this->postProcessingVolume->kernel[1] = kernelRow1[1];
-                    this->postProcessingVolume->kernel[2] = kernelRow1[2];
-                    this->postProcessingVolume->kernel[3] = kernelRow2[0];
-                    this->postProcessingVolume->kernel[4] = kernelRow2[1];
-                    this->postProcessingVolume->kernel[5] = kernelRow2[2];
-                    this->postProcessingVolume->kernel[6] = kernelRow3[0];
-                    this->postProcessingVolume->kernel[7] = kernelRow3[1];
-                    this->postProcessingVolume->kernel[8] = kernelRow3[2];
-                }
-                */
                 ImGui::Checkbox("Grayscale", &postProcessingVolume->enable_colorShift);
                 if (postProcessingVolume->enable_colorShift)
                 {
