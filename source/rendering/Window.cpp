@@ -6,6 +6,7 @@
 #include "iostream"
 
 #include "../debug/DebugLog.h"
+#include "../data/BindingData.h"
 
 Ludvig::Rendering::Window::Window(int width, int height, bool fullscreen)
 {
@@ -20,7 +21,7 @@ Ludvig::Rendering::Window::Window(int width, int height, bool fullscreen)
         Debug::DebugLog::log_message("Successfully initialized window");
     }
 
-    this->window = glfwCreateWindow(width,height,"Ludvig", nullptr,nullptr);
+    this->window = glfwCreateWindow(width,height,"Ludvig", fullscreen ? glfwGetPrimaryMonitor() : nullptr ,nullptr);
 
     if (window == nullptr)
     {
