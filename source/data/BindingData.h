@@ -5,10 +5,25 @@
 #ifndef LUDVIG_BINDINGDATA_H
 #define LUDVIG_BINDINGDATA_H
 
+#include "memory"
 
-class BindingData {
+namespace Ludvig
+{
+    namespace Data
+    {
+        class BindingData
+        {
+        public:
+            static BindingData* get_instance()
+            {
+                return instance.get();
+            }
 
-};
+        protected:
+            static std::unique_ptr<BindingData> instance;
+        };
+    }
+}
 
 
 #endif //LUDVIG_BINDINGDATA_H
