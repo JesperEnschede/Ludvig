@@ -6,6 +6,7 @@
 #define LUDVIG_BINDINGDATA_H
 
 #include "memory"
+#include "../rendering/Window.h"
 
 namespace Ludvig
 {
@@ -14,6 +15,8 @@ namespace Ludvig
         class BindingData
         {
         public:
+            static Rendering::Window* window;
+
             static BindingData* get_instance()
             {
                 return instance.get();
