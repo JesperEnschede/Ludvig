@@ -3,11 +3,10 @@
 //
 
 #include "Texture.h"
+#include "../debug/DebugLog.h"
 
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
-
-#include "iostream"
 
 Ludvig::Core::Scene::Texture::Texture()
 {
@@ -37,7 +36,7 @@ Ludvig::Core::Scene::Texture::Texture(const char *path)
     }
     else
     {
-        std::printf("error: failed to load image! \n");
+        Debug::DebugLog::log_error("Failed to load image " + std::string(path) + " ! \n");
     }
 
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
