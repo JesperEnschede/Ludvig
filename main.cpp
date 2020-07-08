@@ -1,13 +1,20 @@
 #include "source/core/Application.h"
 #include "source/debug/DebugLog.h"
 
+#include "memory"
+
+using Application = Ludvig::Core::Application;
+using DebugLog = Ludvig::Debug::DebugLog;
+
 int main()
 {
-    Ludvig::Debug::DebugLog log;
+    std::unique_ptr<Application> application;
+    std::unique_ptr<DebugLog> debugLog;
 
-    Ludvig::Core::Application renderingEngine;
+    debugLog = std::make_unique<DebugLog>();
+    application = std::make_unique<Application>();
 
-    renderingEngine.start();
+    application->start();
 
     return 0;
 }
