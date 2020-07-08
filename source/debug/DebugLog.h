@@ -25,7 +25,7 @@ namespace Ludvig
         private:
             inline static DebugLog* instance;
 
-            std::string log = "";
+            std::string log;
         };
     }
 }

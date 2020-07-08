@@ -5,7 +5,7 @@
 #ifndef LUDVIG_GUIMANAGER_H
 #define LUDVIG_GUIMANAGER_H
 
-#include "../core/Application.h"
+#include "core/Application.h"
 
 #include "GUIWindow.h"
 

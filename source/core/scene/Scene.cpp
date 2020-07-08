@@ -4,8 +4,8 @@
 
 #include "Scene.h"
 
-#include "../../data/ModelLoader.h"
-#include "../../debug/DebugLog.h"
+#include "data/ModelLoader.h"
+#include "debug/DebugLog.h"
 
 Ludvig::Core::Scene::Scene::Scene()
 {

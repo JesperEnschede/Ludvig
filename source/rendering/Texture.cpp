@@ -3,7 +3,7 @@
 //
 
 #include "Texture.h"
-#include "../debug/DebugLog.h"
+#include "debug/DebugLog.h"
 
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"

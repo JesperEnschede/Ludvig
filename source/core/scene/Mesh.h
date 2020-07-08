@@ -7,18 +7,18 @@
 
 #include "glad/glad.h"
 
-#include "../Object.h"
+#include "core/Object.h"
 
-#include "../../rendering/Shader.h"
-#include "../Transform.h"
+#include "rendering/Shader.h"
+#include "core/Transform.h"
 
 #include "glm.hpp"
 
 #include "vector"
 #include "memory"
 
-#include "../../rendering/VertexArrayObject.h"
-#include "../../rendering/Buffers/VertexBufferObject.h"
+#include "rendering/VertexArrayObject.h"
+#include "rendering/Buffers/VertexBufferObject.h"
 
 namespace Ludvig
 {

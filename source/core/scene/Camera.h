@@ -5,9 +5,9 @@
 #ifndef LUDVIG_CAMERA_H
 #define LUDVIG_CAMERA_H
 
-#include "../Transform.h"
+#include "core/Transform.h"
 
-#include "../Object.h"
+#include "core/Object.h"
 
 #include "glm.hpp"
 #include "gtc/matrix_transform.hpp"
@@ -26,8 +26,6 @@ namespace Ludvig
             class Camera : public Object
             {
             public:
-                Camera() = default;
-
                 /*
                  * Return the view * projection matrix.
                  */

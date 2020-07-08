@@ -21,12 +21,6 @@ namespace Ludvig
             {
             public:
                 /*
-                 * Default constructor.
-                 */
-                Transform();
-
-            public:
-                /*
                  * Returns the t*r*s matrix.
                  */
                 glm::mat4 get_trs();

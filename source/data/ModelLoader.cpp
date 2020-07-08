@@ -4,7 +4,7 @@
 
 #include "ModelLoader.h"
 
-#include "stdio.h"
+#include "cstdio"
 #include "string"
 #include "cstring"
 #include "glm.hpp"

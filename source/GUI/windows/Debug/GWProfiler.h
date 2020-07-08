@@ -5,7 +5,7 @@
 #ifndef LUDVIG_GWPROFILER_H
 #define LUDVIG_GWPROFILER_H
 
-#include "../../GUIWindow.h"
+#include "GUI/GUIWindow.h"
 
 #include "dearimgui/imgui.h"
 

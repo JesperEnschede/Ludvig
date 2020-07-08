@@ -4,10 +4,9 @@
 
 #include "Shader.h"
 
-#include "../data/FileReader.h"
+#include "data/FileReader.h"
 
 #include "vector"
-#include "iostream"
 
 Ludvig::Core::Scene::Shader::Shader(std::string vertexPath, std::string fragmentPath)
 {

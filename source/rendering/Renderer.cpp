@@ -4,7 +4,7 @@
 
 #include "Renderer.h"
 
-#include "../debug/DebugLog.h"
+#include "debug/DebugLog.h"
 
 #include "dearimgui/imgui.h"
 #include "dearimgui/imgui_impl_glfw.h"
@@ -98,7 +98,6 @@ void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene
         glBindTexture(GL_TEXTURE_2D, this->textures[0]->id);
         this->shaders[0]->set_mat4x4("model",mesh->transform->get_trs());
 
-        //todo: fix vertex attrib array enable : disable :(
         mesh->get_vao()->bind();
         //glDrawElements(GL_TRIANGLES, mesh->get_vertices_size(), GL_UNSIGNED_SHORT, (void*)0);
         glDrawArrays(GL_TRIANGLES,0,mesh->get_vertices_size()); // todo FIX INDICES!
@@ -106,9 +105,8 @@ void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene
         glBindVertexArray(0);
     }
 
-
+    // Draw the framebuffer quad for post effects
     glBindFramebuffer(GL_FRAMEBUFFER,0);
-    // glPolygonMode(GL_FRONT, GL_LINE);
     glDisable(GL_DEPTH_TEST);
     glClearColor(0.1f,0.1f,0.1f,1);
     glClear(GL_COLOR_BUFFER_BIT);

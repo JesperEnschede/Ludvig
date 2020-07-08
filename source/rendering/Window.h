@@ -76,11 +76,10 @@ namespace Ludvig
         private:
             GLFWwindow* window;
 
-            int width = 800;
-            int height = 600;
+            int width;
+            int height;
         };
     }
 }
-
 
 #endif //LUDVIG_WINDOW_H

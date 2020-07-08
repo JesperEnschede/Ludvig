@@ -4,4 +4,12 @@
 
 #include "BindingData.h"
 
-std::unique_ptr<Ludvig::Data::BindingData> Ludvig::Data::BindingData::instance;
+namespace Ludvig
+{
+    namespace Data
+    {
+        std::unique_ptr<Ludvig::Data::BindingData> Ludvig::Data::BindingData::instance;
+
+        Rendering::Window* BindingData::window;
+    }
+}

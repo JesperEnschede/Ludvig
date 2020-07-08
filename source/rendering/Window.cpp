@@ -5,8 +5,8 @@
 #include "Window.h"
 #include "iostream"
 
-#include "../debug/DebugLog.h"
-#include "../data/BindingData.h"
+#include "debug/DebugLog.h"
+#include "data/BindingData.h"
 
 Ludvig::Rendering::Window::Window(int width, int height, bool fullscreen)
 {
@@ -56,7 +56,6 @@ Ludvig::Rendering::Window::~Window()
     glfwDestroyWindow(window);
     glfwTerminate();
 }
-
 
 void Ludvig::Rendering::Window::poll_events()
 {

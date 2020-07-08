@@ -5,9 +5,9 @@
 #ifndef LUDVIG_GWCONSOLE_H
 #define LUDVIG_GWCONSOLE_H
 
-#include "../../GUIWindow.h"
+#include "GUI/GUIWindow.h"
 
-#include "../../../debug/DebugLog.h"
+#include "debug/DebugLog.h"
 
 namespace Ludvig
 {

@@ -5,9 +5,9 @@
 #ifndef LUDVIG_APPLICATION_H
 #define LUDVIG_APPLICATION_H
 
-#include "../rendering/Renderer.h"
-#include "../rendering/Window.h"
-#include "../GUI/GUIManager.h"
+#include "rendering/Renderer.h"
+#include "rendering/Window.h"
+#include "GUI/GUIManager.h"
 #include "scene/Scene.h"
 
 #include "memory"

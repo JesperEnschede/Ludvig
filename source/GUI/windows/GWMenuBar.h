@@ -5,9 +5,9 @@
 #ifndef LUDVIG_GWMENUBAR_H
 #define LUDVIG_GWMENUBAR_H
 
-#include "../GUIWindow.h"
-#include "../../rendering/Window.h"
-#include "../../data/BindingData.h"
+#include "GUI/GUIWindow.h"
+#include "rendering/Window.h"
+#include "data/BindingData.h"
 
 #include "GWIncludes.h"
 
@@ -42,7 +42,7 @@ namespace Ludvig
 
                         if (ImGui::MenuItem("Exit"))
                         {
-
+                            exit(0); // todo: remove temp exit call.
                         }
 
                         ImGui::EndMenu();

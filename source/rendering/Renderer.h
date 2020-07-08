@@ -5,7 +5,7 @@
 #ifndef LUDVIG_RENDERER_H
 #define LUDVIG_RENDERER_H
 
-#include "../core/scene/Scene.h"
+#include "core/scene/Scene.h"
 #include "Shader.h"
 #include "Texture.h"
 #include "Cubemap.h"

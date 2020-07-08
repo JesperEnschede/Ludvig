@@ -5,9 +5,9 @@
 #ifndef LUDVIG_LIGHT_H
 #define LUDVIG_LIGHT_H
 
-#include "../Transform.h"
+#include "core/Transform.h"
 
-#include "../Object.h"
+#include "core/Object.h"
 
 #include "glm.hpp"
 

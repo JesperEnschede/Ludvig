@@ -10,11 +10,6 @@
 #include "gtx/euler_angles.hpp"
 #include "gtx/norm.hpp"
 
-Ludvig::Core::Scene::Transform::Transform()
-{
-
-}
-
 glm::mat4 Ludvig::Core::Scene::Transform::get_trs()
 {
     glm::mat4 trs = glm::mat4(1.0f);

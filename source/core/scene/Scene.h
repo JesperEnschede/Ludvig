@@ -10,7 +10,7 @@
 #include "Light.h"
 #include "Skybox.h"
 #include "PostProcessingVolume.h"
-#include "../../rendering/LightSettings.h"
+#include "rendering/LightSettings.h"
 
 #include "memory"
 #include "vector"
@@ -36,8 +36,6 @@ namespace Ludvig
                  * Load a new mesh.
                  */
                 bool load_mesh(const char* path);
-
-                bool load_skybox();
 
             public:
                 std::vector<std::unique_ptr<Mesh>> meshes;

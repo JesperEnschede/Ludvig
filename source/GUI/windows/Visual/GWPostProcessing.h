@@ -5,9 +5,9 @@
 #ifndef LUDVIG_GWPOSTPROCESSING_H
 #define LUDVIG_GWPOSTPROCESSING_H
 
-#include "../../GUIWindow.h"
+#include "GUI/GUIWindow.h"
 
-#include "../../../core/scene/PostProcessingVolume.h"
+#include "core/scene/PostProcessingVolume.h"
 
 namespace Ludvig
 {

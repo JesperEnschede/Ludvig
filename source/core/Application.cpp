@@ -4,7 +4,7 @@
 
 #include "Application.h"
 
-#include "../debug/DebugLog.h"
+#include "debug/DebugLog.h"
 
 #include "dearimgui/imgui.h"
 
