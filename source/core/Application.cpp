@@ -14,7 +14,7 @@ Ludvig::Core::Application::Application()
 {
     Debug::DebugLog::log_message("Initializing Ludvig " + this->version);
 
-    this->window = std::make_unique<Rendering::Window>(1920,1080, true);
+    this->window = std::make_unique<Rendering::Window>(10,10, true);
     this->renderer = std::make_unique<Rendering::Renderer>(this->window.get());
     this->scene = std::make_unique<Scene::Scene>();
     this->guiManager = std::make_unique<GUIManager>(this);
@@ -24,7 +24,10 @@ void Ludvig::Core::Application::start()
 {
     Debug::DebugLog::log_message("Starting Ludvig runtime");
 
-    runtime();
+    if (!isRunning)
+        runtime();
+    else
+        throw std::exception();
 }
 
 void Ludvig::Core::Application::runtime()
@@ -32,6 +35,7 @@ void Ludvig::Core::Application::runtime()
     auto timePoint1 = std::chrono::system_clock::now();
     auto timePoint2 = std::chrono::system_clock::now();
 
+    this->isRunning = true;
     while (!this->window->is_closing())
     {
         timePoint2 = std::chrono::system_clock::now();
@@ -64,6 +68,7 @@ void Ludvig::Core::Application::runtime()
 
         this->window->swap_buffers();
     }
+    this->isRunning = false;
 }
 
 Ludvig::Core::Scene::Scene *Ludvig::Core::Application::get_current_scene()

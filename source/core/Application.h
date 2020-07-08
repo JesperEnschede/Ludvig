@@ -48,7 +48,8 @@ namespace Ludvig
             Scene::Scene* get_current_scene();
 
         private:
-            std::string version = "v0.2";
+            std::string version = "v0.2.1";
+            bool isRunning = false;
 
             std::unique_ptr<Rendering::Window> window;
             std::unique_ptr<Rendering::Renderer> renderer;
