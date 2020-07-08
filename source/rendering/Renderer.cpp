@@ -26,7 +26,7 @@ Ludvig::Rendering::Renderer::Renderer(Window* window)
     ImGuiIO& io = ImGui::GetIO(); (void)io;
 
     ImGui_ImplGlfw_InitForOpenGL(window->get_context(), true);
-    ImGui_ImplOpenGL3_Init("#version 130");
+    ImGui_ImplOpenGL3_Init("#version 330");
 
     glClearColor(0.1f,0.1f,0.1f,1);
     glEnable(GL_DEPTH_TEST);
