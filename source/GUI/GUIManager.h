@@ -9,7 +9,7 @@
 
 #include "GUIWindow.h"
 
-#include "imgui.h"
+#include "dearimgui/imgui.h"
 
 #include "memory"
 #include "vector"

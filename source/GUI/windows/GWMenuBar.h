@@ -7,6 +7,7 @@
 
 #include "../GUIWindow.h"
 #include "../../rendering/Window.h"
+#include "../../data/BindingData.h"
 
 #include "GWIncludes.h"
 
@@ -26,7 +27,7 @@ namespace Ludvig
             void on_gui() override
             {
                 ImGui::SetNextWindowPos(ImVec2(0,0));
-                ImGui::SetNextWindowSize(ImVec2(window->get_width(), 0));
+                ImGui::SetNextWindowSize(ImVec2(this->window->get_width(), 0));
 
                 ImGui::Begin("MenuBar", NULL, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoTitleBar| ImGuiWindowFlags_MenuBar);
 

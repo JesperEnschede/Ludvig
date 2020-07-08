@@ -6,9 +6,9 @@
 
 #include "../debug/DebugLog.h"
 
-#include "imgui.h"
-#include "imgui_impl_glfw.h"
-#include "imgui_impl_opengl3.h"
+#include "dearimgui/imgui.h"
+#include "dearimgui/imgui_impl_glfw.h"
+#include "dearimgui/imgui_impl_opengl3.h"
 
 Ludvig::Rendering::Renderer::Renderer(Window* window)
 {

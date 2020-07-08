@@ -3,7 +3,7 @@
 //
 
 #include "GUIManager.h"
-#include "imgui.h"
+#include "dearimgui/imgui.h"
 
 #include "windows/GWIncludes.h"
 

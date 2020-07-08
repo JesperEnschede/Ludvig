@@ -5,7 +5,7 @@
 #ifndef LUDVIG_GUIWINDOW_H
 #define LUDVIG_GUIWINDOW_H
 
-#include "imgui.h"
+#include "dearimgui/imgui.h"
 
 #include "../core/Transform.h"
 
