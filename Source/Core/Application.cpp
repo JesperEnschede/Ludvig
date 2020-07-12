@@ -2,8 +2,13 @@
 // Created by Jesper on 5/11/2020.
 //
 
+#include <Scene/Scene.h>
 #include "Application.h"
 #include "Debug/DebugLog.h"
+#include "Scene/SceneManager.h"
+using namespace Ludvig::SceneManagement;
+
+#include "DearImGui/imgui.h" // FIXME: remove later!
 
 #include "chrono"
 
@@ -17,8 +22,6 @@ namespace Ludvig
 
             this->window = std::make_unique<Rendering::Window>(1280,720, false);
             this->renderer = std::make_unique<Rendering::Renderer>(this->window.get());
-            this->scene = std::make_unique<Scene::Scene>();
-            this->guiManager = std::make_unique<GUIManager>(this);
         }
 
         void Application::start()
@@ -54,26 +57,24 @@ namespace Ludvig
                 float downInput = -glfwGetKey(window->get_context(),GLFW_KEY_LEFT_SHIFT);
 
                 // FIXME: Temp cameras movement.
-                scene->camera->transform->translate(
+
+                SceneManager::get_current_scene()->camera->transform->translate(
                         (rightInput + leftInput) * 30.0f * deltaTime.count(),
                         (upInput + downInput) * 30.0f * deltaTime.count(),
                         (forwardInput + backwardsInput) * 30.0f * deltaTime.count());
 
-                this->renderer->render_scene(this->scene.get());
+                this->renderer->render_scene(SceneManager::get_current_scene());
 
                 this->renderer->create_gui_frame();
-                this->guiManager->draw_windows();
+                ImGui::Begin("Profiler");
+                ImGui::Text("%.3f ms/frame | %.3f FPS", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+                ImGui::End();
                 this->renderer->draw_gui_frame();
 
                 this->window->swap_buffers();
                 this->window->poll_events();
             }
             this->isRunning = false;
-        }
-
-        Scene::Scene *Application::get_current_scene()
-        {
-            return this->scene.get();
         }
     }
 }

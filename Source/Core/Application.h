@@ -7,7 +7,6 @@
 
 #include "Rendering/Renderer.h"
 #include "Rendering/Window.h"
-#include "GUI/GUIManager.h"
 #include "Scene.h"
 
 #include "memory"
@@ -42,19 +41,12 @@ namespace Ludvig
              */
             void runtime();
 
-            /*
-             * Returns a pointer to the current scene.
-             */
-            Scene::Scene* get_current_scene();
-
         private:
             std::string version = "v0.2.1";
             bool isRunning = false;
 
             std::unique_ptr<Rendering::Window> window;
             std::unique_ptr<Rendering::Renderer> renderer;
-            std::unique_ptr<Scene::Scene> scene;
-            std::unique_ptr<GUIManager> guiManager;
         };
     }
 }

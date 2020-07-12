@@ -5,7 +5,8 @@
 #ifndef LUDVIG_RENDERER_H
 #define LUDVIG_RENDERER_H
 
-#include "Core/Scene.h"
+#include "Scene/SceneManager.h"
+
 #include "Shader.h"
 #include "Texture.h"
 #include "Cubemap.h"
@@ -36,7 +37,7 @@ namespace Ludvig
             /*
              * Render a scene
              */
-            void render_scene(Core::Scene::Scene* scene);
+            void render_scene(SceneManagement::Scene* scene);
 
             /*
              * Clear the screen
