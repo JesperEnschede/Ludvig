@@ -11,37 +11,30 @@
 
 #include "vector"
 
-namespace Ludvig
-{
-    namespace Core
-    {
-        namespace Scene
-        {
+namespace Ludvig {
+    namespace Core {
+        /*
+         * A skybox is a inverted cube mesh that can have a cubemap texture to create a sky.
+         */
+        class Skybox {
+        public:
             /*
-             * A skybox is a inverted cube mesh that can have a cubemap texture to create a sky.
+             * Bind the skybox vbo.
              */
-            class Skybox
-            {
-            public:
-                /*
-                 * Bind the skybox vbo.
-                 */
-                Skybox();
+            Skybox();
 
-                /*
-                 * Cleanup the skybox vbo
-                 */
-                ~Skybox();
+            /*
+             * Cleanup the skybox vbo
+             */
+            ~Skybox();
 
-                Mesh* get_skybox_mesh();
+            Mesh *get_skybox_mesh();
 
-            private:
-                std::unique_ptr<Mesh> skyboxMesh;
-            };
-        }
+        private:
+            std::unique_ptr<Mesh> skyboxMesh;
+        };
     }
 }
-
 
 
 #endif //LUDVIG_SKYBOX_H
