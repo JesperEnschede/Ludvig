@@ -29,15 +29,15 @@ macro(read_directory curdir)
     endforeach()
 endmacro()
 
-read_directory(${PROJECT_SOURCE_DIR}/source)
+read_directory(${PROJECT_SOURCE_DIR}/Source)
 
-include_directories(external/gl)
-include_directories(external/glm)
-include_directories(external/stb)
+include_directories(External/gl)
+include_directories(External/glm)
+include_directories(External/stb)
 
-include_directories(source)
+include_directories(Source)
 
-add_subdirectory(external/glfw)
+add_subdirectory(External/glfw)
 include_directories(glfw/include/)
 
 add_executable(Ludvig main.cpp ${Ludvig_Source})
