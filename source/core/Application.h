@@ -8,7 +8,7 @@
 #include "rendering/Renderer.h"
 #include "rendering/Window.h"
 #include "GUI/GUIManager.h"
-#include "scene/Scene.h"
+#include "Scene.h"
 
 #include "memory"
 

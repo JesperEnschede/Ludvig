@@ -7,7 +7,7 @@
 
 #include "GWObjectInspector.h"
 
-#include "core/scene/Light.h"
+#include "core/Light.h"
 
 namespace Ludvig
 {
@@ -18,7 +18,7 @@ namespace Ludvig
         public:
             GWLightInspector(Object* object) : GWObjectInspector(object)
             {
-                this->light = reinterpret_cast<Scene::Light*>(object);
+                this->light = reinterpret_cast<Light*>(object);
 
                 this->enabled = false;
             }
@@ -33,7 +33,7 @@ namespace Ludvig
             }
 
         private:
-            Scene::Light* light;
+            Light* light;
         };
     }
 }

@@ -9,7 +9,7 @@
 #include "rendering/Texture.h"
 
 #include "rendering/Shader.h"
-#include "core/scene/Mesh.h"
+#include "core/Mesh.h"
 
 namespace Ludvig
 {
@@ -24,7 +24,7 @@ namespace Ludvig
             void bind(unsigned int target);
 
             Core::Scene::Texture* get_color_buffer_texture();
-            Core::Scene::Mesh* get_screen_quad_mesh();
+            Core::Mesh* get_screen_quad_mesh();
             Core::Scene::Shader* get_screen_shader();
 
         private:
@@ -33,7 +33,7 @@ namespace Ludvig
 
             std::unique_ptr<Core::Scene::Texture> colorBufferTexture;
             std::unique_ptr<Core::Scene::Shader> screenShader;
-            std::unique_ptr<Core::Scene::Mesh> screenQuad;
+            std::unique_ptr<Core::Mesh> screenQuad;
         };
     }
 }

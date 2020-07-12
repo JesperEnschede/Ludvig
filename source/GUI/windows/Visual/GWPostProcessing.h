@@ -7,7 +7,7 @@
 
 #include "GUI/GUIWindow.h"
 
-#include "core/scene/PostProcessingVolume.h"
+#include "core/PostProcessingVolume.h"
 
 namespace Ludvig
 {
@@ -16,7 +16,7 @@ namespace Ludvig
         class GWPostProcessing : public GUIWindow
         {
         public:
-            GWPostProcessing(Scene::PostProcessingVolume* postProcessingVolume)
+            GWPostProcessing(PostProcessingVolume* postProcessingVolume)
             {
                 this->enabled = false;
 
@@ -41,7 +41,7 @@ namespace Ludvig
             }
 
         private:
-            Scene::PostProcessingVolume* postProcessingVolume;
+            PostProcessingVolume* postProcessingVolume;
 
             float kernelRow1[3] = { 0,0,0 };
             float kernelRow2[3] = { 0,0,0 };

@@ -14,7 +14,7 @@ Ludvig::Core::Application::Application()
 {
     Debug::DebugLog::log_message("Initializing Ludvig " + this->version);
 
-    this->window = std::make_unique<Rendering::Window>(10,10, true);
+    this->window = std::make_unique<Rendering::Window>(1280,720, false);
     this->renderer = std::make_unique<Rendering::Renderer>(this->window.get());
     this->scene = std::make_unique<Scene::Scene>();
     this->guiManager = std::make_unique<GUIManager>(this);
@@ -27,7 +27,7 @@ void Ludvig::Core::Application::start()
     if (!isRunning)
         runtime();
     else
-        throw std::exception();
+        Debug::DebugLog::log_error("Attempting to start runtime whilst runtime is already active!");
 }
 
 void Ludvig::Core::Application::runtime()

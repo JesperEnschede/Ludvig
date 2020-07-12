@@ -90,7 +90,7 @@ void Ludvig::Rendering::Renderer::render_scene(Ludvig::Core::Scene::Scene *scene
 
     for (int i = 0; i < scene->meshes.size(); ++i)
     {
-        Core::Scene::Mesh* mesh = scene->meshes[i].get();
+        Core::Mesh* mesh = scene->meshes[i].get();
 
         glm::mat4 mvp = viewProjectionMatrix * mesh->transform->get_trs();
 

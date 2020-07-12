@@ -34,7 +34,7 @@ Ludvig::Rendering::FrameBuffer::FrameBuffer()
             glm::vec2(1.0f, 1.0f)
     };
 
-    this->screenQuad = std::make_unique<Core::Scene::Mesh>(quadVertices,quadUVS);
+    this->screenQuad = std::make_unique<Core::Mesh>(quadVertices,quadUVS);
 
     screenShader->set_texture("screenTexture",0);
 
@@ -74,7 +74,7 @@ Ludvig::Core::Scene::Texture *Ludvig::Rendering::FrameBuffer::get_color_buffer_t
     return colorBufferTexture.get();
 }
 
-Ludvig::Core::Scene::Mesh *Ludvig::Rendering::FrameBuffer::get_screen_quad_mesh()
+Ludvig::Core::Mesh *Ludvig::Rendering::FrameBuffer::get_screen_quad_mesh()
 {
     return screenQuad.get();
 }

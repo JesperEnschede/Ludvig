@@ -25,7 +25,7 @@ namespace Ludvig
              */
             virtual void on_gui() = 0;
 
-            static void draw_transform(Scene::Transform* transform)
+            static void draw_transform(Transform* transform)
             {
                 ImGui::DragFloat3("Position", (float*)&transform->position,0.025);
                 ImGui::DragFloat3("Rotation", (float*)&transform->rotation,0.025);

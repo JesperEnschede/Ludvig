@@ -7,7 +7,7 @@
 
 #include "GWObjectInspector.h"
 
-#include "core/scene/Camera.h"
+#include "core/Camera.h"
 
 namespace Ludvig
 {
@@ -18,7 +18,7 @@ namespace Ludvig
         public:
             GWCameraInspector(Object *object) : GWObjectInspector(object)
             {
-                this->camera = reinterpret_cast<Scene::Camera*>(object);
+                this->camera = reinterpret_cast<Camera*>(object);
 
                 this->enabled = false;
             }
@@ -34,7 +34,7 @@ namespace Ludvig
             }
 
         private:
-            Scene::Camera* camera;
+            Camera* camera;
         };
     }
 }
