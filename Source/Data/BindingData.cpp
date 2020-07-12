@@ -8,8 +8,9 @@ namespace Ludvig
 {
     namespace Data
     {
-        std::unique_ptr<Ludvig::Data::BindingData> Ludvig::Data::BindingData::instance;
+        int BindingData::windowWidth;
+        int BindingData::windowHeight;
 
-        Rendering::Window* BindingData::window;
+        GLFWwindow* BindingData::windowHandle;
     }
 }

@@ -15,15 +15,10 @@ namespace Ludvig
         class BindingData
         {
         public:
-            static Rendering::Window* window;
+            static int windowWidth;
+            static int windowHeight;
 
-            static BindingData* get_instance()
-            {
-                return instance.get();
-            }
-
-        protected:
-            static std::unique_ptr<BindingData> instance;
+            static GLFWwindow* windowHandle;
         };
     }
 }

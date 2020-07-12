@@ -4,6 +4,7 @@
 
 #include "Window.h"
 #include "Debug/DebugLog.h"
+#include "Data/BindingData.h"
 
 namespace Ludvig
 {
@@ -11,6 +12,9 @@ namespace Ludvig
     {
         Window::Window(int width, int height, bool fullscreen)
         {
+            this->width = width;
+            this->height = height;
+
             if (glfwInit() != GLFW_TRUE)
             {
                 Debug::DebugLog::log_error("Failed to initialize window");
@@ -50,6 +54,10 @@ namespace Ludvig
                                       {
                                           reinterpret_cast<Window*>(glfwGetWindowUserPointer(w))->window_resize_callback(newWidth,newHeight);
                                       });
+
+            Data::BindingData::windowHandle = this->window;
+            Data::BindingData::windowWidth = this->width;
+            Data::BindingData::windowHeight = this->height;
         }
 
         Window::~Window()
@@ -92,6 +100,9 @@ namespace Ludvig
         {
             this->width = w;
             this->height = h;
+
+            Data::BindingData::windowWidth = this->width;
+            Data::BindingData::windowHeight = this->height;
 
             glViewport(0,0,w,h);
         }
