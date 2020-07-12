@@ -24,7 +24,7 @@ namespace Ludvig
             /*
              * Binds the framebuffer.
              */
-            void bind(unsigned int target);
+            void bind();
 
             /*
              * Returns a pointer to the color buffer texture object.

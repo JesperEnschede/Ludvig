@@ -55,8 +55,6 @@ namespace Ludvig
             if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
             {
                 Debug::DebugLog::log_error("Framebuffer is not complete!");
-
-                std::printf("Framebuffer is broken :D \n \0");
             }
 
             glBindFramebuffer(GL_FRAMEBUFFER, 0);
@@ -67,7 +65,7 @@ namespace Ludvig
             glDeleteFramebuffers(1,&this->frameBufferObject);
         }
 
-        void FrameBuffer::bind(unsigned int target)
+        void FrameBuffer::bind()
         {
             glBindFramebuffer(GL_FRAMEBUFFER,this->frameBufferObject);
         }

@@ -62,11 +62,9 @@ namespace Ludvig
 
         void Renderer::render_scene(Ludvig::Core::Scene::Scene *scene)
         {
-            frameBuffer->bind(GL_FRAMEBUFFER);
+            frameBuffer->bind();
             glEnable(GL_DEPTH_TEST);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-            // glPolygonMode(GL_FRONT, GL_LINE);
 
             scene->camera->calculate_view_projection_matrix();
             glm::mat4 viewProjectionMatrix = scene->camera->get_view_projection_matrix();
