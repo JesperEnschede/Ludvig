@@ -7,6 +7,8 @@
 
 #include "Rendering/RenderContext.h"
 
+#include "GLFW/glfw3.h"
+
 namespace Ludvig
 {
     namespace Rendering
@@ -16,9 +18,14 @@ namespace Ludvig
             class OpenGLRenderContext : public RenderContext
             {
             public:
+                OpenGLRenderContext(GLFWwindow* window);
+
                 void prepare_frame() override;
 
                 void finish_frame() override;
+
+            private:
+                GLFWwindow* window;
             };
         }
     }

@@ -6,6 +6,7 @@
 #define LUDVIG_OPENGLRENDERMANAGER_H
 
 #include "Rendering/RenderManager.h"
+#include "Rendering/Window.h"
 
 namespace Ludvig
 {
@@ -16,7 +17,12 @@ namespace Ludvig
             class OpenGLRenderManager : public RenderManager
             {
             public:
+                OpenGLRenderManager(Window* window);
+
                 void render() override;
+
+            private:
+
             };
         }
     }

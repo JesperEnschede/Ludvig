@@ -29,7 +29,7 @@ namespace Ludvig
 
             if (API == "OpenGL") {
                 window = std::make_unique<Rendering::OpenGL::OpenGLWindow>("Ludvig | OpenGL", 800,600);
-                renderManager = std::make_unique<Rendering::OpenGL::OpenGLRenderManager>();
+                renderManager = std::make_unique<Rendering::OpenGL::OpenGLRenderManager>(window.get());
             } else {
                 Debug::DebugLog::log_error("Given API not available.", true);
             }
@@ -58,6 +58,8 @@ namespace Ludvig
                 timePoint1 = timePoint2;
 
                 window->poll_window_events();
+
+                renderManager->render();
             }
             this->isRunning = false;
         }
