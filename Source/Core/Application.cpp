@@ -51,11 +51,13 @@ namespace Ludvig
             auto timePoint2 = std::chrono::system_clock::now();
 
             this->isRunning = true;
-            while (isRunning)
+            while (!window->is_Closing())
             {
                 timePoint2 = std::chrono::system_clock::now();
                 std::chrono::duration<float> deltaTime = timePoint2 - timePoint1;
                 timePoint1 = timePoint2;
+
+                window->poll_window_events();
             }
             this->isRunning = false;
         }
