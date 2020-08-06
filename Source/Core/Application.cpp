@@ -2,16 +2,12 @@
 // Created by Jesper on 5/11/2020.
 //
 
-#include <Scene/Scene.h>
 #include "Application.h"
 #include "Debug/DebugLog.h"
-#include "Scene/SceneManager.h"
 
 // OpenGL renderer
 #include "Rendering/OpenGL/OpenGLWindow.h"
 #include "Rendering/OpenGL/OpenGLRenderManager.h"
-
-using namespace Ludvig::SceneManagement;
 
 #include "DearImGui/imgui.h" // FIXME: remove later!
 
@@ -28,10 +24,16 @@ namespace Ludvig
             Debug::DebugLog::log_message("Initializing Ludvig " + this->version + " | Graphics API: " + API);
 
             if (API == "OpenGL") {
-                window = std::make_unique<Rendering::OpenGL::OpenGLWindow>("Ludvig | OpenGL", 800,600);
+                window = std::make_unique<Rendering::OpenGL::OpenGLWindow>("Ludvig | OpenGL", 1280,720);
                 renderManager = std::make_unique<Rendering::OpenGL::OpenGLRenderManager>(window.get());
+            } else if (API == "Vulkan") {
+                Debug::DebugLog::log_error("Vulkan API is not implemented yet.", true);
+            } else if (API == "Direct3D12") {
+                Debug::DebugLog::log_error("Direct3D 12 API is not implemented yet.", true);
+            } else if (API == "Direct3D9") {
+                Debug::DebugLog::log_error("Direct3D 9 API is not implemented yet.", true);
             } else {
-                Debug::DebugLog::log_error("Given API not available.", true);
+                Debug::DebugLog::log_error("Given API is not available.", true);
             }
         }
 
