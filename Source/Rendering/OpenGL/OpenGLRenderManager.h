@@ -5,6 +5,8 @@
 #ifndef LUDVIG_OPENGLRENDERMANAGER_H
 #define LUDVIG_OPENGLRENDERMANAGER_H
 
+#include "glad/glad.h"
+
 #include "Rendering/RenderManager.h"
 #include "Rendering/Window.h"
 
@@ -22,7 +24,7 @@ namespace Ludvig
                 void render() override;
 
             private:
-
+                void load_openGL();
             };
         }
     }
