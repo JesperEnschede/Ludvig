@@ -28,6 +28,11 @@ namespace Ludvig
              */
             int get_height() const;
 
+            /*
+             * Polls the window event messages.
+             */
+            virtual void poll_window_events() = 0;
+
         protected:
             virtual void initialize() = 0;
 
