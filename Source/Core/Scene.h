@@ -8,45 +8,32 @@
 #include "Mesh.h"
 #include "Camera.h"
 #include "Light.h"
-#include "Skybox.h"
-#include "PostProcessingVolume.h"
+
+// #include "Skybox.h"
+// #include "PostProcessingVolume.h"
 
 #include "memory"
-#include "vector"
 
 namespace Ludvig
 {
     namespace Core
     {
-        namespace Scene
+        /*
+         * A scene is a collection of objects
+         */
+        struct Scene
         {
+        public:
             /*
-             * A scene is a collection of Meshes, it has a camera, and light sources.
+             * Initializes the scene with default objects.
              */
-            class Scene
-            {
-            public:
-                /*
-                 * Initialize the scene.
-                 */
-                Scene();
+            Scene();
 
-                /*
-                 * Load a new mesh.
-                 */
-                bool load_mesh(const char* path);
-
-            public:
-                std::vector<std::unique_ptr<Mesh>> meshes;
-                std::unique_ptr<Skybox> skybox;
-                std::unique_ptr<Camera> camera;
-                std::vector<std::unique_ptr<Light>> light;
-                std::unique_ptr<PostProcessingVolume> postProcessingVolume;
-            };
-        }
+            std::unique_ptr<Mesh> mesh;
+            std::unique_ptr<Camera> camera;
+            std::unique_ptr<Light> light;
+        };
     }
 }
-
-
 
 #endif //LUDVIG_SCENE_H
