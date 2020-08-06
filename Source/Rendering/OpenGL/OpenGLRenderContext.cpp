@@ -8,6 +8,9 @@ namespace Ludvig
 {
     namespace Rendering
     {
+        namespace OpenGL
+        {
 
+        }
     }
 }

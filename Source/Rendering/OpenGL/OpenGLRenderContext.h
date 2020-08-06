@@ -11,10 +11,13 @@ namespace Ludvig
 {
     namespace Rendering
     {
-        class OpenGLRenderContext : public RenderContext
+        namespace OpenGL
         {
+            class OpenGLRenderContext : public RenderContext
+            {
 
-        };
+            };
+        }
     }
 }
 
