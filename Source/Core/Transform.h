@@ -15,7 +15,7 @@ namespace Ludvig
         /*
          * A transform is a transformation matrix of a Mesh.
          */
-        class Transform
+        class Transform final
         {
         public:
             /*
@@ -41,17 +41,17 @@ namespace Ludvig
             /*
              * Returns the transform's position vec3.
              */
-            glm::vec3 get_position();
+            glm::vec3& get_position();
 
             /*
              * Returns the transform's rotation vec3.
              */
-            glm::vec3 get_rotation();
+            glm::vec3& get_rotation();
 
             /*
              * Returns the transform's scale vec3.
              */
-            glm::vec3 get_scale();
+            glm::vec3& get_scale();
 
         public:
             glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f);
