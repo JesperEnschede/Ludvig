@@ -26,7 +26,7 @@ namespace Ludvig
                 renderTechnique = std::make_unique<OpenGLForwardRenderer>();
             }
 
-            void OpenGLRenderManager::render() {
+            void OpenGLRenderManager::render(Core::Scene* scene) {
                 renderContext->prepare_frame();
                 renderTechnique->render_scene();
                 renderContext->finish_frame();

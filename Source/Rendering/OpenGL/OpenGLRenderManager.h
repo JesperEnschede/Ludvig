@@ -21,7 +21,7 @@ namespace Ludvig
             public:
                 OpenGLRenderManager(Window* window);
 
-                void render() override;
+                void render(Core::Scene* scene) override;
 
             private:
                 void load_openGL();

@@ -8,6 +8,8 @@
 #include "RenderTechnique.h"
 #include "RenderContext.h"
 
+#include "Core/Scene.h"
+
 #include "memory"
 
 namespace Ludvig
@@ -21,7 +23,7 @@ namespace Ludvig
         class RenderManager
         {
         public:
-            virtual void render() = 0;
+            virtual void render(Core::Scene* scene) = 0;
 
         protected:
             std::unique_ptr<RenderTechnique> renderTechnique;
