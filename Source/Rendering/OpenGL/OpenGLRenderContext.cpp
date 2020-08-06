@@ -12,10 +12,12 @@ namespace Ludvig
         {
             OpenGLRenderContext::OpenGLRenderContext(GLFWwindow *window) {
                 this->window = window;
+
+                glfwMakeContextCurrent(window);
             }
 
             void OpenGLRenderContext::prepare_frame() {
-                // glClear(GL_COLOR_BUFFER_BIT);
+                glClear(GL_COLOR_BUFFER_BIT);
             }
 
             void OpenGLRenderContext::finish_frame() {
