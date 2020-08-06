@@ -31,7 +31,7 @@ namespace Ludvig
                 window = std::make_unique<Rendering::OpenGL::OpenGLWindow>("Ludvig | OpenGL", 800,600);
                 renderManager = std::make_unique<Rendering::OpenGL::OpenGLRenderManager>();
             } else {
-                Debug::DebugLog::log_warning("Given API not available, defaulting to OpenGL");
+                Debug::DebugLog::log_error("Given API not available.", true);
             }
         }
 

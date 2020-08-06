@@ -10,7 +10,6 @@
 #include "Light.h"
 #include "Skybox.h"
 #include "PostProcessingVolume.h"
-#include "Rendering/LightSettings.h"
 
 #include "memory"
 #include "vector"
@@ -42,7 +41,6 @@ namespace Ludvig
                 std::unique_ptr<Skybox> skybox;
                 std::unique_ptr<Camera> camera;
                 std::vector<std::unique_ptr<Light>> light;
-                std::unique_ptr<Rendering::LightSettings> lightSettings;
                 std::unique_ptr<PostProcessingVolume> postProcessingVolume;
             };
         }

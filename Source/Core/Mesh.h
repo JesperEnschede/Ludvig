@@ -8,10 +8,7 @@
 #include "glad/glad.h"
 
 #include "Core/Object.h"
-#include "Rendering/Shader.h"
 #include "Core/Transform.h"
-#include "Rendering/VertexArrayObject.h"
-#include "Rendering/Buffers/VertexBufferObject.h"
 
 #include "glm.hpp"
 
@@ -42,16 +39,11 @@ namespace Ludvig
             */
             int get_vertices_size();
 
-            Rendering::VertexArrayObject* get_vao() const;
-
         private:
             std::vector<glm::vec3> vertices;
             std::vector<glm::vec2> uvs;
             std::vector<glm::vec3> normals;
             std::vector<unsigned int> indices = std::vector<unsigned int>();
-
-            std::unique_ptr<Rendering::VertexArrayObject> vertexArrayObject;
-            std::vector<std::unique_ptr<Rendering::VertexBufferObject>> buffers = std::vector<std::unique_ptr<Rendering::VertexBufferObject>>();
         };
     }
 }
