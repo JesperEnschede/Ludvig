@@ -24,11 +24,6 @@ namespace Ludvig
         {
         public:
             /*
-             * Return the view * projection matrix.
-             */
-            glm::mat4 get_view_projection_matrix();
-
-            /*
              * Returns the view matrix.
              */
             glm::mat4 get_view_matrix();
@@ -38,18 +33,9 @@ namespace Ludvig
              */
             glm::mat4 get_projection_matrix();
 
-            /*
-             * Calculate the view projection matrix.
-             */
-            void calculate_view_projection_matrix();
-
             float nearClipping = 0.1f;
             float farClipping = 1000.0f;
             float fieldOfView = 60.0f;
-
-        private:
-            glm::mat4 viewMatrix = glm::mat4(1.0f);
-            glm::mat4 projectionMatrix = glm::mat4(1.0f);
         };
     }
 }
