@@ -10,7 +10,13 @@ namespace Ludvig
     {
         namespace OpenGL
         {
+            OpenGLWindow::OpenGLWindow(std::string title, int w,int h) {
 
+            }
+            
+            void OpenGLWindow::initialize() {
+
+            }
         }
     }
 }

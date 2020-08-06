@@ -15,7 +15,10 @@ namespace Ludvig
         {
             class OpenGLWindow : public Window
             {
+            public:
+                OpenGLWindow(std::string title,int w, int h);
 
+                void initialize() override;
             };
         }
     }
