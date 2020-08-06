@@ -15,7 +15,10 @@ namespace Ludvig
         {
             class OpenGLRenderContext : public RenderContext
             {
+            public:
+                void prepare_frame() override;
 
+                void finish_frame() override;
             };
         }
     }

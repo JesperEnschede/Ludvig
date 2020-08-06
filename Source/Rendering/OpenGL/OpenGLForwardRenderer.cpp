@@ -10,7 +10,9 @@ namespace Ludvig
     {
         namespace OpenGL
         {
+            void OpenGLForwardRenderer::render_scene() {
 
+            }
         }
     }
 }

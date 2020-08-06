@@ -10,7 +10,13 @@ namespace Ludvig
     {
         namespace OpenGL
         {
+            void OpenGLRenderContext::prepare_frame() {
 
+            }
+
+            void OpenGLRenderContext::finish_frame() {
+
+            }
         }
     }
 }
