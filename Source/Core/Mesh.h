@@ -5,10 +5,7 @@
 #ifndef LUDVIG_MESH_H
 #define LUDVIG_MESH_H
 
-#include "glad/glad.h"
-
-#include "Core/Object.h"
-#include "Core/Transform.h"
+#include "Object.h"
 
 #include "glm.hpp"
 
@@ -30,6 +27,8 @@ namespace Ludvig
             std::vector<glm::vec2> uvs;
             std::vector<glm::vec3> normals;
         };
+
+        Mesh* create_mesh(std::string path);
     }
 }
 
