@@ -19,13 +19,6 @@ namespace Ludvig
         {
         public:
             /*
-             * Initializes default window values
-             * and calls the abstract initialize function,
-             * which will create a window.
-             */
-            Window(std::string name,int w, int h);
-
-            /*
              * Returns the width of the window.
              */
             int get_width() const;
