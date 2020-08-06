@@ -10,7 +10,5 @@ namespace Ludvig
     {
         int BindingData::windowWidth;
         int BindingData::windowHeight;
-
-        GLFWwindow* BindingData::windowHandle;
     }
 }

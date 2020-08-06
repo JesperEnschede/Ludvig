@@ -16,20 +16,13 @@ namespace Ludvig
     {
         Renderer::Renderer(Window* window)
         {
-            if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress))
-            {
-                Debug::DebugLog::log_error("Failed to load openGL | GLVersion.major: " + std::to_string(GLVersion.major) + " GLVersion.minor: "+ std::to_string(GLVersion.minor), true);
-            }
-            else
-            {
-                Debug::DebugLog::log_message("Successfully initialized renderer");
-            }
+            // Debug::DebugLog::log_error("Failed to load openGL | GLVersion.major: " + std::to_string(GLVersion.major) + " GLVersion.minor: "+ std::to_string(GLVersion.minor), true);
 
             IMGUI_CHECKVERSION();
             ImGui::CreateContext();
             ImGuiIO& io = ImGui::GetIO(); (void)io;
 
-            ImGui_ImplGlfw_InitForOpenGL(window->get_context(), true);
+            // ImGui_ImplGlfw_InitForOpenGL(window->get_context(), true);
             ImGui_ImplOpenGL3_Init("#version 330");
 
             glClearColor(0.1f,0.1f,0.1f,1);

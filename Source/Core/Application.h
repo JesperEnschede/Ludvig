@@ -46,6 +46,7 @@ namespace Ludvig
             bool isRunning = false;
 
             std::unique_ptr<Rendering::Window> window;
+
             std::unique_ptr<Rendering::Renderer> renderer;
         };
     }

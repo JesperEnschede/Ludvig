@@ -17,8 +17,6 @@ namespace Ludvig
         public:
             static int windowWidth;
             static int windowHeight;
-
-            static GLFWwindow* windowHandle;
         };
     }
 }
