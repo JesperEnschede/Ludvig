@@ -31,6 +31,7 @@ namespace Ludvig
         protected:
             virtual void initialize() = 0;
 
+            std::string title;
             int width;
             int height;
         };

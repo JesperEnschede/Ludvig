@@ -13,6 +13,7 @@ namespace Ludvig
         namespace OpenGL
         {
             OpenGLWindow::OpenGLWindow(std::string title, int w,int h) {
+                this->title = title;
                 width = w;
                 height = h;
 
@@ -26,7 +27,7 @@ namespace Ludvig
                     Debug::DebugLog::log_message("Initialized GLFW");
                 }
 
-                window = glfwCreateWindow(width,height,"@temp@", nullptr, nullptr);
+                window = glfwCreateWindow(width,height,title.c_str(), nullptr, nullptr);
 
                 if (window == nullptr) {
                     Debug::DebugLog::log_error("Failed to create GLFW window", true);
