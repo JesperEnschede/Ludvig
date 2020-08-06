@@ -36,11 +36,11 @@ bool Ludvig::Core::Scene::Scene::load_mesh(const char *path)
 
     Data::load_obj(path, vertices,uvs,normals);
 
-    Mesh* mesh = new Mesh(vertices,uvs,normals);
-    mesh->name = path;
-    mesh->transform->position = glm::vec3(0,0,0);
+    // Mesh* mesh = new Mesh(vertices,uvs,normals);
+    // mesh->name = path;
+    // mesh->transform->position = glm::vec3(0,0,0);
 
-    this->meshes.push_back(std::move(std::unique_ptr<Mesh>(mesh)));
+    // this->meshes.push_back(std::move(std::unique_ptr<Mesh>(mesh)));
 
     return false;
 }

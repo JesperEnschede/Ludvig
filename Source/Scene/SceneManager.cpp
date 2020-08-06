@@ -36,11 +36,11 @@ namespace Ludvig
             for (int i = 0; i < 3; ++i) {
                 for (int j = 0; j < 3; ++j) {
                     for (int k = 0; k < 3; ++k) {
-                        Core::Mesh* mesh = new Core::Mesh(vertices,uvs,normals);
-                        mesh->name = "assets/models/well.obj";
-                        mesh->transform->position = glm::vec3(i * 30,j * 30,k * 30);
+                        // Core::Mesh* mesh = new Core::Mesh(vertices,uvs,normals);
+                        // mesh->name = "assets/models/well.obj";
+                        // mesh->transform->position = glm::vec3(i * 30,j * 30,k * 30);
 
-                        currentScene->meshes.push_back(std::move(std::unique_ptr<Core::Mesh>(mesh)));
+                        // currentScene->meshes.push_back(std::move(std::unique_ptr<Core::Mesh>(mesh)));
                     }
                 }
             }

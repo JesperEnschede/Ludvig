@@ -50,7 +50,7 @@ namespace Ludvig
                             glm::vec3(1.0f, -1.0f,  1.0f)
                     };
 
-            this->skyboxMesh = std::make_unique<Mesh>(vertices);
+            // this->skyboxMesh = std::make_unique<Mesh>(vertices);
         }
 
         Mesh *Ludvig::Core::Skybox::get_skybox_mesh()

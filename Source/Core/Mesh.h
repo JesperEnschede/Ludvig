@@ -20,30 +20,15 @@ namespace Ludvig
     namespace Core
     {
         /*
-         * A mesh is an object in a 3D space.
+         * A mesh is an visible mesh Object in 3D space.
+         * A MeshRenderer can be used to render a mesh to the screen
          */
-        class Mesh : public Object
+        struct Mesh : public Object
         {
-        public:
-            Mesh(std::vector<glm::vec3> vertices);
-
-            Mesh(std::vector<glm::vec3> vertices, std::vector<glm::vec2> uvs);
-
-            Mesh(std::vector<glm::vec3> vertices, std::vector<glm::vec2> uvs, std::vector<glm::vec3> normals);
-
-            std::vector<unsigned int> get_mesh_indices();
-
-            /*
-            * @Temp testing function.
-            * Returns the size of the vertices vector.
-            */
-            int get_vertices_size();
-
-        private:
+            std::vector<unsigned int> indices;
             std::vector<glm::vec3> vertices;
             std::vector<glm::vec2> uvs;
             std::vector<glm::vec3> normals;
-            std::vector<unsigned int> indices = std::vector<unsigned int>();
         };
     }
 }
