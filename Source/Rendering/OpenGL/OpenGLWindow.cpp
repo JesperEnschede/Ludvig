@@ -20,6 +20,10 @@ namespace Ludvig
                 initialize();
             }
 
+            GLFWwindow *OpenGLWindow::get_handle() const {
+                return window;
+            }
+
             void OpenGLWindow::initialize() {
                 if (glfwInit() != GLFW_TRUE) {
                     Debug::DebugLog::log_error("Failed to initialize GLFW", true);

@@ -18,9 +18,20 @@ namespace Ludvig
             class OpenGLWindow : public Window
             {
             public:
+                /*
+                 * Initializes default window values, calls initialize();
+                 */
                 OpenGLWindow(std::string title,int w, int h);
 
+                /*
+                 * Returns a handle to the GLFW window.
+                 */
+                GLFWwindow* get_handle() const;
+
             protected:
+                /*
+                 * Initializes and creates a GLFW window.
+                 */
                 void initialize() override;
 
             private:
