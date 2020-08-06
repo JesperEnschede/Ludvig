@@ -7,6 +7,8 @@
 
 #include "Rendering/Window.h"
 
+#include "GLFW/glfw3.h"
+
 namespace Ludvig
 {
     namespace Rendering
@@ -18,7 +20,11 @@ namespace Ludvig
             public:
                 OpenGLWindow(std::string title,int w, int h);
 
+            protected:
                 void initialize() override;
+
+            private:
+                GLFWwindow* window;
             };
         }
     }
