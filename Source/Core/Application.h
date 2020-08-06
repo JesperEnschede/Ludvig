@@ -5,8 +5,9 @@
 #ifndef LUDVIG_APPLICATION_H
 #define LUDVIG_APPLICATION_H
 
-#include "Rendering/Renderer.h"
+#include "Rendering/RenderManager.h"
 #include "Rendering/Window.h"
+
 #include "Scene.h"
 
 #include "memory"
@@ -46,8 +47,7 @@ namespace Ludvig
             bool isRunning = false;
 
             std::unique_ptr<Rendering::Window> window;
-
-            std::unique_ptr<Rendering::Renderer> renderer;
+            std::unique_ptr<Rendering::RenderManager> renderManager;
         };
     }
 }
