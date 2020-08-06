@@ -33,6 +33,11 @@ namespace Ludvig
              */
             virtual void poll_window_events() = 0;
 
+            /*
+             * Returns true if the window is closing.
+             */
+            virtual bool is_Closing() = 0;
+
         protected:
             virtual void initialize() = 0;
 
