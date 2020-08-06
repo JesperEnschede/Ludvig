@@ -18,7 +18,7 @@ namespace Ludvig
         {
             if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress))
             {
-                Debug::DebugLog::log_error("Failed to load openGL | GLVersion.major: " + std::to_string(GLVersion.major) + " GLVersion.minor: "+ std::to_string(GLVersion.minor));
+                Debug::DebugLog::log_error("Failed to load openGL | GLVersion.major: " + std::to_string(GLVersion.major) + " GLVersion.minor: "+ std::to_string(GLVersion.minor), true);
             }
             else
             {

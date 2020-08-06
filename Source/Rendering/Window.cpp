@@ -17,7 +17,7 @@ namespace Ludvig
 
             if (glfwInit() != GLFW_TRUE)
             {
-                Debug::DebugLog::log_error("Failed to initialize window");
+                Debug::DebugLog::log_error("Failed to initialize window", true);
 
                 return;
             }
@@ -30,7 +30,7 @@ namespace Ludvig
 
             if (window == nullptr)
             {
-                Debug::DebugLog::log_error("Failed to create window");
+                Debug::DebugLog::log_error("Failed to create window", true);
 
                 return;
             }

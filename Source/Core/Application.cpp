@@ -31,7 +31,7 @@ namespace Ludvig
             if (!isRunning)
                 runtime();
             else
-                Debug::DebugLog::log_error("Attempting to start runtime whilst runtime is already active!");
+                Debug::DebugLog::log_error("Attempting to start runtime whilst runtime is already active!", true);
         }
 
         void Application::runtime()

@@ -4,6 +4,8 @@
 
 #include "DebugLog.h"
 
+#include "stdexcept"
+
 namespace Ludvig
 {
     namespace Debug
@@ -23,8 +25,11 @@ namespace Ludvig
             instance->log += "warning: " + warning + "\n";
         }
 
-        void DebugLog::log_error(std::string error)
+        void DebugLog::log_error(std::string error, bool throwException)
         {
+            if (throwException)
+                throw std::runtime_error(error);
+
             instance->log += "error: " + error + "\n";
         }
 
@@ -32,6 +37,5 @@ namespace Ludvig
         {
             return instance->log;
         }
-
     }
 }

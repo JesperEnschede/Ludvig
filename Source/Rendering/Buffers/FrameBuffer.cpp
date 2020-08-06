@@ -54,7 +54,7 @@ namespace Ludvig
 
             if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
             {
-                Debug::DebugLog::log_error("Framebuffer is not complete!");
+                Debug::DebugLog::log_error("Framebuffer is not complete!", true);
             }
 
             glBindFramebuffer(GL_FRAMEBUFFER, 0);

@@ -18,7 +18,7 @@ namespace Ludvig
 
             static void log_message(std::string message);
             static void log_warning(std::string warning);
-            static void log_error(std::string error);
+            static void log_error(std::string error, bool throwException);
 
             static std::string get_log();
 

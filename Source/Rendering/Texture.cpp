@@ -40,7 +40,7 @@ namespace Ludvig
             }
             else
             {
-                Debug::DebugLog::log_error("Failed to load image " + std::string(path) + " ! \n");
+                Debug::DebugLog::log_error("Failed to load image " + std::string(path) + " ! \n", false);
             }
 
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
