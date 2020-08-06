@@ -28,7 +28,7 @@ namespace Ludvig
              */
             int get_height() const;
 
-        private:
+        protected:
             virtual void initialize() = 0;
 
             int width;
