@@ -48,6 +48,7 @@ namespace Ludvig
 
             std::unique_ptr<Rendering::Window> window;
             std::unique_ptr<Rendering::RenderManager> renderManager;
+            std::unique_ptr<Core::Scene> scene;
         };
     }
 }

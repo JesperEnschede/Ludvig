@@ -6,8 +6,8 @@
 #include "Debug/DebugLog.h"
 
 // OpenGL renderer
-#include "Rendering/OpenGL/OpenGLWindow.h"
 #include "Rendering/OpenGL/OpenGLRenderManager.h"
+#include "Rendering/OpenGL/OpenGLWindow.h"
 
 #include "DearImGui/imgui.h" // FIXME: remove later!
 
@@ -22,6 +22,8 @@ namespace Ludvig
             std::string API = "OpenGL"; // TODO(Jesper) read the API from a config file
 
             Debug::DebugLog::log_message("Initializing Ludvig " + this->version + " | Graphics API: " + API);
+
+            scene = std::make_unique<Core::Scene>();
 
             if (API == "OpenGL") {
                 window = std::make_unique<Rendering::OpenGL::OpenGLWindow>("Ludvig | OpenGL", 1280,720);
@@ -54,7 +56,7 @@ namespace Ludvig
             {
                 window->poll_window_events();
 
-                renderManager->render();
+                renderManager->render(scene.get());
             }
             this->isRunning = false;
         }
