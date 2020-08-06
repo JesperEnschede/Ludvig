@@ -5,76 +5,38 @@
 #ifndef LUDVIG_WINDOW_H
 #define LUDVIG_WINDOW_H
 
-#include "GLFW/glfw3.h"
+#include "string"
 
 namespace Ludvig
 {
     namespace Rendering
     {
         /*
-         * Window class represents an window viewport.
+         * The Window class is a abstract class that must be overridden to define
+         * API specific window creation, The window can be used to draw graphics to.
          */
         class Window
         {
         public:
             /*
-             * Initialize and create a GLFW window.
+             * Initializes default window values
+             * and calls the abstract initialize function,
+             * which will create a window.
              */
-            Window(int width, int height, bool fullscreen);
+            Window(std::string name,int w, int h);
 
             /*
-             * Delete this window and terminate GLFW
-             */
-            ~Window();
-
-            /*
-             * Poll window events.
-             */
-            void poll_events();
-
-            /*
-             * Swap window buffers.
-             */
-            void swap_buffers();
-
-            /*
-             * Returns the current window width.
+             * Returns the width of the window.
              */
             int get_width() const;
 
             /*
-             * Returns the current window height.
+             * Returns the height of the window.
              */
             int get_height() const;
 
-            /*
-             * Set the amount of window samples.
-             */
-            void set_samples(int amount);
-
-            /*
-             * Set the amount of vSync buffers.
-             */
-            void set_vSync(int buffers);
-
-            /*
-             * Returns a pointer to the context window.
-             */
-            GLFWwindow* get_context() const;
-
-            /*
-             * Returns true if the window is closing.
-             */
-            bool is_closing() const;
-
         private:
-            /*
-             * Gets called whenever the window is resized.
-             */
-            void window_resize_callback(int w, int h);
-
-        private:
-            GLFWwindow* window;
+            virtual void initialize() = 0;
 
             int width;
             int height;
