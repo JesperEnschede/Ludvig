@@ -5,6 +5,11 @@
 #ifndef LUDVIG_RENDERMANAGER_H
 #define LUDVIG_RENDERMANAGER_H
 
+#include "RenderTechnique.h"
+#include "RenderContext.h"
+
+#include "memory"
+
 namespace Ludvig
 {
     namespace Rendering
@@ -17,6 +22,10 @@ namespace Ludvig
         {
         public:
             virtual void render() = 0;
+
+        protected:
+            std::unique_ptr<RenderTechnique> renderTechnique;
+            std::unique_ptr<RenderContext> renderContext;
         };
     }
 }
