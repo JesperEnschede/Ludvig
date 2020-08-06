@@ -23,7 +23,16 @@ namespace Ludvig
                  */
                 OpenGLWindow(std::string title,int w, int h);
 
+                /*
+                 * Calls GLFW API poll events function
+                 */
                 void poll_window_events() override;
+
+                /*
+                 * Calls GLFW API window should close function,
+                 * Returns true if the window is closing down.
+                 */
+                bool is_Closing() override;
 
                 /*
                  * Returns a handle to the GLFW window.

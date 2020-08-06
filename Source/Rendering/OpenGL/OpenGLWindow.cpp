@@ -24,6 +24,10 @@ namespace Ludvig
                 glfwPollEvents();
             }
 
+            bool OpenGLWindow::is_Closing() {
+                return glfwWindowShouldClose(window);
+            }
+
             GLFWwindow *OpenGLWindow::get_handle() const {
                 return window;
             }
