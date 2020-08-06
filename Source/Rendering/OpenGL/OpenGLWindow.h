@@ -23,6 +23,8 @@ namespace Ludvig
                  */
                 OpenGLWindow(std::string title,int w, int h);
 
+                void poll_window_events() override;
+
                 /*
                  * Returns a handle to the GLFW window.
                  */

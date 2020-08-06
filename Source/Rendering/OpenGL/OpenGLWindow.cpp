@@ -20,6 +20,10 @@ namespace Ludvig
                 initialize();
             }
 
+            void OpenGLWindow::poll_window_events() {
+                glfwPollEvents();
+            }
+
             GLFWwindow *OpenGLWindow::get_handle() const {
                 return window;
             }
