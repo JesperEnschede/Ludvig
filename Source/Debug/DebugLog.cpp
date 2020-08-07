@@ -17,11 +17,13 @@ namespace Ludvig
 
         void DebugLog::log_message(std::string message)
         {
+            std::printf("%s \n", message.c_str());
             instance->log += message + "\n";
         }
 
         void DebugLog::log_warning(std::string warning)
         {
+            std::printf("warning: %s \n", warning.c_str());
             instance->log += "warning: " + warning + "\n";
         }
 
@@ -30,6 +32,7 @@ namespace Ludvig
             if (throwException)
                 throw std::runtime_error(error);
 
+            std::printf("error: %s \n", error.c_str());
             instance->log += "error: " + error + "\n";
         }
 
