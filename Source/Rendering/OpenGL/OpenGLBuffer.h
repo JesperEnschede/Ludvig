@@ -13,7 +13,10 @@ namespace Ludvig
     {
         namespace OpenGL
         {
-            unsigned int create_buffer(int target,void* data,size_t size);
+            /*
+             * Creates and returns a opengl buffer object
+             */
+            unsigned int create_buffer(int target,void* data,size_t size, int usage);
         }
     }
 }
