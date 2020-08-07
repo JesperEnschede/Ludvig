@@ -9,6 +9,8 @@
 #include "cstring"
 #include "glm.hpp"
 
+#include "Debug/DebugLog.h"
+
 namespace Ludvig
 {
     namespace Data
@@ -23,6 +25,7 @@ namespace Ludvig
             FILE * file = fopen(path, "r");
             if( file == nullptr )
             {
+                Debug::DebugLog::log_error("Failed to load model: " + std::string(path), false);
                 return;
             }
 
@@ -103,6 +106,8 @@ namespace Ludvig
 
             }
             fclose(file);
+
+            Debug::DebugLog::log_message("Loaded model: " + std::string(path));
         }
     }
 }
