@@ -9,6 +9,8 @@
 
 #include "Core/Mesh.h"
 
+#include "vector"
+
 namespace Ludvig
 {
     namespace Rendering
@@ -24,6 +26,10 @@ namespace Ludvig
                 OpenGLMeshRenderer(Core::Mesh* mesh);
 
                 void render() override;
+
+            private:
+                unsigned int vao;
+                std::vector<unsigned int> buffers;
             };
         }
     }
