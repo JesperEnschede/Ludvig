@@ -37,6 +37,8 @@ namespace Ludvig
             } else {
                 Debug::DebugLog::log_error("Given API is not available.", true);
             }
+
+            renderManager->create_mesh_renderer(scene->mesh.get());
         }
 
         void Application::start()

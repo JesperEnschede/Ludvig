@@ -23,7 +23,15 @@ namespace Ludvig
         class RenderManager
         {
         public:
+            /*
+             * Renders a scene
+             */
             virtual void render(Core::Scene* scene) = 0;
+
+            /*
+             * Creates and registers a new mesh renderer.
+             */
+            virtual void create_mesh_renderer(Core::Mesh* mesh) = 0;
 
         protected:
             std::unique_ptr<RenderTechnique> renderTechnique;

@@ -23,6 +23,7 @@ namespace Ludvig
 
                 void render(Core::Scene* scene) override;
 
+                void create_mesh_renderer(Core::Mesh *mesh) override;
             private:
                 void load_openGL();
             };

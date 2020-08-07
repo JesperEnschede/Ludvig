@@ -7,6 +7,7 @@
 #include "OpenGLForwardRenderer.h"
 #include "OpenGLRenderContext.h"
 #include "OpenGLWindow.h"
+#include "OpenGLMeshRenderer.h"
 
 #include "Debug/DebugLog.h"
 
@@ -22,7 +23,7 @@ namespace Ludvig
 
                 load_openGL();
 
-                // TODO(Jesper) get render technique from config file.
+                // TODO(Jesper) get render technique from a config file.
                 renderTechnique = std::make_unique<OpenGLForwardRenderer>();
             }
 
@@ -30,6 +31,10 @@ namespace Ludvig
                 renderContext->prepare_frame();
                 renderTechnique->render_scene();
                 renderContext->finish_frame();
+            }
+
+            void OpenGLRenderManager::create_mesh_renderer(Core::Mesh *mesh) {
+                renderTechnique->meshRenderers.push_back(std::make_unique<OpenGLMeshRenderer>(mesh));
             }
 
             void OpenGLRenderManager::load_openGL() {
