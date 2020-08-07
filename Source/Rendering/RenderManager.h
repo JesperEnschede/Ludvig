@@ -7,6 +7,7 @@
 
 #include "RenderTechnique.h"
 #include "RenderContext.h"
+#include "Shader.h"
 
 #include "Core/Scene.h"
 
@@ -34,6 +35,8 @@ namespace Ludvig
             virtual void create_mesh_renderer(Core::Mesh* mesh) = 0;
 
         protected:
+            std::vector<std::unique_ptr<Shader>> shaders;
+
             std::unique_ptr<RenderTechnique> renderTechnique;
             std::unique_ptr<RenderContext> renderContext;
         };
