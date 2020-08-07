@@ -19,7 +19,7 @@ namespace Ludvig
         class Object
         {
         public:
-            const char* name;
+            const char* name = "Unidentified Object";
 
             std::unique_ptr<Transform> transform = std::make_unique<Transform>();
         };

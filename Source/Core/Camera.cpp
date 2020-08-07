@@ -8,8 +8,7 @@ namespace Ludvig
 {
     namespace Core
     {
-        glm::mat4 Camera::get_view_matrix()
-        {
+        glm::mat4 Camera::get_view_matrix() {
             // TODO(Jesper) Make the camera like a first person shooter camera.
 
             glm::vec3 direction
@@ -27,8 +26,7 @@ namespace Ludvig
                     );
         }
 
-        glm::mat4 Camera::get_projection_matrix()
-        {
+        glm::mat4 Camera::get_projection_matrix() {
             // FIXME(Jesper) fix aspect ratio.
             return glm::perspective(glm::radians(this->fieldOfView),16.0f / 9.0f, this->nearClipping,this->farClipping);
         }

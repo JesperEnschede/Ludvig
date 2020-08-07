@@ -9,7 +9,7 @@ namespace Ludvig
     namespace Core
     {
         Scene::Scene() {
-            mesh = std::move(std::unique_ptr<Mesh>(create_mesh("default.obj")));
+            mesh = std::move(std::unique_ptr<Mesh>(create_mesh("assets/models/monkey.obj")));
             camera = std::make_unique<Camera>();
             light = std::make_unique<Light>();
         }
