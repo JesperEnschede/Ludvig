@@ -20,6 +20,10 @@ namespace Ludvig
 
                 return vao ;
             }
+
+            void bind_vertex_array(unsigned int vao) {
+                glBindVertexArray(vao);
+            }
         }
     }
 }

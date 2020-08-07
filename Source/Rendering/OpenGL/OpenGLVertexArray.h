@@ -15,6 +15,11 @@ namespace Ludvig
              * Creates, bind and returns a vertex array object.
              */
             unsigned int create_vertex_array();
+
+            /*
+             * Binds a vertex array
+             */
+            void bind_vertex_array(unsigned int vao);
         }
     }
 }
