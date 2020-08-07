@@ -5,6 +5,11 @@
 #ifndef LUDVIG_RENDERTECHNIQUE_H
 #define LUDVIG_RENDERTECHNIQUE_H
 
+#include "MeshRenderer.h"
+
+#include "vector"
+#include "memory"
+
 namespace Ludvig
 {
     namespace Rendering
@@ -19,6 +24,8 @@ namespace Ludvig
         {
         public:
             virtual void render_scene() = 0;
+
+            std::vector<std::unique_ptr<MeshRenderer>> meshRenderers;
         };
     }
 }
