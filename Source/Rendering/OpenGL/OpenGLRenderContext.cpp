@@ -4,6 +4,8 @@
 
 #include "OpenGLRenderContext.h"
 
+#include "Debug/DebugLog.h"
+
 namespace Ludvig
 {
     namespace Rendering
@@ -14,6 +16,8 @@ namespace Ludvig
                 this->window = window;
 
                 glfwMakeContextCurrent(window);
+
+                Debug::DebugLog::log_message("Created OpenGL render context");
             }
 
             void OpenGLRenderContext::prepare_frame() {

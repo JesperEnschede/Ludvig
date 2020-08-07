@@ -9,6 +9,8 @@
 #include "OpenGLVertexArray.h"
 #include "OpenGLBuffer.h"
 
+#include "Debug/DebugLog.h"
+
 namespace Ludvig
 {
     namespace Rendering
@@ -29,6 +31,8 @@ namespace Ludvig
                 buffers.push_back(create_buffer(GL_ARRAY_BUFFER, mesh->vertices.data(), mesh->vertices.size(), GL_STATIC_DRAW));
                 buffers.push_back(create_buffer(GL_ARRAY_BUFFER, mesh->uvs.data(), mesh->uvs.size(), GL_STATIC_DRAW));
                 buffers.push_back(create_buffer(GL_ARRAY_BUFFER, mesh->normals.data(), mesh->normals.size(), GL_STATIC_DRAW));
+
+                Debug::DebugLog::log_message("Created OpenGL mesh renderer");
             }
 
             void OpenGLMeshRenderer::render() {

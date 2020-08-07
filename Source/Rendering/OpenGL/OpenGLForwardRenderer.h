@@ -16,6 +16,8 @@ namespace Ludvig
             class OpenGLForwardRenderer : public RenderTechnique
             {
             public:
+                OpenGLForwardRenderer();
+
                 void render_scene() override;
             };
         }
