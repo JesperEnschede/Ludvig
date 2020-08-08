@@ -8,6 +8,8 @@ namespace Ludvig
 {
     namespace Rendering
     {
-
+        void RenderManager::set_active_camera(Core::Camera *camera) {
+            this->camera = camera;
+        }
     }
 }

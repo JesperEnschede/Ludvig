@@ -38,6 +38,7 @@ namespace Ludvig
                 Debug::DebugLog::log_error("Given API is not available.", true);
             }
 
+            renderManager->set_active_camera(scene->camera.get());
             renderManager->create_mesh_renderer(scene->mesh.get());
         }
 

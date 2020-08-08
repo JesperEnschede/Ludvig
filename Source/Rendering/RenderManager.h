@@ -34,11 +34,19 @@ namespace Ludvig
              */
             virtual void create_mesh_renderer(Core::Mesh* mesh) = 0;
 
+            /*
+             * Sets the active camera for rendering.
+             */
+            void set_active_camera(Core::Camera* camera);
+
         protected:
             std::vector<std::unique_ptr<Shader>> shaders;
 
             std::unique_ptr<RenderTechnique> renderTechnique;
             std::unique_ptr<RenderContext> renderContext;
+
+            // the camera is owned by the scene.
+            Core::Camera* camera;
         };
     }
 }
