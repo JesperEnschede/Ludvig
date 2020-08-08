@@ -23,7 +23,15 @@ namespace Ludvig
             class OpenGLMeshRenderer : public MeshRenderer
             {
             public:
+                /*
+                 * Creates OpenGL buffer objects from mesh data.
+                 */
                 OpenGLMeshRenderer(Core::Mesh* mesh);
+
+                /*
+                 * Deletes the mesh renderer buffers.
+                 */
+                virtual ~OpenGLMeshRenderer();
 
                 void render() override;
 

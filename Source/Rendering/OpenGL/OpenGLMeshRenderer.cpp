@@ -48,6 +48,13 @@ namespace Ludvig
                 Debug::DebugLog::log_message("Created OpenGL mesh renderer");
             }
 
+            OpenGLMeshRenderer::~OpenGLMeshRenderer() {
+                glDeleteVertexArrays(1,&vao);
+                for (int i = 0; i < buffers.size(); ++i) {
+                    glDeleteBuffers(1,&buffers[i]);
+                }
+            }
+
             void OpenGLMeshRenderer::render() {
                 /*
                  * TODO(Jesper) ogl mesh rendering
@@ -55,6 +62,10 @@ namespace Ludvig
                  * gldrawelements
                  */
 
+                /*
+                 * idk, this bind_vertex_array function seems a bit
+                 * too unclear. maybe just call the ogl function directly.
+                 */
                 bind_vertex_array(vao);
 
                 /*
