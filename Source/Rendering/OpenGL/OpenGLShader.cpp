@@ -14,7 +14,7 @@ namespace Ludvig
     {
         namespace OpenGL
         {
-            unsigned int OpenGLShader::create_shader(const char *vertexShaderCode, const char *fragmentShaderCode) {
+            unsigned int create_shader(const char *vertexShaderCode, const char *fragmentShaderCode) {
                 unsigned int program;
                 int success = 0;
                 int infoLogLength = 0;
@@ -64,15 +64,9 @@ namespace Ludvig
                 glDeleteShader(vertexShader);
                 glDeleteShader(fragmentShader);
 
-                this->program = program;
-
                 std::printf("Created ogl shader: %i \n", program);
 
-                return this->program;
-            }
-
-            void OpenGLShader::use() {
-                glUseProgram(program);
+                return program;
             }
         }
     }

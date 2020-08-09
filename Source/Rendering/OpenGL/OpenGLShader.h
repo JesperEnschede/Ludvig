@@ -15,19 +15,7 @@ namespace Ludvig
     {
         namespace OpenGL
         {
-            class OpenGLShader : public Shader
-            {
-            public:
-                /*
-                 * Creates a GLSL shader object with vertex & fragment shader code.
-                 */
-                unsigned int create_shader(const char* vertexShaderCode, const char* fragmentShaderCode);
-
-                void use();
-
-            private:
-                unsigned int program;
-            };
+            unsigned int create_shader(const char* vertexShaderCode, const char* fragmentShaderCode);
         }
     }
 }
