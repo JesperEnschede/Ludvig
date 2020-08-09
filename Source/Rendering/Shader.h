@@ -18,12 +18,13 @@ namespace Ludvig
          */
         struct Shader
         {
-        public:
             /*
              * TODO(Jesper) Add support for more shader types.
              * Would be cool to add support for stuff like
              * geometry, compute or other shaders :)
              */
+
+            Shader(std::string vertexFilePath, std::string fragmentFilePath);
 
             std::string vertexFilePath;
             std::string fragmentFilePath;

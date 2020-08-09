@@ -8,6 +8,9 @@ namespace Ludvig
 {
     namespace Rendering
     {
-
+        Shader::Shader(std::string vertexFilePath, std::string fragmentFilePath) {
+            this->vertexFilePath = vertexFilePath;
+            this->fragmentFilePath = fragmentFilePath;
+        }
     }
 }
