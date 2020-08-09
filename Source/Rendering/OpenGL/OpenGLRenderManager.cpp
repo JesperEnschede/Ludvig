@@ -41,7 +41,7 @@ namespace Ludvig
             void OpenGLRenderManager::render(Core::Scene* scene) {
                 renderContext->prepare_frame();
 
-                renderTechnique->render_scene();
+                renderTechnique->render_scene(scene);
 
                 renderContext->finish_frame();
             }

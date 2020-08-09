@@ -18,7 +18,7 @@ namespace Ludvig
             public:
                 OpenGLForwardRenderer();
 
-                void render_scene() override;
+                void render_scene(Core::Scene* scene) override;
             };
         }
     }

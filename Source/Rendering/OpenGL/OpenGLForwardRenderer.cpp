@@ -4,6 +4,8 @@
 
 #include "OpenGLForwardRenderer.h"
 
+#include "OpenGLShader.h"
+
 #include "Debug/DebugLog.h"
 
 namespace Ludvig
@@ -16,7 +18,7 @@ namespace Ludvig
                 Debug::DebugLog::log_message("Created OpenGL forward renderer");
             }
 
-            void OpenGLForwardRenderer::render_scene() {
+            void OpenGLForwardRenderer::render_scene(Core::Scene* scene) {
                 meshRenderer->render();
             }
         }

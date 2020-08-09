@@ -7,6 +7,8 @@
 
 #include "MeshRenderer.h"
 
+#include "Core/Scene.h"
+
 #include "vector"
 #include "memory"
 
@@ -23,7 +25,7 @@ namespace Ludvig
         class RenderTechnique
         {
         public:
-            virtual void render_scene() = 0;
+            virtual void render_scene(Core::Scene* scene) = 0;
 
             std::unique_ptr<MeshRenderer> meshRenderer;
         };
