@@ -41,5 +41,6 @@ add_subdirectory(External/glfw)
 include_directories(glfw/include/)
 
 add_executable(Ludvig main.cpp ${Ludvig_Source})
-target_link_libraries(Ludvig glfw ${GLFW_LIBRARIES} -lopengl32)
+find_package(Vulkan REQUIRED)
+target_link_libraries(Ludvig glfw ${GLFW_LIBRARIES} -lopengl32 Vulkan::Vulkan)
 find_package(OpenGL REQUIRED)
