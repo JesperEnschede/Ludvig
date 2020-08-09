@@ -34,9 +34,6 @@ namespace Ludvig
                 // TODO(Jesper) get render technique from a config file.
                 renderTechnique = std::make_unique<OpenGLForwardRenderer>();
 
-                shaders.push_back(std::make_unique<Shader>("assets/shaders/default_vertex.glsl", "assets/shaders/default_fragment.glsl"));
-                create_glsl_shaders();
-
                 initialize_imgui(oglWindow->get_handle());
 
                 glClearColor(0.1f,0.1f,0.1f,1);
@@ -87,15 +84,6 @@ namespace Ludvig
             void OpenGLRenderManager::render_gui_frame() {
                 ImGui::Render();
                 ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-            }
-
-            void OpenGLRenderManager::create_glsl_shaders() {
-                for (int i = 0; i < shaders.size(); ++i) {
-                    glslShaders.push_back(
-                            OpenGL::create_shader(
-                                    Data::read_file(shaders[i]->vertexFilePath).c_str(),
-                                    Data::read_file(shaders[i]->fragmentFilePath).c_str()));
-                }
             }
         }
     }

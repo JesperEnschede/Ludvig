@@ -40,8 +40,6 @@ namespace Ludvig
             void set_active_camera(Core::Camera* camera);
 
         protected:
-            std::vector<std::unique_ptr<Shader>> shaders;
-
             std::unique_ptr<RenderTechnique> renderTechnique;
             std::unique_ptr<RenderContext> renderContext;
 

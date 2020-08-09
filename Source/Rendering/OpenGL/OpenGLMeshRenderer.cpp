@@ -9,7 +9,9 @@
 #include "OpenGLVertexArray.h"
 #include "OpenGLBuffer.h"
 #include "OpenGLVertexAttrib.h"
+#include "OpenGLShader.h"
 
+#include "Data/FileReader.h"
 #include "Debug/DebugLog.h"
 
 namespace Ludvig
@@ -29,6 +31,14 @@ namespace Ludvig
                  */
 
                 vao = create_vertex_array();
+
+                shader = create_shader
+                        (
+                            Data::read_file("assets/shaders/" + mesh->shader + "_vertex.glsl").c_str(),
+                            Data::read_file("assets/shaders/" + mesh->shader + "_fragment.glsl").c_str()
+                        );
+
+                // TODO(Jesper) create texture
 
                 /*
                  * Maybe i should create a "create buffer" function inside of the mesh renderer,
@@ -63,6 +73,8 @@ namespace Ludvig
                  * bind vao
                  * gldrawelements
                  */
+
+                glUseProgram(shader);
 
                 /*
                  * idk, this bind_vertex_array function seems a bit

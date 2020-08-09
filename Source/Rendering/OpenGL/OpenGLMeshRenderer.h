@@ -36,9 +36,10 @@ namespace Ludvig
                 void render() override;
 
             private:
-                unsigned int vao;
                 std::vector<unsigned int> buffers;
-
+                unsigned int vao;
+                unsigned int shader;
+                unsigned int texture;
                 size_t verticesSize; // TODO(Jesper) remove temp size;
             };
         }

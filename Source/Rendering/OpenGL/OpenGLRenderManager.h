@@ -35,10 +35,6 @@ namespace Ludvig
                 void create_gui_frame();
 
                 void render_gui_frame();
-
-                void create_glsl_shaders();
-
-                std::vector<unsigned int> glslShaders;
             };
         }
     }

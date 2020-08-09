@@ -27,7 +27,8 @@ namespace Ludvig
             std::vector<glm::vec2> uvs;
             std::vector<glm::vec3> normals;
 
-            unsigned int shaderIndex;
+            std::string shader;
+            std::string texture;
         };
 
         Mesh* create_mesh(std::string path);
