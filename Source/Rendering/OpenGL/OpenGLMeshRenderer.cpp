@@ -36,14 +36,16 @@ namespace Ludvig
                  * idk, we'll see if this causes any major problems in the near future.
                  * -Jesper 8/7/2020
                  */
-                buffers.push_back(create_buffer(GL_ARRAY_BUFFER, mesh->vertices.data(), mesh->vertices.size(), GL_STATIC_DRAW));
+                buffers.push_back(create_buffer(GL_ARRAY_BUFFER, mesh->vertices.data(), mesh->vertices.size() * sizeof(glm::vec3), GL_STATIC_DRAW));
                 vertex_attrib_ptr(0,3);
 
-                buffers.push_back(create_buffer(GL_ARRAY_BUFFER, mesh->uvs.data(), mesh->uvs.size(), GL_STATIC_DRAW));
+                buffers.push_back(create_buffer(GL_ARRAY_BUFFER, mesh->uvs.data(), mesh->uvs.size() * sizeof(glm::vec2), GL_STATIC_DRAW));
                 vertex_attrib_ptr(1,2);
 
-                buffers.push_back(create_buffer(GL_ARRAY_BUFFER, mesh->normals.data(), mesh->normals.size(), GL_STATIC_DRAW));
+                buffers.push_back(create_buffer(GL_ARRAY_BUFFER, mesh->normals.data(), mesh->normals.size() * sizeof(glm::vec3), GL_STATIC_DRAW));
                 vertex_attrib_ptr(2,3);
+
+                verticesSize = mesh->vertices.size();
 
                 Debug::DebugLog::log_message("Created OpenGL mesh renderer");
             }
@@ -75,7 +77,7 @@ namespace Ludvig
                  * abstraction might be very confusing. - Jesper 8/7/2020
                  */
                 // TODO(Jesper) glDrawElements instead of glDrawArrays
-                glDrawArrays(GL_TRIANGLES, 0,6);
+                glDrawArrays(GL_TRIANGLES, 0,verticesSize);
             }
         }
     }

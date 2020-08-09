@@ -38,6 +38,8 @@ namespace Ludvig
             private:
                 unsigned int vao;
                 std::vector<unsigned int> buffers;
+
+                size_t verticesSize; // TODO(Jesper) remove temp size;
             };
         }
     }
