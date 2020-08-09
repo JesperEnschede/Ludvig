@@ -25,7 +25,7 @@ namespace Ludvig
         public:
             virtual void render_scene() = 0;
 
-            std::vector<std::unique_ptr<MeshRenderer>> meshRenderers;
+            std::unique_ptr<MeshRenderer> meshRenderer;
         };
     }
 }

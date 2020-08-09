@@ -44,7 +44,7 @@ namespace Ludvig
             }
 
             void OpenGLRenderManager::create_mesh_renderer(Core::Mesh *mesh) {
-                renderTechnique->meshRenderers.push_back(std::make_unique<OpenGLMeshRenderer>(mesh));
+                renderTechnique->meshRenderer = std::make_unique<OpenGLMeshRenderer>(mesh);
             }
 
             void OpenGLRenderManager::load_openGL() {

@@ -17,9 +17,7 @@ namespace Ludvig
             }
 
             void OpenGLForwardRenderer::render_scene() {
-                for (int i = 0; i < meshRenderers.size(); ++i) {
-                    meshRenderers[i]->render();
-                }
+                meshRenderer->render();
             }
         }
     }
