@@ -21,7 +21,7 @@ namespace Ludvig
             }
 
             void OpenGLRenderContext::prepare_frame() {
-                glClear(GL_COLOR_BUFFER_BIT);
+                glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
             }
 
             void OpenGLRenderContext::finish_frame() {

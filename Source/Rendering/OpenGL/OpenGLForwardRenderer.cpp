@@ -21,7 +21,6 @@ namespace Ludvig
                     meshRenderers[i]->render();
                 }
             }
-
         }
     }
 }

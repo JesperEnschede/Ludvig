@@ -8,6 +8,9 @@
 #include "OpenGLRenderContext.h"
 #include "OpenGLWindow.h"
 #include "OpenGLMeshRenderer.h"
+#include "OpenGLShader.h"
+
+#include "Data/FileReader.h"
 
 #include "Debug/DebugLog.h"
 
@@ -25,11 +28,18 @@ namespace Ludvig
 
                 // TODO(Jesper) get render technique from a config file.
                 renderTechnique = std::make_unique<OpenGLForwardRenderer>();
+
+                glClearColor(0.1f,0.1f,0.1f,1);
+                glEnable(GL_DEPTH_TEST);
+                glDepthFunc(GL_LESS);
+                glEnable(GL_CULL_FACE);
             }
 
             void OpenGLRenderManager::render(Core::Scene* scene) {
                 renderContext->prepare_frame();
+
                 renderTechnique->render_scene();
+
                 renderContext->finish_frame();
             }
 

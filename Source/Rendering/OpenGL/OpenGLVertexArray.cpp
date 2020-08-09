@@ -18,7 +18,7 @@ namespace Ludvig
                 glGenVertexArrays(1,&vao);
                 glBindVertexArray(vao);
 
-                return vao ;
+                return vao;
             }
 
             void bind_vertex_array(unsigned int vao) {
