@@ -10,6 +10,8 @@
 #include "Rendering/RenderManager.h"
 #include "Rendering/Window.h"
 
+#include "vector"
+
 namespace Ludvig
 {
     namespace Rendering
@@ -26,6 +28,10 @@ namespace Ludvig
                 void create_mesh_renderer(Core::Mesh *mesh) override;
             private:
                 void load_openGL();
+
+                void create_glsl_shaders();
+
+                std::vector<unsigned int> glslShaders;
             };
         }
     }
