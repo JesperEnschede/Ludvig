@@ -6,6 +6,7 @@
 #define LUDVIG_OPENGLRENDERMANAGER_H
 
 #include "glad/glad.h"
+#include "GLFW/glfw3.h"
 
 #include "Rendering/RenderManager.h"
 #include "Rendering/Window.h"
@@ -28,6 +29,12 @@ namespace Ludvig
                 void create_mesh_renderer(Core::Mesh *mesh) override;
             private:
                 void load_openGL();
+
+                void initialize_imgui(GLFWwindow* window);
+
+                void create_gui_frame();
+
+                void render_gui_frame();
 
                 void create_glsl_shaders();
 

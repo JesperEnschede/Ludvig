@@ -11,8 +11,11 @@
 #include "OpenGLShader.h"
 
 #include "Data/FileReader.h"
-
 #include "Debug/DebugLog.h"
+
+#include "DearImGui/imgui.h"
+#include "DearImGui/imgui_impl_glfw.h"
+#include "DearImGui/imgui_impl_opengl3.h"
 
 namespace Ludvig
 {
@@ -22,7 +25,9 @@ namespace Ludvig
         {
             OpenGLRenderManager::OpenGLRenderManager(Window* window) {
 
-                renderContext = std::make_unique<OpenGLRenderContext>(dynamic_cast<OpenGLWindow*>(window)->get_handle());
+                OpenGLWindow* oglWindow = dynamic_cast<OpenGLWindow*>(window);
+
+                renderContext = std::make_unique<OpenGLRenderContext>(oglWindow->get_handle());
 
                 load_openGL();
 
@@ -31,6 +36,8 @@ namespace Ludvig
 
                 shaders.push_back(std::make_unique<Shader>("assets/shaders/default_vertex.glsl", "assets/shaders/default_fragment.glsl"));
                 create_glsl_shaders();
+
+                initialize_imgui(oglWindow->get_handle());
 
                 glClearColor(0.1f,0.1f,0.1f,1);
                 glEnable(GL_DEPTH_TEST);
@@ -42,6 +49,10 @@ namespace Ludvig
                 renderContext->prepare_frame();
 
                 renderTechnique->render_scene(scene);
+
+                create_gui_frame();
+
+                render_gui_frame();
 
                 renderContext->finish_frame();
             }
@@ -56,6 +67,26 @@ namespace Ludvig
                 } else {
                     Debug::DebugLog::log_message("Initialized OpenGL");
                 }
+            }
+
+            void OpenGLRenderManager::initialize_imgui(GLFWwindow* window) {
+                IMGUI_CHECKVERSION();
+                ImGui::CreateContext();
+                ImGuiIO& io = ImGui::GetIO(); (void)io;
+
+                ImGui_ImplGlfw_InitForOpenGL(window,true);
+                ImGui_ImplOpenGL3_Init("#version 330 core");
+            }
+
+            void OpenGLRenderManager::create_gui_frame() {
+                ImGui_ImplOpenGL3_NewFrame();
+                ImGui_ImplGlfw_NewFrame();
+                ImGui::NewFrame();
+            }
+
+            void OpenGLRenderManager::render_gui_frame() {
+                ImGui::Render();
+                ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
             }
 
             void OpenGLRenderManager::create_glsl_shaders() {
