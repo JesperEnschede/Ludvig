@@ -9,6 +9,10 @@
 #include "Rendering/OpenGL/OpenGLRenderManager.h"
 #include "Rendering/OpenGL/OpenGLWindow.h"
 
+// Vulkan renderer
+#include "Rendering/Vulkan/VulkanRenderManager.h"
+#include "Rendering/Vulkan/VulkanWindow.h"
+
 #include "DearImGui/imgui.h" // FIXME: remove later!
 
 #include "chrono"
@@ -19,17 +23,19 @@ namespace Ludvig
     {
         Application::Application()
         {
-            std::string API = "OpenGL"; // TODO(Jesper) read the API from a config file
+            std::string API = "Vulkan"; // TODO(Jesper) read the API from a config file
 
             Debug::DebugLog::log_message("Initializing Ludvig " + this->version + " | Graphics API: " + API);
 
             scene = std::make_unique<Core::Scene>();
 
+            // TODO(Jesper) get window initial width/height from a config file.
             if (API == "OpenGL") {
                 window = std::make_unique<Rendering::OpenGL::OpenGLWindow>("Ludvig | OpenGL", 1280,720);
                 renderManager = std::make_unique<Rendering::OpenGL::OpenGLRenderManager>(window.get());
             } else if (API == "Vulkan") {
-                Debug::DebugLog::log_error("Vulkan API is not implemented yet.", true);
+                window = std::make_unique<Rendering::Vulkan::VulkanWindow>("Ludvig | Vulkan", 1280,720);
+                renderManager = std::make_unique<Rendering::Vulkan::VulkanRenderManager>();
             } else if (API == "Direct3D12") {
                 Debug::DebugLog::log_error("Direct3D 12 API is not implemented yet.", true);
             } else if (API == "Direct3D9") {
