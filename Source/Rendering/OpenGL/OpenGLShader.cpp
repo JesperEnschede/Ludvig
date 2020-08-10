@@ -68,6 +68,14 @@ namespace Ludvig
 
                 return program;
             }
+
+            void set_uniform_mat4(unsigned int shaderProgram,const std::string& location, glm::mat4 matrix) {
+                glUniformMatrix4fv(glGetUniformLocation(shaderProgram,location.c_str()), 1, GL_FALSE, &matrix[0][0]);
+            }
+
+            void set_uniform_int(unsigned int shaderProgram, const std::string &location, int value) {
+                glUniform1i(glGetUniformLocation(shaderProgram,location.c_str()),value);
+            }
         }
     }
 }
