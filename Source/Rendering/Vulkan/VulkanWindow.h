@@ -7,6 +7,8 @@
 
 #include "Rendering/Window.h"
 
+#include "GLFW/glfw3.h"
+
 namespace Ludvig
 {
     namespace Rendering
@@ -16,7 +18,18 @@ namespace Ludvig
             class VulkanWindow : public Window
             {
             public:
-                VulkanWindow();
+                VulkanWindow(const std::string& title, int w, int h);
+
+                void initialize() override;
+
+                bool is_Closing() override;
+
+                void poll_window_events() override;
+
+                GLFWwindow* get_handle() const;
+
+            private:
+                GLFWwindow* windowHandle;
             };
         }
     }
