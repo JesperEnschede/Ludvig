@@ -10,6 +10,8 @@
 #include "OpenGLMeshRenderer.h"
 #include "OpenGLShader.h"
 
+#include "GUI/GUIManager.h"
+
 #include "Data/FileReader.h"
 #include "Debug/DebugLog.h"
 
@@ -48,7 +50,7 @@ namespace Ludvig
                 renderTechnique->render_scene(scene);
 
                 create_gui_frame();
-
+                GUI::GUIManager::draw_gui_windows();
                 render_gui_frame();
 
                 renderContext->finish_frame();

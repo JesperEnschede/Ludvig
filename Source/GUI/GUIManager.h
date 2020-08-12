@@ -14,7 +14,15 @@ namespace Ludvig
          */
         class GUIManager final
         {
-            
+        public:
+            GUIManager();
+
+            static void draw_gui_windows();
+
+        private:
+            void on_gui();
+
+            static GUIManager* instance;
         };
     }
 }
