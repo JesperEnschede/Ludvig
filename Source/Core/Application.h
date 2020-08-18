@@ -8,6 +8,8 @@
 #include "Rendering/RenderManager.h"
 #include "Rendering/Window.h"
 
+#include "GUI/GUIManager.h"
+
 #include "Scene.h"
 
 #include "memory"
@@ -49,6 +51,7 @@ namespace Ludvig
             std::unique_ptr<Rendering::Window> window;
             std::unique_ptr<Rendering::RenderManager> renderManager;
             std::unique_ptr<Core::Scene> scene;
+            std::shared_ptr<GUI::GUIManager> guiManager;
         };
     }
 }

@@ -23,7 +23,7 @@ namespace Ludvig
     {
         Application::Application()
         {
-            std::string API = "Vulkan"; // TODO(Jesper) read the API from a config file
+            std::string API = "OpenGL"; // TODO(Jesper) read the API from a config file
 
             Debug::DebugLog::log_message("Initializing Ludvig " + this->version + " | Graphics API: " + API);
 
@@ -43,6 +43,8 @@ namespace Ludvig
             } else {
                 Debug::DebugLog::log_error("Given API is not available.", true);
             }
+
+            guiManager = std::make_unique<GUI::GUIManager>();
 
             renderManager->set_active_camera(scene->camera.get());
             renderManager->create_mesh_renderer(scene->mesh.get());
