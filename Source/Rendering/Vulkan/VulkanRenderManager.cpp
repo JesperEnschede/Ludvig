@@ -4,12 +4,18 @@
 
 #include "VulkanRenderManager.h"
 
+#include "VulkanRenderContext.h"
+
 namespace Ludvig
 {
     namespace Rendering
     {
         namespace Vulkan
         {
+            VulkanRenderManager::VulkanRenderManager() {
+                renderContext = std::make_unique<VulkanRenderContext>();
+            }
+
             void VulkanRenderManager::render(Core::Scene *scene) {
 
             }
