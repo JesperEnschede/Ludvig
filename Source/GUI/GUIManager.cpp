@@ -22,8 +22,8 @@ namespace Ludvig
 
         void GUIManager::on_gui() {
             ImGui::Begin("Profiler");
-            ImGui::TextColored(ImColor(0,255,0), "ms/frame: %.3f", 1000.0f / ImGui::GetIO().Framerate);
-            ImGui::TextColored(ImColor(0,255,0),"fps: %.3f",ImGui::GetIO().Framerate);
+            ImGui::Text("ms/frame: %.3f", 1000.0f / ImGui::GetIO().Framerate);
+            ImGui::Text("fps: %.3f",ImGui::GetIO().Framerate);
             ImGui::End();
         }
     }
