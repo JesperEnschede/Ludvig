@@ -30,6 +30,8 @@ namespace Ludvig
                  * index bo
                  */
 
+                meshTransform = mesh->transform.get();
+
                 vao = create_vertex_array();
 
                 shader = create_shader
@@ -67,13 +69,16 @@ namespace Ludvig
                 }
             }
 
-            void OpenGLMeshRenderer::render() {
+            void OpenGLMeshRenderer::render(glm::mat4 view, glm::mat4 projection) {
                 /*
                  * TODO(Jesper) ogl mesh rendering
                  * bind vao
                  * gldrawelements
                  */
 
+                set_uniform_mat4(shader, "model", meshTransform->get_trs());
+                set_uniform_mat4(shader, "view", view);
+                set_uniform_mat4(shader, "projection", projection);
                 glUseProgram(shader);
 
                 /*

@@ -5,6 +5,8 @@
 #ifndef LUDVIG_MESHRENDERER_H
 #define LUDVIG_MESHRENDERER_H
 
+#include "glm.hpp"
+
 namespace Ludvig
 {
     namespace Rendering
@@ -16,7 +18,7 @@ namespace Ludvig
         class MeshRenderer
         {
         public:
-            virtual void render() = 0;
+            virtual void render(glm::mat4 view, glm::mat4 projection) = 0;
         };
     }
 }

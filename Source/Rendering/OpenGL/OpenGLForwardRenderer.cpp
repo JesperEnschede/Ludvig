@@ -19,7 +19,7 @@ namespace Ludvig
             }
 
             void OpenGLForwardRenderer::render_scene(Core::Scene* scene) {
-                meshRenderer->render();
+                meshRenderer->render(scene->camera->get_view_matrix(), scene->camera->get_projection_matrix());
             }
         }
     }

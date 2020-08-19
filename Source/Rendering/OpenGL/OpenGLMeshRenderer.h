@@ -33,13 +33,17 @@ namespace Ludvig
                  */
                 virtual ~OpenGLMeshRenderer();
 
-                void render() override;
+                void render(glm::mat4 view, glm::mat4 projection) override;
 
             private:
                 std::vector<unsigned int> buffers;
                 unsigned int vao;
+
                 unsigned int shader;
                 unsigned int texture;
+
+                Core::Transform* meshTransform;
+
                 size_t verticesSize; // TODO(Jesper) remove temp size;
             };
         }
