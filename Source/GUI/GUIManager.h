@@ -6,7 +6,8 @@
 #define LUDVIG_GUIMANAGER_H
 
 #include "GUIWindow.h"
-#include "GUIMeshInspector.h"
+
+#include "Core/Scene.h"
 
 #include "vector"
 #include "memory"
@@ -21,7 +22,7 @@ namespace Ludvig
         class GUIManager final
         {
         public:
-            GUIManager();
+            GUIManager(Core::Scene* scene);
 
             static void draw_gui_windows();
 

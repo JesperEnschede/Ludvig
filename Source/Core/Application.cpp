@@ -44,7 +44,7 @@ namespace Ludvig
                 Debug::DebugLog::log_error("Given API is not available.", true);
             }
 
-            guiManager = std::make_unique<GUI::GUIManager>();
+            guiManager = std::make_unique<GUI::GUIManager>(scene.get());
 
             renderManager->set_active_camera(scene->camera.get());
             renderManager->create_mesh_renderer(scene->mesh.get());

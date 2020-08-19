@@ -4,6 +4,8 @@
 
 #include "GUIManager.h"
 
+#include "Windows/GUIMeshInspector.h"
+
 #include "DearImGui/imgui.h"
 
 namespace Ludvig
@@ -12,8 +14,10 @@ namespace Ludvig
     {
         GUIManager* GUIManager::instance;
 
-        GUIManager::GUIManager() {
+        GUIManager::GUIManager(Core::Scene* scene) {
             instance = this;
+
+            instance->windows.push_back(std::make_unique<GUIMeshInspector>(scene->mesh.get()));
         }
 
         void GUIManager::draw_gui_windows() {
