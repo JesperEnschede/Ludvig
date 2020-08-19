@@ -14,6 +14,7 @@ namespace Ludvig
          */
         class GUIWindow
         {
+        public:
             virtual void draw() = 0;
         };
     }
