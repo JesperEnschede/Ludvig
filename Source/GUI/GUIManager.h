@@ -5,6 +5,12 @@
 #ifndef LUDVIG_GUIMANAGER_H
 #define LUDVIG_GUIMANAGER_H
 
+#include "GUIWindow.h"
+#include "GUIMeshInspector.h"
+
+#include "vector"
+#include "memory"
+
 namespace Ludvig
 {
     namespace GUI
@@ -21,6 +27,8 @@ namespace Ludvig
 
         private:
             void on_gui();
+
+            std::vector<std::unique_ptr<GUIWindow>> windows;
 
             static GUIManager* instance;
         };

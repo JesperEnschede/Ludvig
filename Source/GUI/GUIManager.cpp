@@ -21,10 +21,9 @@ namespace Ludvig
         }
 
         void GUIManager::on_gui() {
-            ImGui::Begin("Profiler");
-            ImGui::Text("ms/frame: %.3f", 1000.0f / ImGui::GetIO().Framerate);
-            ImGui::Text("fps: %.3f",ImGui::GetIO().Framerate);
-            ImGui::End();
+            for (size_t i = 0; i < windows.size(); ++i) {
+                windows[i].get()->draw();
+            }
         }
     }
 }
