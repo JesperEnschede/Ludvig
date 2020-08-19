@@ -18,6 +18,7 @@ namespace Ludvig
              */
             class VulkanValidationLayers
             {
+            public:
                 /*
                  * Returns true if the validation layers are enabled
                  */
