@@ -24,6 +24,11 @@ namespace Ludvig
         {
         public:
             /*
+             * Initializes default camera values
+             */
+            Camera();
+
+            /*
              * Returns the view matrix.
              */
             glm::mat4 get_view_matrix();

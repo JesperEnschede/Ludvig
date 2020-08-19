@@ -8,6 +8,10 @@ namespace Ludvig
 {
     namespace Core
     {
+        Camera::Camera() {
+            transform->position = glm::vec3(0,0,-10);
+        }
+
         glm::mat4 Camera::get_view_matrix() {
             // TODO(Jesper) Make the camera like a first person shooter camera.
 
