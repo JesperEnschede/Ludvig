@@ -15,7 +15,9 @@ namespace Ludvig
     {
         namespace Vulkan
         {
-            std::vector<const char*> VulkanValidationLayers::validationLayers;
+            std::vector<const char*> VulkanValidationLayers::validationLayers = {
+                    "VK_LAYER_KHRONOS_validation"
+            };
 
             /*
              * Validation layers are enabled by default and i see
