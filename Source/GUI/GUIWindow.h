@@ -16,6 +16,8 @@ namespace Ludvig
         {
         public:
             virtual void draw() = 0;
+
+            bool isVisible = true;
         };
     }
 }

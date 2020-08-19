@@ -22,7 +22,8 @@ namespace Ludvig
 
         void GUIManager::on_gui() {
             for (size_t i = 0; i < windows.size(); ++i) {
-                windows[i].get()->draw();
+                if (windows[i]->isVisible)
+                    windows[i].get()->draw();
             }
         }
     }
