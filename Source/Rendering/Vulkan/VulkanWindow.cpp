@@ -49,6 +49,10 @@ namespace Ludvig
             GLFWwindow *VulkanWindow::get_handle() const {
                 return windowHandle;
             }
+
+            void VulkanWindow::on_resize_window_callback(int newWidth, int newHeight) {
+
+            }
         }
     }
 }

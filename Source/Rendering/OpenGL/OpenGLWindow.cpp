@@ -46,6 +46,22 @@ namespace Ludvig
                 } else {
                     Debug::DebugLog::log_message("Created GLFW window");
                 }
+
+                glfwSetWindowUserPointer(window, this);
+
+                glfwSetWindowSizeCallback(
+                        window,
+                        [](GLFWwindow* window, int nw, int nh)
+                        {
+                            reinterpret_cast<OpenGLWindow*>(glfwGetWindowUserPointer(window))->on_resize_window_callback(nw,nh);
+                        });
+            }
+
+            void OpenGLWindow::on_resize_window_callback(int newWidth, int newHeight) {
+                width = newWidth;
+                height = newHeight;
+
+                glViewport(0,0,newWidth, newHeight);
             }
         }
     }

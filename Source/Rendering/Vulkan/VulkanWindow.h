@@ -29,6 +29,8 @@ namespace Ludvig
                 GLFWwindow* get_handle() const;
 
             private:
+                void on_resize_window_callback(int newWidth, int newHeight) override;
+
                 GLFWwindow* windowHandle;
             };
         }

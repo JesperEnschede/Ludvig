@@ -39,7 +39,15 @@ namespace Ludvig
             virtual bool is_Closing() = 0;
 
         protected:
+            /*
+             * Initializes the window.
+             */
             virtual void initialize() = 0;
+
+            /*
+             * Get called whenever the window is resized.
+             */
+            virtual void on_resize_window_callback(int newWidth, int newHeight) = 0;
 
             std::string title;
             int width;

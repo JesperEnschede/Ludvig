@@ -45,6 +45,11 @@ namespace Ludvig
                  */
                 void initialize() override;
 
+                /*
+                 * Resizes the ogl framebuffer.
+                 */
+                void on_resize_window_callback(int newWidth, int newHeight) override;
+
             private:
                 GLFWwindow* window;
             };
