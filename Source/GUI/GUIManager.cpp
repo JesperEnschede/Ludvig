@@ -5,6 +5,7 @@
 #include "GUIManager.h"
 
 #include "Windows/GUIMeshInspector.h"
+#include "Windows/GUICameraInspector.h"
 
 #include "DearImGui/imgui.h"
 
@@ -18,6 +19,7 @@ namespace Ludvig
             instance = this;
 
             instance->windows.push_back(std::make_unique<GUIMeshInspector>(scene->mesh.get()));
+            instance->windows.push_back(std::make_unique<GUICameraInspector>(scene->camera.get()));
         }
 
         void GUIManager::draw_gui_windows() {
