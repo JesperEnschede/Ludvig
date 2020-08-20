@@ -4,9 +4,13 @@
 
 #include "VulkanRenderContext.h"
 
+#include "VulkanWindow.h"
+
 #include "API/VulkanValidationLayers.h"
 #include "API/VulkanExtensions.h"
 #include "API/VulkanDebugMessenger.h"
+
+#include "Data/BindingData.h"
 
 #include "GLFW/glfw3.h"
 
@@ -19,6 +23,7 @@ namespace Ludvig
             VulkanRenderContext::VulkanRenderContext() {
                 create_vulkan_instance();
                 create_debug_messenger();
+                create_surface();
             }
 
             VulkanRenderContext::~VulkanRenderContext() {
@@ -27,6 +32,7 @@ namespace Ludvig
                     destroy_debug_utils_messengerEXT(instance,debugMessenger,nullptr);
                 }
 
+                vkDestroySurfaceKHR(instance,surface,nullptr);
                 vkDestroyInstance(instance,nullptr);
             }
 
@@ -118,6 +124,14 @@ namespace Ludvig
                     std::runtime_error("failed to setup debug messenger!");
                 } else {
                     Debug::DebugLog::log_message("Created vulkan debug messenger");
+                }
+            }
+
+            void VulkanRenderContext::create_surface() {
+                if (glfwCreateWindowSurface(instance,dynamic_cast<VulkanWindow*>(Data::BindingData::window)->get_handle(), nullptr, &surface)) {
+                    Debug::DebugLog::log_error("Unable to create vulkan surface", false);
+                } else {
+                    Debug::DebugLog::log_message("Created vulkan surface");
                 }
             }
         }

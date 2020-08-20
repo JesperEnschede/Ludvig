@@ -46,8 +46,14 @@ namespace Ludvig
                  */
                 void create_debug_messenger();
 
+                /*
+                 * Creates a vulkan glfw window surface
+                 */
+                void create_surface();
+
                 VkInstance instance;
                 VkDebugUtilsMessengerEXT debugMessenger;
+                VkSurfaceKHR surface;
             };
         }
     }
