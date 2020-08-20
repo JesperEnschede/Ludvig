@@ -73,14 +73,14 @@ namespace Ludvig
 
                 glfwExtensions = glfwGetRequiredInstanceExtensions(&glfwExtensionCount);
 
-                auto extension = get_required_extensions();
-                instanceCreateInfo.enabledExtensionCount = static_cast<uint32_t>(extension.size());
-                instanceCreateInfo.ppEnabledExtensionNames = extension.data();
+                auto extensions = get_required_extensions();
+                instanceCreateInfo.enabledExtensionCount = static_cast<uint32_t>(extensions.size());
+                instanceCreateInfo.ppEnabledExtensionNames = extensions.data();
 
                 VkDebugUtilsMessengerCreateInfoEXT debugUtilsMessengerCreateInfoExt;
-                if (Vulkan::VulkanValidationLayers::is_enabled() && 0) { // FIXME(Jesper) enable debug vk callbacksEXT
+                if (Vulkan::VulkanValidationLayers::is_enabled()) { // FIXME(Jesper) enable debug vk callbacksEXT
                     instanceCreateInfo.enabledLayerCount = static_cast<uint32_t>(VulkanValidationLayers::validationLayers.size());
-                    instanceCreateInfo.ppEnabledExtensionNames = extension.data();
+                    instanceCreateInfo.ppEnabledLayerNames = VulkanValidationLayers::validationLayers.data();
 
                     debugUtilsMessengerCreateInfoExt = {};
                     debugUtilsMessengerCreateInfoExt.sType = VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT;
