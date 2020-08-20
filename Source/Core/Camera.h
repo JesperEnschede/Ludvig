@@ -36,7 +36,7 @@ namespace Ludvig
             /*
              * Returns the projection matrix.
              */
-            glm::mat4 get_projection_matrix();
+            glm::mat4 get_projection_matrix() const;
 
             float nearClipping = 0.1f;
             float farClipping = 1000.0f;

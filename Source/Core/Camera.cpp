@@ -4,6 +4,8 @@
 
 #include "Camera.h"
 
+#include "Data/BindingData.h"
+
 namespace Ludvig
 {
     namespace Core
@@ -34,9 +36,12 @@ namespace Ludvig
             return viewMatrix;
         }
 
-        glm::mat4 Camera::get_projection_matrix() {
-            // FIXME(Jesper) fix aspect ratio.
-            return glm::perspective(glm::radians(this->fieldOfView),16.0f / 9.0f, this->nearClipping,this->farClipping);
+        glm::mat4 Camera::get_projection_matrix() const {
+            return glm::perspective(
+                    glm::radians(this->fieldOfView),
+                    (float)Data::BindingData::windowWidth / (float)Data::BindingData::windowHeight,
+                    this->nearClipping,
+                    this->farClipping);
         }
     }
 }
