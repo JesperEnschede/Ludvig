@@ -52,6 +52,7 @@ namespace Ludvig
 
                 Data::BindingData::windowWidth = width;
                 Data::BindingData::windowHeight = height;
+                Data::BindingData::window = this;
 
                 glfwSetWindowSizeCallback(
                         window,

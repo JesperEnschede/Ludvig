@@ -8,6 +8,7 @@ namespace Ludvig
 {
     namespace Data
     {
+        Rendering::Window* BindingData::window;
         int BindingData::windowWidth;
         int BindingData::windowHeight;
     }

@@ -15,6 +15,7 @@ namespace Ludvig
         class BindingData
         {
         public:
+            static Rendering::Window* window;
             static int windowWidth;
             static int windowHeight;
         };

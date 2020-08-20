@@ -4,6 +4,7 @@
 
 #include "VulkanWindow.h"
 
+#include "Data/BindingData.h"
 #include "Debug/DebugLog.h"
 
 namespace Ludvig
@@ -36,6 +37,10 @@ namespace Ludvig
                 } else {
                     Debug::DebugLog::log_message("Created GLFW window");
                 }
+
+                Data::BindingData::windowWidth = width;
+                Data::BindingData::windowHeight = height;
+                Data::BindingData::window = this;
             }
 
             bool VulkanWindow::is_Closing() {
