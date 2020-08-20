@@ -4,6 +4,7 @@
 
 #include "OpenGLWindow.h"
 
+#include "Data/BindingData.h"
 #include "Debug/DebugLog.h"
 
 namespace Ludvig
@@ -49,6 +50,9 @@ namespace Ludvig
 
                 glfwSetWindowUserPointer(window, this);
 
+                Data::BindingData::windowWidth = width;
+                Data::BindingData::windowHeight = height;
+
                 glfwSetWindowSizeCallback(
                         window,
                         [](GLFWwindow* window, int nw, int nh)
@@ -60,6 +64,8 @@ namespace Ludvig
             void OpenGLWindow::on_resize_window_callback(int newWidth, int newHeight) {
                 width = newWidth;
                 height = newHeight;
+                Data::BindingData::windowWidth = newWidth;
+                Data::BindingData::windowHeight = newHeight;
 
                 glViewport(0,0,newWidth, newHeight);
             }
