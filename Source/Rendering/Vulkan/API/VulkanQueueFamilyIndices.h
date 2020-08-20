@@ -5,6 +5,8 @@
 #ifndef LUDVIG_VULKANQUEUEFAMILYINDICES_H
 #define LUDVIG_VULKANQUEUEFAMILYINDICES_H
 
+#include "vulkan/vulkan.h"
+
 #include "optional"
 
 namespace Ludvig
@@ -25,6 +27,11 @@ namespace Ludvig
                     return graphicsFamily.has_value() && presentFamily.has_value();
                 }
             };
+
+            /*
+             * Finds a physical devices queue families
+             */
+            QueueFamilyIndices find_queue_families(VkPhysicalDevice& physicalDevice, VkSurfaceKHR& surface);
         }
     }
 }
