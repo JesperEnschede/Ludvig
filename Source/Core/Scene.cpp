@@ -4,13 +4,16 @@
 
 #include "Scene.h"
 
+#include "Data/UserConfig.h"
+
 namespace Ludvig
 {
     namespace Core
     {
         Scene::Scene() {
-            mesh = std::move(std::unique_ptr<Mesh>(create_mesh("assets/models/monkey.obj")));
-            mesh->shader = "default";
+            mesh = std::move(std::unique_ptr<Mesh>(create_mesh(Data::UserConfig::get_string("MODEL"))));
+            mesh->shader = Data::UserConfig::get_string("SHADER");
+            mesh->texture = Data::UserConfig::get_string("TEXTURE");
 
             camera = std::make_unique<Camera>();
             light = std::make_unique<Light>();
