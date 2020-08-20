@@ -8,11 +8,10 @@
 #include "OpenGLRenderContext.h"
 #include "OpenGLWindow.h"
 #include "OpenGLMeshRenderer.h"
-#include "OpenGLShader.h"
 
 #include "GUI/GUIManager.h"
 
-#include "Data/FileReader.h"
+#include "Data/SystemInformation.h"
 #include "Debug/DebugLog.h"
 
 #include "DearImGui/imgui.h"
@@ -42,6 +41,8 @@ namespace Ludvig
                 glEnable(GL_DEPTH_TEST);
                 glDepthFunc(GL_LESS);
                 glEnable(GL_CULL_FACE);
+
+                set_system_info();
             }
 
             void OpenGLRenderManager::render(Core::Scene* scene) {
@@ -86,6 +87,11 @@ namespace Ludvig
             void OpenGLRenderManager::render_gui_frame() {
                 ImGui::Render();
                 ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+            }
+
+            void OpenGLRenderManager::set_system_info() {
+                Data::SystemInformation::GPUModel = std::string(reinterpret_cast<const char*>(glGetString(GL_RENDERER)));
+                Data::SystemInformation::GPUVendor = std::string(reinterpret_cast<const char*>(glGetString(GL_VENDOR)));
             }
         }
     }

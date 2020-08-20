@@ -35,6 +35,8 @@ namespace Ludvig
                 void create_gui_frame();
 
                 void render_gui_frame();
+
+                void set_system_info();
             };
         }
     }
