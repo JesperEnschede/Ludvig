@@ -8,7 +8,6 @@
 #include "RenderTechnique.h"
 #include "RenderContext.h"
 #include "Shader.h"
-
 #include "Core/Scene.h"
 
 #include "memory"

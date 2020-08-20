@@ -18,6 +18,9 @@ namespace Ludvig
         class MeshRenderer
         {
         public:
+            /*
+             * Preforms a API defined draw call
+             */
             virtual void render(glm::mat4 view, glm::mat4 projection) = 0;
         };
     }
