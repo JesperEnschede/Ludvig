@@ -40,7 +40,14 @@ namespace Ludvig
                  */
                 void create_vulkan_instance();
 
+                /*
+                 * Creates a vulkan debug messenger,
+                 * Returns when validation layers are not enabled.
+                 */
+                void create_debug_messenger();
+
                 VkInstance instance;
+                VkDebugUtilsMessengerEXT debugMessenger;
             };
         }
     }

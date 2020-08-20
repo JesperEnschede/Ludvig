@@ -18,9 +18,15 @@ namespace Ludvig
         {
             VulkanRenderContext::VulkanRenderContext() {
                 create_vulkan_instance();
+                create_debug_messenger();
             }
 
             VulkanRenderContext::~VulkanRenderContext() {
+
+                if (VulkanValidationLayers::is_enabled()) {
+                    destroy_debug_utils_messengerEXT(instance,debugMessenger,nullptr);
+                }
+
                 vkDestroyInstance(instance,nullptr);
             }
 
@@ -94,6 +100,24 @@ namespace Ludvig
                     Debug::DebugLog::log_error("Failed to create vulkan instance", true);
                 } else {
                     Debug::DebugLog::log_message("Created vulkan instance");
+                }
+            }
+
+            void VulkanRenderContext::create_debug_messenger() {
+                if (!VulkanValidationLayers::is_enabled())
+                    return;
+
+                VkDebugUtilsMessengerCreateInfoEXT debugUtilsMessengerCreateInfoExt{};
+                debugUtilsMessengerCreateInfoExt = {};
+                debugUtilsMessengerCreateInfoExt.sType = VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT;
+                debugUtilsMessengerCreateInfoExt.messageSeverity = VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT | VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT | VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT;
+                debugUtilsMessengerCreateInfoExt.messageType = VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT | VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT | VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT;
+                debugUtilsMessengerCreateInfoExt.pfnUserCallback = debug_callback;
+
+                if (create_debug_utils_messengerEXT(instance,&debugUtilsMessengerCreateInfoExt, nullptr, &debugMessenger) != VK_SUCCESS) {
+                    std::runtime_error("failed to setup debug messenger!");
+                } else {
+                    Debug::DebugLog::log_message("Created vulkan debug messenger");
                 }
             }
         }
