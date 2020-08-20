@@ -16,7 +16,7 @@ namespace Ludvig
                                                VkDebugUtilsMessageTypeFlagsEXT messageType,
                                                const VkDebugUtilsMessengerCallbackDataEXT *pCallbackData,
                                                void *pUserData) {
-                Debug::DebugLog::log_error("Vulkan validation layer:" + std::string(pCallbackData->pMessage), false);
+                Debug::DebugLog::log_error("Vulkan validation layer: " + std::string(pCallbackData->pMessage), false);
 
                 return VK_FALSE;
             }
