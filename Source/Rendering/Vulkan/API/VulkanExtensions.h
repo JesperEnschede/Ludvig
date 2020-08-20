@@ -25,7 +25,7 @@ namespace Ludvig
              */
             bool check_physical_device_extension_support(VkPhysicalDevice& physicalDevice);
 
-            std::vector<const char*> deviceExtensions = {
+            inline std::vector<const char*> deviceExtensions = {
                     VK_KHR_SWAPCHAIN_EXTENSION_NAME
             };
         }
