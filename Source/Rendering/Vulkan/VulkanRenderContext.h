@@ -7,6 +7,10 @@
 
 #include "Rendering/RenderContext.h"
 
+#include "Debug/DebugLog.h"
+
+#include "vulkan/vulkan.hpp"
+
 namespace Ludvig
 {
     namespace Rendering
@@ -16,9 +20,27 @@ namespace Ludvig
             class VulkanRenderContext : public RenderContext
             {
             public:
+                /*
+                 * Initializes the vulkan render context
+                 */
+                VulkanRenderContext();
+
+                /*
+                 * Vulkan cleanup
+                 */
+                ~VulkanRenderContext();
+
                 void prepare_frame() override;
 
                 void finish_frame() override;
+
+            private:
+                /*
+                 * Creates a vulkan instance
+                 */
+                void create_vulkan_instance();
+
+                VkInstance instance;
             };
         }
     }
