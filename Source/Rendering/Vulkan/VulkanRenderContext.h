@@ -51,9 +51,15 @@ namespace Ludvig
                  */
                 void create_surface();
 
+                /*
+                 * Picks a suitable physical gpu
+                 */
+                void pick_gpu();
+                
                 VkInstance instance;
                 VkDebugUtilsMessengerEXT debugMessenger;
                 VkSurfaceKHR surface;
+                VkPhysicalDevice physicalDevice;
             };
         }
     }

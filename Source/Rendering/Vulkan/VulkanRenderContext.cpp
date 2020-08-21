@@ -9,10 +9,10 @@
 #include "API/VulkanValidationLayers.h"
 #include "API/VulkanExtensions.h"
 #include "API/VulkanDebugMessenger.h"
+#include "API/VulkanGPU.h"
+#include "API/VulkanQueueFamilyIndices.h"
 
 #include "Data/BindingData.h"
-
-#include "GLFW/glfw3.h"
 
 namespace Ludvig
 {
@@ -24,6 +24,7 @@ namespace Ludvig
                 create_vulkan_instance();
                 create_debug_messenger();
                 create_surface();
+                pick_gpu();
             }
 
             VulkanRenderContext::~VulkanRenderContext() {
@@ -133,6 +134,10 @@ namespace Ludvig
                 } else {
                     Debug::DebugLog::log_message("Created vulkan surface");
                 }
+            }
+
+            void VulkanRenderContext::pick_gpu() {
+                physicalDevice = pick_physical_device(instance,surface);
             }
         }
     }
