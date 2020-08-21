@@ -14,6 +14,8 @@
 
 #include "Data/BindingData.h"
 
+#include "set"
+
 namespace Ludvig
 {
     namespace Rendering
@@ -25,6 +27,7 @@ namespace Ludvig
                 create_debug_messenger();
                 create_surface();
                 pick_gpu();
+                create_logical_device();
             }
 
             VulkanRenderContext::~VulkanRenderContext() {
@@ -124,20 +127,63 @@ namespace Ludvig
                 if (create_debug_utils_messengerEXT(instance,&debugUtilsMessengerCreateInfoExt, nullptr, &debugMessenger) != VK_SUCCESS) {
                     std::runtime_error("failed to setup debug messenger!");
                 } else {
-                    Debug::DebugLog::log_message("Created vulkan debug messenger");
+                    Debug::DebugLog::log_message("Created Vulkan debug messenger");
                 }
             }
 
             void VulkanRenderContext::create_surface() {
                 if (glfwCreateWindowSurface(instance,dynamic_cast<VulkanWindow*>(Data::BindingData::window)->get_handle(), nullptr, &surface)) {
-                    Debug::DebugLog::log_error("Unable to create vulkan surface", false);
+                    Debug::DebugLog::log_error("Unable to create Vulkan surface", true);
                 } else {
-                    Debug::DebugLog::log_message("Created vulkan surface");
+                    Debug::DebugLog::log_message("Created Vulkan surface");
                 }
             }
 
             void VulkanRenderContext::pick_gpu() {
                 physicalDevice = pick_physical_device(instance,surface);
+            }
+
+            void VulkanRenderContext::create_logical_device() {
+                QueueFamilyIndices indices = find_queue_families(physicalDevice,surface);
+
+                std::vector<VkDeviceQueueCreateInfo> queueCreateInfos;
+                std::set<uint32_t> uniqueQueueFamilies = {
+                        indices.graphicsFamily.value(),
+                        indices.presentFamily.value() };
+
+                float queuePriority = 1.0f;
+                for (uint32_t queueFamily : uniqueQueueFamilies) {
+                    VkDeviceQueueCreateInfo queueCreateInfo{};
+                    queueCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
+                    queueCreateInfo.queueFamilyIndex = queueFamily;
+                    queueCreateInfo.queueCount = 1;
+                    queueCreateInfo.pQueuePriorities = &queuePriority;
+                    queueCreateInfos.push_back(queueCreateInfo);
+                }
+
+                VkPhysicalDeviceFeatures physicalDeviceFeatures{};
+
+                VkDeviceCreateInfo deviceCreateInfo{};
+                deviceCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
+
+                deviceCreateInfo.queueCreateInfoCount = static_cast<uint32_t>(queueCreateInfos.size());
+                deviceCreateInfo.pQueueCreateInfos = queueCreateInfos.data();
+                deviceCreateInfo.pEnabledFeatures = &physicalDeviceFeatures;
+                deviceCreateInfo.enabledLayerCount = static_cast<uint32_t>(deviceExtensions.size());
+                deviceCreateInfo.ppEnabledExtensionNames = deviceExtensions.data();
+
+                if (VulkanValidationLayers::is_enabled()) {
+                    deviceCreateInfo.enabledLayerCount = static_cast<uint32_t>(VulkanValidationLayers::validationLayers.size());
+                    deviceCreateInfo.ppEnabledLayerNames = VulkanValidationLayers::validationLayers.data();
+                } else {
+                    deviceCreateInfo.enabledLayerCount = 0;
+                }
+
+                if (vkCreateDevice(physicalDevice,&deviceCreateInfo,nullptr,&logicalDevice) != VK_SUCCESS) {
+                    Debug::DebugLog::log_error("Unable to create Vulkan logical device", false);
+                } else {
+                    Debug::DebugLog::log_message("Created Vulkan logical device");
+                }
             }
         }
     }

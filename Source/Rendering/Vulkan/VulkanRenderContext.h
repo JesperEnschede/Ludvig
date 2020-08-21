@@ -55,8 +55,14 @@ namespace Ludvig
                  * Picks a suitable physical gpu
                  */
                 void pick_gpu();
-                
+
+                /*
+                 * Creates a vulkan device
+                 */
+                void create_logical_device();
+
                 VkInstance instance;
+                VkDevice logicalDevice;
                 VkDebugUtilsMessengerEXT debugMessenger;
                 VkSurfaceKHR surface;
                 VkPhysicalDevice physicalDevice;
