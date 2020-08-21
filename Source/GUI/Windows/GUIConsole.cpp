@@ -15,6 +15,7 @@ namespace Ludvig
         void GUIConsole::draw()
         {
             ImGui::Begin("Console");
+            ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
             ImGui::Text("%s", Debug::DebugLog::get_log().c_str());
             ImGui::End();
         }
