@@ -27,6 +27,11 @@ namespace Ludvig
                 initialize();
             }
 
+            Win32Window::~Win32Window() {
+                ::DestroyWindow(hWnd);
+                ::UnregisterClass("LudvigWin32WindowClass", hinstance);
+            }
+
             void Win32Window::poll_window_events() {
 
                 if (GetMessage(&msg, NULL,0,0)) {

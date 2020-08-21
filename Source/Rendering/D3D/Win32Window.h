@@ -27,6 +27,11 @@ namespace Ludvig
                 Win32Window(std::string title, int w, int h);
 
                 /*
+                 * Window handle cleanup
+                 */
+                ~Win32Window();
+
+                /*
                  * Translates and dispatches window messages.
                  */
                 void poll_window_events() override;
