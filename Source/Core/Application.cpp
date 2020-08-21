@@ -7,6 +7,12 @@
 #include "Debug/DebugLog.h"
 #include "Data/UserConfig.h"
 
+// D3D general
+#include "Rendering/D3D/Win32Window.h"
+
+// D3DX11
+#include "Rendering/D3D/D3DX11/D3DX11RenderManager.h"
+
 // OpenGL renderer
 #include "Rendering/OpenGL/OpenGLRenderManager.h"
 #include "Rendering/OpenGL/OpenGLWindow.h"
@@ -39,9 +45,10 @@ namespace Ludvig
                 window = std::make_unique<Rendering::Vulkan::VulkanWindow>("Ludvig | Vulkan", windowWidth,windowHeight);
                 renderManager = std::make_unique<Rendering::Vulkan::VulkanRenderManager>();
             } else if (API == "Direct3D12") {
-                Debug::DebugLog::log_error("Direct3D 12 API is not implemented yet.", true);
-            } else if (API == "Direct3D9") {
-                Debug::DebugLog::log_error("Direct3D 9 API is not implemented yet.", true);
+                Debug::DebugLog::log_warning("Direct3D 12 is not implemented yet.");
+            } else if (API == "Direct3D11") {
+                window = std::make_unique<Rendering::D3D::Win32Window>("Ludvig | DirectX 11", windowWidth, windowHeight);
+                renderManager = std::make_unique<Rendering::D3DX11::D3DX11RenderManager>();
             } else {
                 Debug::DebugLog::log_error("Given API '" + API + "' is not available.", true);
             }
