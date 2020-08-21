@@ -26,6 +26,10 @@ namespace Ludvig
             }
 
             D3DX11RenderContext::~D3DX11RenderContext() {
+                ImGui_ImplDX11_Shutdown();
+                ImGui_ImplWin32_Shutdown();
+                ImGui::DestroyContext();
+
                 swapChain->Release();
                 swapChain = nullptr;
 
@@ -37,8 +41,10 @@ namespace Ludvig
             }
 
             void D3DX11RenderContext::prepare_frame() {
+                // FIXME(Jesper) replace ImVec4 clear color solution with a proper clear color.
+                ImVec4 clear_color = ImVec4(0.1,0.1,0.1,1.0f);
                 d3dDeviceContext->OMSetRenderTargets(1, &renderTargetView, NULL);
-                // d3dDeviceContext->ClearRenderTargetView(renderTargetView, (float*)1);
+                d3dDeviceContext->ClearRenderTargetView(renderTargetView, (float*)&clear_color);
             }
 
             void D3DX11RenderContext::finish_frame() {
