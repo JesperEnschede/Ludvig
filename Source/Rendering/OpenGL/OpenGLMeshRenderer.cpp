@@ -6,10 +6,10 @@
 
 #include "glad/glad.h"
 
-#include "OpenGLVertexArray.h"
-#include "OpenGLBuffer.h"
-#include "OpenGLVertexAttrib.h"
-#include "OpenGLShader.h"
+#include "Rendering/OpenGL/API/OpenGLVertexArray.h"
+#include "Rendering/OpenGL/API/OpenGLBuffer.h"
+#include "Rendering/OpenGL/API/OpenGLVertexAttrib.h"
+#include "Rendering/OpenGL/API/OpenGLShader.h"
 
 #include "Data/FileReader.h"
 #include "Debug/DebugLog.h"

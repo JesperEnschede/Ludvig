@@ -4,7 +4,7 @@
 
 #include "OpenGLForwardRenderer.h"
 
-#include "OpenGLShader.h"
+#include "Rendering/OpenGL/API/OpenGLShader.h"
 
 #include "Debug/DebugLog.h"
 
