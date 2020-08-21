@@ -32,7 +32,7 @@ namespace Ludvig
             private:
                 void create_d3dx11_device(HWND hwnd);
 
-                void create_d3dx11_device_context();
+                void create_d3dx11_render_target();
 
                 ID3D11Device* d3dDevice;
                 ID3D11DeviceContext* d3dDeviceContext;

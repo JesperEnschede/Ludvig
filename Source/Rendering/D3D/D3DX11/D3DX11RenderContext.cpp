@@ -17,7 +17,7 @@ namespace Ludvig
         {
             D3DX11RenderContext::D3DX11RenderContext() {
                 create_d3dx11_device(dynamic_cast<D3D::Win32Window*>(Data::BindingData::window)->get_handle());
-                create_d3dx11_device_context();
+                create_d3dx11_render_target();
             }
 
             D3DX11RenderContext::~D3DX11RenderContext() {
@@ -33,7 +33,7 @@ namespace Ludvig
 
             void D3DX11RenderContext::prepare_frame() {
                 d3dDeviceContext->OMSetRenderTargets(1, &renderTargetView, NULL);
-                d3dDeviceContext->ClearRenderTargetView(renderTargetView, (float*)RGB(0.1,0.1,0.1));
+                d3dDeviceContext->ClearRenderTargetView(renderTargetView, (float*)1);
             }
 
             void D3DX11RenderContext::finish_frame() {
@@ -84,7 +84,7 @@ namespace Ludvig
                 }
             }
 
-            void D3DX11RenderContext::create_d3dx11_device_context() {
+            void D3DX11RenderContext::create_d3dx11_render_target() {
                 ID3D11Texture2D* backBuffer;
                 swapChain->GetBuffer(0, IID_PPV_ARGS(&backBuffer));
                 d3dDevice->CreateRenderTargetView(backBuffer,NULL, &renderTargetView);
