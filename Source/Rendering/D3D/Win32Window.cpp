@@ -32,6 +32,10 @@ namespace Ludvig
                 return !isWindowOpen;
             }
 
+            HWND Win32Window::get_handle() {
+                return hWnd;
+            }
+
             void Win32Window::initialize() {
                 WNDCLASS wc;
 

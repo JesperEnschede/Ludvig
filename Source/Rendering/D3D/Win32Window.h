@@ -36,6 +36,11 @@ namespace Ludvig
                  */
                 bool is_Closing() override;
 
+                /*
+                 * Returns the window handle
+                 */
+                HWND get_handle();
+
             protected:
                 /*
                  * Creates a win32 window.
