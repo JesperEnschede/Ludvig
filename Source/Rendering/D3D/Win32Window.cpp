@@ -7,6 +7,12 @@
 #include "Data/BindingData.h"
 #include "Debug/DebugLog.h"
 
+#include "DearImGui/imgui.h"
+#include "DearImGui/imgui_impl_win32.h" // for imgui wndproc
+#include "DearImGUI/imgui_impl_dx11.h" // for imgui wndproc
+
+extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+
 namespace Ludvig
 {
     namespace Rendering
@@ -88,6 +94,11 @@ namespace Ludvig
             }
 
             LRESULT CALLBACK Win32Window::local_window_proc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam) {
+
+                if (ImGui_ImplWin32_WndProcHandler(hwnd,message,wparam,lparam)) {
+                   return 0;
+                }
+
                 switch (message) {
                     case WM_DESTROY: {
                         isWindowOpen = false;
