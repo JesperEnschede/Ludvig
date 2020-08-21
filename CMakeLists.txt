@@ -42,5 +42,5 @@ include_directories(glfw/include/)
 
 add_executable(Ludvig main.cpp ${Ludvig_Source})
 find_package(Vulkan REQUIRED)
-target_link_libraries(Ludvig glfw ${GLFW_LIBRARIES} -lopengl32 Vulkan::Vulkan d3d11 d3dx11)
+target_link_libraries(Ludvig glfw ${GLFW_LIBRARIES} -lopengl32 Vulkan::Vulkan d3d11 d3dx11 dxguid d3dcompiler xinput)
 find_package(OpenGL REQUIRED)
