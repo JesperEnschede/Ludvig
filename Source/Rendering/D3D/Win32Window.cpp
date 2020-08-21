@@ -4,6 +4,7 @@
 
 #include "Win32Window.h"
 
+#include "Data/BindingData.h"
 #include "Debug/DebugLog.h"
 
 namespace Ludvig
@@ -73,11 +74,17 @@ namespace Ludvig
 
                 ShowWindow(hWnd, 1);
                 isWindowOpen = true;
+
+                Data::BindingData::window = this;
+                Data::BindingData::windowWidth = width;
+                Data::BindingData::windowHeight = height;
             }
 
             void Win32Window::on_resize_window_callback(int newWidth, int newHeight) {
                 width = newWidth;
                 height = newHeight;
+                Data::BindingData::windowWidth = newWidth;
+                Data::BindingData::windowHeight = newHeight;
             }
 
             LRESULT CALLBACK Win32Window::local_window_proc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam) {
