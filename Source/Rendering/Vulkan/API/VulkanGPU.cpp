@@ -72,7 +72,7 @@ namespace Ludvig
                 vkEnumeratePhysicalDevices(instance, &deviceCount,nullptr);
 
                 if (deviceCount == 0) {
-                    Debug::DebugLog::log_error("Unable to find a GPU with vulkan support", true);
+                    Debug::DebugLog::log_error("Unable to find a GPU with Vulkan support", true);
                 }
 
                 std::vector<VkPhysicalDevice> foundPhysicalDevices(deviceCount);
@@ -80,6 +80,7 @@ namespace Ludvig
 
                 for (auto& device : foundPhysicalDevices) {
                     if (is_physical_device_suitable(device,surface)) {
+                        Debug::DebugLog::log_message("Found a suitable GPU with Vulkan support");
                         return device;
                     }
                 }
