@@ -21,6 +21,11 @@ namespace Ludvig
                 void render(Core::Scene *scene) override;
 
                 void create_mesh_renderer(Core::Mesh *mesh) override;
+
+            private:
+                void create_gui_frame();
+
+                void render_gui_frame();
             };
         }
     }
