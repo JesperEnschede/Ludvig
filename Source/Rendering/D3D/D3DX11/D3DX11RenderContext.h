@@ -8,8 +8,6 @@
 #include "Rendering/RenderContext.h"
 
 #include "d3d11.h"
-#pragma comment(lib "d3d11.lib")
-
 #include "Windows.h"
 
 namespace Ludvig
@@ -33,6 +31,8 @@ namespace Ludvig
                 void create_d3dx11_device(HWND hwnd);
 
                 void create_d3dx11_render_target();
+
+                void initialize_dearimgui();
 
                 ID3D11Device* d3dDevice;
                 ID3D11DeviceContext* d3dDeviceContext;

@@ -9,6 +9,10 @@
 #include "Data/BindingData.h"
 #include "Debug/DebugLog.h"
 
+#include "DearImGui/imgui.h"
+#include "DearImGui/imgui_impl_win32.h"
+#include "DearImGui/imgui_impl_dx11.h"
+
 namespace Ludvig
 {
     namespace Rendering
@@ -18,6 +22,7 @@ namespace Ludvig
             D3DX11RenderContext::D3DX11RenderContext() {
                 create_d3dx11_device(dynamic_cast<D3D::Win32Window*>(Data::BindingData::window)->get_handle());
                 create_d3dx11_render_target();
+                initialize_dearimgui();
             }
 
             D3DX11RenderContext::~D3DX11RenderContext() {
@@ -33,7 +38,7 @@ namespace Ludvig
 
             void D3DX11RenderContext::prepare_frame() {
                 d3dDeviceContext->OMSetRenderTargets(1, &renderTargetView, NULL);
-                d3dDeviceContext->ClearRenderTargetView(renderTargetView, (float*)1);
+                // d3dDeviceContext->ClearRenderTargetView(renderTargetView, (float*)1);
             }
 
             void D3DX11RenderContext::finish_frame() {
@@ -89,6 +94,17 @@ namespace Ludvig
                 swapChain->GetBuffer(0, IID_PPV_ARGS(&backBuffer));
                 d3dDevice->CreateRenderTargetView(backBuffer,NULL, &renderTargetView);
                 backBuffer->Release();
+
+                Debug::DebugLog::log_message("Created D3DX11 render target");
+            }
+
+            void D3DX11RenderContext::initialize_dearimgui() {
+                IMGUI_CHECKVERSION();
+                ImGui::CreateContext();
+                ImGuiIO& io = ImGui::GetIO(); (void)io;
+
+                ImGui_ImplWin32_Init(dynamic_cast<D3D::Win32Window*>(Data::BindingData::window)->get_handle());
+                ImGui_ImplDX11_Init(d3dDevice, d3dDeviceContext);
             }
         }
     }
