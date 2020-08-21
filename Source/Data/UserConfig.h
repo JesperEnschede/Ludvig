@@ -35,6 +35,8 @@ namespace Ludvig
             static int get_int(const std::string& key);
 
         private:
+            static void panic_create_config_file();
+
             static std::map<std::string, std::string> configValues;
         };
     }

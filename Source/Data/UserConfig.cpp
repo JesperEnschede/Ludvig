@@ -27,7 +27,7 @@ namespace Ludvig
                 while (std::getline(file,line)) {
                     std::istringstream iss(line);
                     std::string key;
-
+                    
                     if (std::getline(iss, key, '=')) {
                         std::string value;
 
@@ -39,7 +39,9 @@ namespace Ludvig
 
                 file.close();
             } else {
-                Debug::DebugLog::log_error("Unable to open config file: " + filePath, false);
+                Debug::DebugLog::log_error("Unable to open config file: " + filePath + " - panic creating new config file.", false);
+                panic_create_config_file();
+                read_config(filePath);
             }
         }
 
@@ -49,6 +51,16 @@ namespace Ludvig
 
         int UserConfig::get_int(const std::string &key) {
             return std::stoi(configValues[key], nullptr,0);
+        }
+
+        void UserConfig::panic_create_config_file() {
+            std::ofstream output("assets/config.cfg");
+            output << "API=OpenGL" << std::endl;
+            output << "WIDTH=800" << std::endl;
+            output << "HEIGHT=600" << std::endl;
+            output << "MODEL=assets/models/cube.obj" << std::endl;
+            output << "SHADER=default" << std::endl;
+            output << "MODEL=texture" << std::endl;
         }
     }
 }
