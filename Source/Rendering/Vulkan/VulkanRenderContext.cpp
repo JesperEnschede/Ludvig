@@ -184,6 +184,9 @@ namespace Ludvig
                 } else {
                     Debug::DebugLog::log_message("Created Vulkan logical device");
                 }
+
+                vkGetDeviceQueue(logicalDevice,indices.graphicsFamily.value(), 0, &graphicsQueue);
+                vkGetDeviceQueue(logicalDevice,indices.presentFamily.value(), 0, &presentQueue);
             }
         }
     }

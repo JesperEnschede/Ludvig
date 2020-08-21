@@ -66,6 +66,9 @@ namespace Ludvig
                 VkDebugUtilsMessengerEXT debugMessenger;
                 VkSurfaceKHR surface;
                 VkPhysicalDevice physicalDevice;
+
+                VkQueue graphicsQueue;
+                VkQueue presentQueue;
             };
         }
     }
