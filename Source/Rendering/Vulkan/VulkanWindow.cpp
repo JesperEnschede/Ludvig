@@ -30,6 +30,8 @@ namespace Ludvig
 
                 glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
 
+                glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE); // FIXME(Jesper) temp fix as resizing the window currently invalidates the swapchain-surface extent.
+
                 windowHandle = glfwCreateWindow(width, height, title.c_str(), nullptr,nullptr);
 
                 if (windowHandle == nullptr) {
